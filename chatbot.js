@@ -33,8 +33,8 @@
         email: 'info@techknowcc.in',
         phone: '040-46043493 (Landline) | +91 9849050333 | +91 9346597177',
         hours: 'Mon-Fri: 9 AM - 5 PM | Sat: 9 AM - 3 PM | Sun: Closed',
-        experience: '30+ years',
-        projects: '500+ completed projects'
+        experience: '35+ years',
+        projects: '600+ completed projects'
     };
 
     // ---- Onboarding State ----
