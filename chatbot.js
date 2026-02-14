@@ -33,7 +33,7 @@
         email: 'info@techknowcc.com',
         phone: '+91 9849050333',
         hours: 'Mon-Fri: 9 AM - 5 PM | Sat: 9 AM - 3 PM | Sun: Closed',
-        experience: '25+ years',
+        experience: '30+ years',
         projects: '500+ completed projects'
     };
 

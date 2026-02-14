@@ -20,7 +20,7 @@
     --c-glass: rgba(255, 255, 255, 0.72);
     --c-glass-border: rgba(255, 255, 255, 0.18);
 
-    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
     --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -746,13 +746,13 @@ h4 {
     flex-direction: column;
     justify-content: flex-end;
     padding: 32px;
-    background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.7) 100%);
-    opacity: 0;
-    transition: opacity 0.4s var(--ease-out);
+    background: linear-gradient(180deg, transparent 20%, rgba(0, 0, 0, 0.65) 100%);
+    opacity: 1;
+    transition: all 0.4s var(--ease-out);
 }
 
 .portfolio-card:hover .portfolio-overlay {
-    opacity: 1;
+    background: linear-gradient(180deg, transparent 10%, rgba(0, 0, 0, 0.8) 100%);
 }
 
 .portfolio-category {
