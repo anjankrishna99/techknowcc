@@ -726,33 +726,24 @@ h4 {
     border-radius: var(--radius-lg);
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.5s var(--ease-out);
+    transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
+    background: var(--c-bg-alt);
+    border: 1px solid var(--c-border);
 }
 
 .portfolio-card:hover {
-    transform: translateY(-8px) scale(1.02);
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--c-primary-lighter);
 }
 
 .portfolio-img {
     position: relative;
-    aspect-ratio: 4/3;
+    aspect-ratio: 16/9;
     overflow: hidden;
-}
-
-.portfolio-overlay {
-    position: absolute;
-    inset: 0;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 32px;
-    background: linear-gradient(180deg, transparent 20%, rgba(0, 0, 0, 0.65) 100%);
-    opacity: 1;
-    transition: all 0.4s var(--ease-out);
-}
-
-.portfolio-card:hover .portfolio-overlay {
-    background: linear-gradient(180deg, transparent 10%, rgba(0, 0, 0, 0.8) 100%);
+    align-items: flex-end;
+    padding: 16px;
 }
 
 .portfolio-category {
@@ -761,20 +752,28 @@ h4 {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--c-accent);
-    margin-bottom: 8px;
-}
-
-.portfolio-overlay h3 {
-    font-size: 1.3rem;
     color: #fff;
-    margin-bottom: 4px;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(8px);
+    padding: 6px 14px;
+    border-radius: 20px;
 }
 
-.portfolio-overlay p {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.75);
-    line-height: 1.5;
+.portfolio-body {
+    padding: 24px;
+}
+
+.portfolio-body h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--c-text);
+    margin-bottom: 6px;
+}
+
+.portfolio-body p {
+    font-size: 0.88rem;
+    color: var(--c-text-secondary);
+    line-height: 1.6;
 }
 
 /* ---------- ENQUIRY FORM (inline) ---------- */
@@ -1428,10 +1427,6 @@ h4 {
 
     .portfolio-grid {
         grid-template-columns: 1fr;
-    }
-
-    .portfolio-overlay {
-        opacity: 1;
     }
 
     .contact-grid {
