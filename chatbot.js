@@ -7,7 +7,7 @@
 (function () {
     'use strict';
 
-    var WHATSAPP_NUMBER = '919849050333';
+    var WHATSAPP_NUMBER = '919346597177';
     var BOT_NAME = 'Techknow Assistant';
     var COMPANY = 'TECHKNOW Consultants and Constructions';
 
@@ -30,8 +30,8 @@
             compliance: 'We ensure all projects meet environmental regulations, sustainability standards, and green building codes with thorough assessments and documentation.'
         },
         location: 'SMR Vinay Sky City, Opp. The Hyderabad Public School, Ramanthapur, Hyderabad-500013, India',
-        email: 'info@techknowcc.com',
-        phone: '+91 9849050333',
+        email: 'info@techknowcc.in',
+        phone: '040-46043493 (Landline) | +91 9849050333 | +91 9346597177',
         hours: 'Mon-Fri: 9 AM - 5 PM | Sat: 9 AM - 3 PM | Sun: Closed',
         experience: '30+ years',
         projects: '500+ completed projects'
