@@ -825,12 +825,16 @@ h4 {
 }
 
 /* Navigation Buttons */
+.slider-controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 32px;
+}
+
 .slider-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     border-radius: 50%;
     background: var(--c-bg);
     border: 1px solid var(--c-border);
@@ -839,7 +843,6 @@ h4 {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    z-index: 10;
     transition: all 0.3s ease;
     box-shadow: var(--shadow-sm);
 }
@@ -848,14 +851,8 @@ h4 {
     background: var(--c-primary);
     color: #fff;
     border-color: var(--c-primary);
-}
-
-.prev-btn {
-    left: 0;
-}
-
-.next-btn {
-    right: 0;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
 }
 
 /* Review Actions */
