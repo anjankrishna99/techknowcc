@@ -9,7 +9,7 @@
 
     var WHATSAPP_NUMBER = '919849050333';
     var BOT_NAME = 'Techknow Assistant';
-    var COMPANY = 'Techknow Constructions & Consultations';
+    var COMPANY = 'TECHKNOW Consultants and Constructions';
 
     // ---- Knowledge Base ----
     var KB = {
@@ -33,7 +33,7 @@
         email: 'info@techknowcc.com',
         phone: '+91 9849050333',
         hours: 'Mon-Fri: 9 AM - 5 PM | Sat: 9 AM - 3 PM | Sun: Closed',
-        experience: '30+ years',
+        experience: '25+ years',
         projects: '500+ completed projects'
     };
 
@@ -145,7 +145,7 @@
             keywords: ['experience', 'years', 'how long', 'history', 'track record', 'portfolio', 'projects', 'completed'],
             handler: function () {
                 return {
-                    text: 'Our Track Record\n\nWith ' + KB.experience + ' of expertise, we\'ve delivered ' + KB.projects + ' across Hyderabad and Telangana.\n\nHighlights:\n- Greenleaf Residences -- 48-unit eco-friendly complex\n- TechPark Eco Tower -- LEED Platinum certified\n- Heritage Green Retrofit -- Sustainable heritage renovation\n- SolarVista Villas -- Net-zero energy homes\n\nAverage 40% energy savings across all our builds.\n\nWould you like to see our full portfolio or discuss a similar project?',
+                    text: 'Our Track Record\n\nWith ' + KB.experience + ' of expertise, we\'ve delivered ' + KB.projects + ' across Hyderabad and Telangana.\n\nNotable Projects:\n- Classic Convention Center Three, Shamshabad\n- KMG Paradise, Gudimalkapur, Hyderabad\n- Toshniwal Granites, Hyderabad & Ongole\n- Aishwarya Rice Industries, Hyderabad\n- Gangotri Fertilizers, Turkapally\n\nOngoing Projects:\n- BMR Convention Center, Manneguda\n- Five Storey Residence, MLA Colony, Banjara Hills\n- AAC Block Plant, Nellore\n\nWould you like to discuss a similar project?',
                     tags: ['asked about experience/portfolio']
                 };
             }
