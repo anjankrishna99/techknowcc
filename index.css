@@ -781,12 +781,33 @@ h4 {
     background: var(--c-bg-alt);
 }
 
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+/* Slider Container */
+.testimonials-slider-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
 }
 
+/* Track */
+.testimonials-track {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 24px;
+    padding-bottom: 24px;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE/Edge */
+    scroll-behavior: smooth;
+}
+
+.testimonials-track::-webkit-scrollbar {
+    display: none;
+}
+
+/* Card */
 .testimonial-card {
     background: var(--c-bg);
     border-radius: var(--radius-lg);
@@ -796,6 +817,75 @@ h4 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    /* Carousel Props */
+    flex: 0 0 calc(33.333% - 16px);
+    scroll-snap-align: start;
+    min-width: 300px;
+}
+
+/* Navigation Buttons */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--c-bg);
+    border: 1px solid var(--c-border);
+    color: var(--c-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+}
+
+.slider-btn:hover {
+    background: var(--c-primary);
+    color: #fff;
+    border-color: var(--c-primary);
+}
+
+.prev-btn {
+    left: 0;
+}
+
+.next-btn {
+    right: 0;
+}
+
+/* Review Actions */
+.review-actions {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.review-cta-box {
+    background: var(--c-bg);
+    border: 1px dashed var(--c-primary-light);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.review-cta-box h3 {
+    font-size: 1.5rem;
+    color: var(--c-text);
+    margin: 0;
+}
+
+.review-cta-box p {
+    color: var(--c-text-secondary);
+    margin-bottom: 8px;
 }
 
 .testimonial-card:hover {

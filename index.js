@@ -272,4 +272,29 @@ document.addEventListener('DOMContentLoaded', () => {
             card.style.transform = '';
         });
     });
+    // ---------- Testimonials Carousel ----------
+    const track = document.getElementById('testimonials-track');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+
+    if (track && prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => {
+            const card = track.querySelector('.testimonial-card');
+            if (card) {
+                const cardWidth = card.offsetWidth;
+                const gap = 24;
+                track.scrollBy({ left: -(cardWidth + gap), behavior: 'smooth' });
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const card = track.querySelector('.testimonial-card');
+            if (card) {
+                const cardWidth = card.offsetWidth;
+                const gap = 24;
+                track.scrollBy({ left: (cardWidth + gap), behavior: 'smooth' });
+            }
+        });
+    }
+
 });

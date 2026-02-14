@@ -398,57 +398,253 @@
                 <p class="section-tag">Client Voices</p>
                 <h2 class="section-title">What Our <span class="text-gradient">Clients Say</span></h2>
             </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card reveal" data-delay="0">
-                    <div class="quote-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 7.55228 14.017 7V3H19.017C20.6739 3 22.017 4.34315 22.017 6V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 7.55228 5.0166 7V3H10.0166C11.6735 3 13.0166 4.34315 13.0166 6V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
-                        </svg>
+            <div class="testimonials-slider-container reveal">
+                <button class="slider-btn prev-btn" id="prev-btn" aria-label="Previous testimonials">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                </button>
+
+                <div class="testimonials-track" id="testimonials-track">
+                    <!-- 1 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 7.55228 14.017 7V3H19.017C20.6739 3 22.017 4.34315 22.017 6V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 7.55228 5.0166 7V3H10.0166C11.6735 3 13.0166 4.34315 13.0166 6V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"TCC transformed our vision into reality. Their attention to detail
+                            and eco-friendly approach is unmatched. The team was professional and delivered on time."
+                        </p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="background: #e9edc9; color: #1a3c34;">R</div>
+                            <div class="author-info">
+                                <h4>Rajesh Kumar</h4>
+                                <p>Residential Client</p>
+                            </div>
+                        </div>
                     </div>
-                    <p class="testimonial-text">"TCC transformed our vision into reality. Their attention to detail and
-                        eco-friendly approach is unmatched. The team was professional and delivered on time."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar" style="background: #e9edc9; color: #1a3c34;">R</div>
-                        <div class="author-info">
-                            <h4>Rajesh Kumar</h4>
-                            <p>Residential Client</p>
+                    <!-- 2 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 7.55228 14.017 7V3H19.017C20.6739 3 22.017 4.34315 22.017 6V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 7.55228 5.0166 7V3H10.0166C11.6735 3 13.0166 4.34315 13.0166 6V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"Professional, timely, and cost-effective. The best construction
+                            partner for our industrial facility. Their knowledge of regulations made the process
+                            smooth."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="background: #faedcd; color: #1a3c34;">L</div>
+                            <div class="author-info">
+                                <h4>Lakshmi Reddy</h4>
+                                <p>Industrial Client</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 3 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 7.55228 14.017 7V3H19.017C20.6739 3 22.017 4.34315 22.017 6V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 7.55228 5.0166 7V3H10.0166C11.6735 3 13.0166 4.34315 13.0166 6V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"Their expertise in Vaastu and modern design gave us the perfect
+                            home. Highly recommended for anyone looking for quality construction."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="background: #e0e7ff; color: #1a3c34;">S</div>
+                            <div class="author-info">
+                                <h4>Srinivas Rao</h4>
+                                <p>Residential Client</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 4 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 7.55228 14.017 7V3H19.017C20.6739 3 22.017 4.34315 22.017 6V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 7.55228 5.0166 7V3H10.0166C11.6735 3 13.0166 4.34315 13.0166 6V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"Excellent structural integrity and modern aesthetics. They handled
+                            our commercial complex project with absolute professionalism."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="background: #ffcfd2; color: #1a3c34;">M</div>
+                            <div class="author-info">
+                                <h4>Manish Gupta</h4>
+                                <p>Commercial Client</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 5 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 7.55228 14.017 7V3H19.017C20.6739 3 22.017 4.34315 22.017 6V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 7.55228 5.0166 7V3H10.0166C11.6735 3 13.0166 4.34315 13.0166 6V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"We wanted an eco-friendly home, and TCC delivered exactly that. The
+                            thermal efficiency of our new house is amazing!"</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="background: #b9fbc0; color: #1a3c34;">A</div>
+                            <div class="author-info">
+                                <h4>Anita Desai</h4>
+                                <p>Villa Owner</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 6 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 7.55228 14.017 7V3H19.017C20.6739 3 22.017 4.34315 22.017 6V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 7.55228 5.0166 7V3H10.0166C11.6735 3 13.0166 4.34315 13.0166 6V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"Great team to work with. Mr. Sreedhar's insights into structural
+                            stability saved us a lot of money and time."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="background: #98f5e1; color: #1a3c34;">K</div>
+                            <div class="author-info">
+                                <h4>Kalyan Varma</h4>
+                                <p>Apartment Builder</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 7 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 7.55228 14.017 7V3H19.017C20.6739 3 22.017 4.34315 22.017 6V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 7.55228 5.0166 7V3H10.0166C11.6735 3 13.0166 4.34315 13.0166 6V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"Truly reliable consultants. From planning to execution, every step
+                            was transparent and well-documented."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="background: #cfbaf0; color: #1a3c34;">V</div>
+                            <div class="author-info">
+                                <h4>Vikram Singh</h4>
+                                <p>Land Developer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 8 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 7.55228 14.017 7V3H19.017C20.6739 3 22.017 4.34315 22.017 6V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 7.55228 5.0166 7V3H10.0166C11.6735 3 13.0166 4.34315 13.0166 6V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"The quality of materials used for our warehouse construction was
+                            top-notch. Highly durable and cost-effective."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="background: #fde4cf; color: #1a3c34;">G</div>
+                            <div class="author-info">
+                                <h4>Gopal Krishna</h4>
+                                <p>Warehouse Owner</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 9 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 7.55228 14.017 7V3H19.017C20.6739 3 22.017 4.34315 22.017 6V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 7.55228 5.0166 7V3H10.0166C11.6735 3 13.0166 4.34315 13.0166 6V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"Techknow helped us get our Green Building certification smoothly.
+                            Their knowledge of ECBC norms is impressive."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="background: #f1c0e8; color: #1a3c34;">P</div>
+                            <div class="author-info">
+                                <h4>Priya Sharma</h4>
+                                <p>Education Institute</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 10 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 7.55228 14.017 7V3H19.017C20.6739 3 22.017 4.34315 22.017 6V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 7.55228 5.0166 7V3H10.0166C11.6735 3 13.0166 4.34315 13.0166 6V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"We appreciate their attention to Vaastu compliance without
+                            compromising on modern design utility."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="background: #a0c4ff; color: #1a3c34;">N</div>
+                            <div class="author-info">
+                                <h4>Narender Reddy</h4>
+                                <p>Home Owner</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 11 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 7.55228 14.017 7V3H19.017C20.6739 3 22.017 4.34315 22.017 6V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 7.55228 5.0166 7V3H10.0166C11.6735 3 13.0166 4.34315 13.0166 6V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"One of the best construction companies in Hyderabad. Transparent
+                            pricing and improved quality of life."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="background: #bdb2ff; color: #1a3c34;">S</div>
+                            <div class="author-info">
+                                <h4>Samuel John</h4>
+                                <p>Villa Owner</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 12 -->
+                    <div class="testimonial-card">
+                        <div class="quote-icon">
+                            <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 7.55228 14.017 7V3H19.017C20.6739 3 22.017 4.34315 22.017 6V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 7.55228 5.0166 7V3H10.0166C11.6735 3 13.0166 4.34315 13.0166 6V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
+                            </svg>
+                        </div>
+                        <p class="testimonial-text">"Very professional approach. They completed our renovation project
+                            ahead of schedule with zero hassle."</p>
+                        <div class="testimonial-author">
+                            <div class="author-avatar" style="background: #ffc6ff; color: #1a3c34;">D</div>
+                            <div class="author-info">
+                                <h4>Deepa Rao</h4>
+                                <p>Renovation Client</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="testimonial-card reveal" data-delay="100">
-                    <div class="quote-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
+
+                <button class="slider-btn next-btn" id="next-btn" aria-label="Next testimonials">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Review Actions -->
+            <div class="review-actions fade-in">
+                <div class="review-cta-box">
+                    <h3>Share Your Experience</h3>
+                    <p>Have we worked together? We'd love to hear your feedback on Google.</p>
+                    <a href="https://g.page/r/CW4WyDBzJ6DgEBM/review" target="_blank" class="btn btn-outline-dark">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path
-                                d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 7.55228 14.017 7V3H19.017C20.6739 3 22.017 4.34315 22.017 6V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 7.55228 5.0166 7V3H10.0166C11.6735 3 13.0166 4.34315 13.0166 6V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
+                                d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.761H12.545z" />
                         </svg>
-                    </div>
-                    <p class="testimonial-text">"Professional, timely, and cost-effective. The best construction partner
-                        for our industrial facility. Their knowledge of regulations made the process smooth."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar" style="background: #faedcd; color: #1a3c34;">L</div>
-                        <div class="author-info">
-                            <h4>Lakshmi Reddy</h4>
-                            <p>Industrial Client</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card reveal" data-delay="200">
-                    <div class="quote-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H15.017C14.4647 8 14.017 7.55228 14.017 7V3H19.017C20.6739 3 22.017 4.34315 22.017 6V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM5.0166 21L5.0166 18C5.0166 16.8954 5.91203 16 7.0166 16H10.0166C10.5689 16 11.0166 15.5523 11.0166 15V9C11.0166 8.44772 10.5689 8 10.0166 8H6.0166C5.46432 8 5.0166 7.55228 5.0166 7V3H10.0166C11.6735 3 13.0166 4.34315 13.0166 6V15C13.0166 18.3137 10.3303 21 7.0166 21H5.0166Z" />
-                        </svg>
-                    </div>
-                    <p class="testimonial-text">"Their expertise in Vaastu and modern design gave us the perfect home.
-                        Highly recommended for anyone looking for quality construction."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar" style="background: #e0e7ff; color: #1a3c34;">S</div>
-                        <div class="author-info">
-                            <h4>Srinivas Rao</h4>
-                            <p>Residential Client</p>
-                        </div>
-                    </div>
+                        Write a Review
+                    </a>
                 </div>
             </div>
         </div>
