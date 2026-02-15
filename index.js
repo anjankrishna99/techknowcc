@@ -297,4 +297,29 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // ---------- Services Carousel ----------
+    const servicesTrack = document.getElementById('services-track');
+    const servicesPrevBtn = document.getElementById('services-prev-btn');
+    const servicesNextBtn = document.getElementById('services-next-btn');
+
+    if (servicesTrack && servicesPrevBtn && servicesNextBtn) {
+        servicesPrevBtn.addEventListener('click', () => {
+            const card = servicesTrack.querySelector('.service-card');
+            if (card) {
+                const cardWidth = card.offsetWidth;
+                const gap = 24;
+                servicesTrack.scrollBy({ left: -(cardWidth + gap), behavior: 'smooth' });
+            }
+        });
+
+        servicesNextBtn.addEventListener('click', () => {
+            const card = servicesTrack.querySelector('.service-card');
+            if (card) {
+                const cardWidth = card.offsetWidth;
+                const gap = 24;
+                servicesTrack.scrollBy({ left: (cardWidth + gap), behavior: 'smooth' });
+            }
+        });
+    }
+
 });

@@ -638,10 +638,33 @@ h4 {
 }
 
 /* ---------- SERVICES ---------- */
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+/* Services Slider */
+.services-slider-container {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+    overflow: hidden;
+}
+
+.services-track {
+    display: flex;
     gap: 24px;
+    padding-bottom: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+.services-track::-webkit-scrollbar {
+    display: none;
+}
+
+.services-track .service-card {
+    flex: 0 0 calc(33.333% - 16px);
+    scroll-snap-align: start;
+    min-width: 300px;
 }
 
 .service-card {
