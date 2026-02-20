@@ -103,31 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     forms.forEach(form => {
         form.addEventListener('submit', (e) => {
-            e.preventDefault();
-
-            // Gather form data
+            // Gather form data before submission
             const formData = new FormData(form);
             const data = Object.fromEntries(formData);
 
-            // 1. Send email via FormSubmit.co
-            fetch('https://formsubmit.co/ajax/info@techknowcc.in', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({
-                    name: data.name || '',
-                    email: data.email || '',
-                    phone: data.phone || '',
-                    service: data.service || '',
-                    message: data.message || '',
-                    _subject: `New Enquiry from ${data.name || 'Website Visitor'}`,
-                    _template: 'table'
-                })
-            }).catch(err => console.log('Email send error:', err));
-
-            // 2. Send to WhatsApp
+            // Send to WhatsApp (opens in new tab)
             const whatsappNumber = '919849050333';
             const whatsappText = `*New Enquiry from TECHKNOW Website*%0A%0A` +
                 `*Name:* ${data.name || 'N/A'}%0A` +
@@ -137,16 +117,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 `*Message:* ${data.message || 'N/A'}`;
             window.open(`https://wa.me/${whatsappNumber}?text=${whatsappText}`, '_blank');
 
-            // Reset form
-            form.reset();
-
             // Close modal if it was the modal form
             if (form.id === 'enquiry-form-modal') {
                 closeModal();
             }
 
-            // Show toast
-            showToast();
+            // Let the form submit naturally to FormSubmit.co (no preventDefault)
         });
     });
 
