@@ -103,20 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     forms.forEach(form => {
         form.addEventListener('submit', (e) => {
-            // Gather form data before submission
-            const formData = new FormData(form);
-            const data = Object.fromEntries(formData);
-
-            // Send to WhatsApp (opens in new tab)
-            const whatsappNumber = '919849050333';
-            const whatsappText = `*New Enquiry from TECHKNOW Website*%0A%0A` +
-                `*Name:* ${data.name || 'N/A'}%0A` +
-                `*Email:* ${data.email || 'N/A'}%0A` +
-                `*Phone:* ${data.phone || 'N/A'}%0A` +
-                `*Service:* ${data.service || 'N/A'}%0A` +
-                `*Message:* ${data.message || 'N/A'}`;
-            window.open(`https://wa.me/${whatsappNumber}?text=${whatsappText}`, '_blank');
-
             // Close modal if it was the modal form
             if (form.id === 'enquiry-form-modal') {
                 closeModal();
