@@ -799,6 +799,44 @@ h4 {
     line-height: 1.6;
 }
 
+/* Portfolio link wrapper */
+.portfolio-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+/* Portfolio images */
+.portfolio-img img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-out);
+}
+
+.portfolio-card:hover .portfolio-img img {
+    transform: scale(1.08);
+}
+
+/* Portfolio address */
+.portfolio-address {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--c-primary-light);
+    margin-top: 10px;
+    letter-spacing: 0.01em;
+}
+
+.portfolio-address svg {
+    flex-shrink: 0;
+}
+
 /* ---------- TESTIMONIALS ---------- */
 .section.testimonials {
     background: var(--c-bg-alt);
