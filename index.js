@@ -108,7 +108,34 @@ document.addEventListener('DOMContentLoaded', () => {
             // Gather form data
             const formData = new FormData(form);
             const data = Object.fromEntries(formData);
-            console.log('Enquiry submitted:', data);
+
+            // 1. Send email via FormSubmit.co
+            fetch('https://formsubmit.co/ajax/info@techknowcc.in', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify({
+                    name: data.name || '',
+                    email: data.email || '',
+                    phone: data.phone || '',
+                    service: data.service || '',
+                    message: data.message || '',
+                    _subject: `New Enquiry from ${data.name || 'Website Visitor'}`,
+                    _template: 'table'
+                })
+            }).catch(err => console.log('Email send error:', err));
+
+            // 2. Send to WhatsApp
+            const whatsappNumber = '919849050333';
+            const whatsappText = `*New Enquiry from TECHKNOW Website*%0A%0A` +
+                `*Name:* ${data.name || 'N/A'}%0A` +
+                `*Email:* ${data.email || 'N/A'}%0A` +
+                `*Phone:* ${data.phone || 'N/A'}%0A` +
+                `*Service:* ${data.service || 'N/A'}%0A` +
+                `*Message:* ${data.message || 'N/A'}`;
+            window.open(`https://wa.me/${whatsappNumber}?text=${whatsappText}`, '_blank');
 
             // Reset form
             form.reset();
