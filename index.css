@@ -211,10 +211,7 @@ h4 {
     box-shadow: var(--shadow-sm);
 }
 
-#main-header.scrolled .logo-main,
-#main-header.scrolled .logo-sub,
-#main-header.scrolled .nav-link,
-#main-header.scrolled .logo-icon {
+#main-header.scrolled .nav-link {
     color: var(--c-text);
 }
 
@@ -234,37 +231,23 @@ h4 {
     z-index: 1001;
 }
 
-.logo-icon {
-    color: var(--c-text-light);
-    transition: color 0.4s var(--ease-out);
+.logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+    border-radius: 6px;
+    transition: all 0.4s var(--ease-out);
 }
 
-.logo-text {
-    display: flex;
-    flex-direction: column;
+#main-header.scrolled .logo-img {
+    height: 40px;
 }
 
-.logo-main {
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--c-text-light);
-    line-height: 1.1;
-    transition: color 0.4s var(--ease-out);
+.logo-img-footer {
+    height: 60px;
+    filter: brightness(1.1);
 }
 
-.logo-sub {
-    font-size: 0.6rem;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: rgba(255, 255, 255, 0.7);
-    transition: color 0.4s var(--ease-out);
-}
-
-#main-header.scrolled .logo-sub {
-    color: var(--c-text-secondary);
-}
 
 .nav-links {
     display: flex;
