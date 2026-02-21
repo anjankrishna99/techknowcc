@@ -233,14 +233,16 @@ h4 {
 
 .logo-img {
     height: 48px;
-    width: auto;
-    object-fit: contain;
-    border-radius: 6px;
+    width: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.1);
     transition: all 0.4s var(--ease-out);
 }
 
 #main-header.scrolled .logo-img {
     height: 40px;
+    width: 40px;
 }
 
 .logo-img-footer {
@@ -1236,17 +1238,41 @@ h4 {
     margin-bottom: 48px;
 }
 
-.footer-brand .logo {
-    margin-bottom: 16px;
+.logo-footer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
 }
 
-.footer-brand .logo-main,
-.footer-brand .logo-icon {
+.logo-text-footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-main-footer {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 800;
     color: var(--c-text-light);
+    line-height: 1;
+    letter-spacing: -0.01em;
 }
 
-.footer-brand .logo-sub {
+.logo-sub-footer {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
     color: rgba(255, 255, 255, 0.5);
+    margin-top: 4px;
+}
+
+.footer-brand .logo-img-footer {
+    height: 72px;
+    width: 72px;
+    filter: brightness(1.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .footer-tagline {
