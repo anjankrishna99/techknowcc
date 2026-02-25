@@ -340,6 +340,7 @@ h4 {
         radial-gradient(ellipse 60% 50% at 80% 80%, rgba(201, 168, 76, 0.2) 0%, transparent 60%),
         radial-gradient(ellipse 50% 40% at 20% 70%, rgba(26, 60, 52, 0.5) 0%, transparent 50%),
         linear-gradient(180deg, #0a1f1a 0%, #1a3c34 40%, #122e28 100%);
+    animation: gradient-shift 12s ease-in-out infinite alternate;
 }
 
 .hero-particles {
@@ -554,6 +555,7 @@ h4 {
     padding: 16px 24px;
     text-align: center;
     box-shadow: var(--shadow-md);
+    animation: badge-float 4s ease-in-out infinite;
 }
 
 .badge-number {
@@ -799,11 +801,25 @@ h4 {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s var(--ease-out);
+    transition: transform 6s ease-out;
 }
 
 .portfolio-card:hover .portfolio-img img {
-    transform: scale(1.08);
+    transform: scale(1.12);
+}
+
+.portfolio-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(26, 60, 52, 0.5) 100%);
+    opacity: 0;
+    transition: opacity 0.5s var(--ease-out);
+    z-index: 1;
+}
+
+.portfolio-card:hover .portfolio-img::after {
+    opacity: 1;
 }
 
 /* Portfolio address */
@@ -1539,6 +1555,32 @@ h4 {
     transform: translateY(0);
 }
 
+/* Direction Variants */
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.88);
+    transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+
+.reveal-left.visible,
+.reveal-right.visible,
+.reveal-scale.visible {
+    opacity: 1;
+    transform: none;
+}
+
 /* ---------- FLOATING LEAF PARTICLES ---------- */
 .particle {
     position: absolute;
@@ -1568,6 +1610,283 @@ h4 {
         opacity: 0;
         transform: translateY(-20vh) rotate(360deg);
     }
+}
+
+/* ---------- SCROLL PROGRESS BAR ---------- */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--c-primary-light), var(--c-accent), var(--c-primary-lighter));
+    width: 0%;
+    z-index: 9999;
+    transition: width 0.05s linear;
+    box-shadow: 0 0 10px var(--c-accent-glow);
+}
+
+/* ---------- CURSOR GLOW ---------- */
+.cursor-glow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(45, 106, 79, 0.07) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.4s;
+    opacity: 0;
+}
+
+.cursor-glow.active {
+    opacity: 1;
+}
+
+/* ---------- SECTION WAVE SEPARATORS ---------- */
+.section-wave {
+    position: relative;
+    height: 80px;
+    margin-top: -1px;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.section-wave svg {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ---------- CARD SHINE EFFECT ---------- */
+.service-card,
+.portfolio-card,
+.value-card,
+.testimonial-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba(45, 106, 79, 0.06), transparent 40%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s;
+    z-index: 2;
+}
+
+.service-card:hover::after {
+    opacity: 1;
+}
+
+/* ---------- MAGNETIC BUTTON STYLES ---------- */
+[data-magnetic] {
+    transition: transform 0.3s var(--ease-out);
+}
+
+.btn-ripple {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.25);
+    transform: scale(0);
+    animation: ripple-expand 0.6s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes ripple-expand {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
+/* ---------- HERO STAGGERED ANIMATIONS ---------- */
+.hero .reveal {
+    transition-duration: 1s;
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.hero .hero-tag.reveal {
+    transition-delay: 0.1s;
+}
+
+.hero .hero-title.reveal {
+    transition-delay: 0.35s;
+}
+
+.hero .hero-desc.reveal {
+    transition-delay: 0.6s;
+}
+
+.hero .hero-actions.reveal {
+    transition-delay: 0.85s;
+}
+
+.hero .hero-stats.reveal {
+    transition-delay: 1.1s;
+}
+
+/* Typewriter cursor */
+.typewriter-cursor {
+    display: inline-block;
+    width: 2px;
+    height: 0.85em;
+    background: var(--c-accent);
+    margin-left: 2px;
+    animation: cursor-blink 0.7s steps(1) infinite;
+    vertical-align: text-bottom;
+}
+
+@keyframes cursor-blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* ---------- ANIMATED GRADIENT ---------- */
+@keyframes gradient-shift {
+    0% {
+        filter: hue-rotate(0deg) brightness(1);
+    }
+
+    50% {
+        filter: hue-rotate(8deg) brightness(1.05);
+    }
+
+    100% {
+        filter: hue-rotate(15deg) brightness(1);
+    }
+}
+
+/* Hero title glow behind gradient text */
+.hero-title .text-gradient {
+    position: relative;
+    filter: drop-shadow(0 0 30px rgba(201, 168, 76, 0.3));
+}
+
+/* ---------- FLOATING BADGE ---------- */
+@keyframes badge-float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+/* ---------- VALUE CARD ENHANCED ---------- */
+.value-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--c-primary-light), var(--c-accent), transparent);
+    transform: scaleX(0);
+    transition: transform 0.5s var(--ease-out);
+}
+
+.value-card:hover::before {
+    transform: scaleX(1);
+}
+
+/* ---------- TESTIMONIAL SWEEP ---------- */
+.testimonial-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+    z-index: 1;
+}
+
+.testimonial-card:hover::before {
+    left: 100%;
+    transition: left 0.8s var(--ease-out);
+}
+
+/* ---------- CONTACT CARD GLOW ---------- */
+.contact-card {
+    transition: all 0.4s var(--ease-out);
+}
+
+.contact-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(201, 168, 76, 0.12);
+}
+
+/* ---------- FORM FOCUS EFFECTS ---------- */
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.12);
+    transform: translateY(-1px);
+}
+
+/* ---------- SMOOTH PAGE LOAD ---------- */
+body {
+    animation: page-fade-in 0.5s ease-out;
+}
+
+@keyframes page-fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ---------- SCROLL INDICATOR HIDE ---------- */
+body.scrolled-past .scroll-indicator {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* ---------- NAV LINK UNDERLINE EFFECT ---------- */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--c-accent);
+    border-radius: 2px;
+    transition: all 0.3s var(--ease-out);
+    transform: translateX(-50%);
+}
+
+.nav-link {
+    position: relative;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 60%;
+}
+
+#main-header.scrolled .nav-link::after {
+    background: var(--c-primary-light);
 }
 
 /* ---------- RESPONSIVE ---------- */

@@ -20,6 +20,11 @@
 </head>
 
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursor-glow"></div>
+
     <!-- ========== HEADER / NAVIGATION ========== -->
     <header id="main-header">
         <nav class="nav-container">
@@ -59,8 +64,8 @@
                 beyond.
             </p>
             <div class="hero-actions reveal">
-                <a href="#enquiry-section" class="btn btn-primary">Get a Free Quote</a>
-                <a href="#portfolio" class="btn btn-outline">View Our Work</a>
+                <a href="#enquiry-section" class="btn btn-primary" data-magnetic>Get a Free Quote</a>
+                <a href="#portfolio" class="btn btn-outline" data-magnetic>View Our Work</a>
             </div>
             <div class="hero-stats reveal">
                 <div class="stat">
@@ -85,6 +90,13 @@
         </div>
     </section>
 
+    <!-- Wave Separator: Hero → About -->
+    <div class="section-wave" style="background: var(--c-bg);">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+            <path d="M0,40 C360,80 720,0 1440,40 L1440,80 L0,80 Z" fill="var(--c-bg)" />
+        </svg>
+    </div>
+
     <!-- ========== ABOUT SECTION ========== -->
     <section id="about" class="section about">
         <div class="container">
@@ -93,7 +105,7 @@
                 <h2 class="section-title">Why Choose <span class="text-gradient">Us</span></h2>
             </div>
             <div class="about-grid">
-                <div class="about-image reveal">
+                <div class="about-image reveal-left">
                     <div class="about-img-container">
                         <div class="about-img-placeholder">
                             <svg viewBox="0 0 400 300" fill="none">
@@ -115,7 +127,7 @@
                     </div>
                 </div>
                 <div class="about-content">
-                    <p class="about-text reveal">
+                    <p class="about-text reveal-right">
                         With a legacy built on precision, integrity, and innovation,
                         <strong>TECHKNOW Consultants and Constructions (TCC)</strong> is a multi-disciplinary
                         consultancy
@@ -125,7 +137,7 @@
                         industrial
                         engineering, we bring a wealth of experience across 750+ completed projects.
                     </p>
-                    <p class="about-text reveal">
+                    <p class="about-text reveal-right">
                         Our approach blends traditional wisdom, such as <strong>Vastu Shastra</strong>, with modern
                         engineering excellence. As proud members of <strong>CII-IGBC</strong> and certified experts in
                         the
@@ -134,7 +146,7 @@
                     </p>
                 </div>
             </div>
-            <div class="about-values reveal">
+            <div class="about-values reveal-scale">
                 <div class="value-card">
                     <div class="value-icon">
                         <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -198,6 +210,13 @@
             </div>
         </div>
     </section>
+
+    <!-- Wave Separator: About → Services -->
+    <div class="section-wave" style="background: var(--c-bg-alt);">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+            <path d="M0,60 C480,0 960,80 1440,20 L1440,80 L0,80 Z" fill="var(--c-bg-alt)" />
+        </svg>
+    </div>
 
     <!-- ========== SERVICES SECTION ========== -->
     <!-- ========== SERVICES SECTION ========== -->
@@ -380,6 +399,13 @@
                 </div>
             </div>
     </section>
+
+    <!-- Wave Separator: Services → Portfolio -->
+    <div class="section-wave" style="background: var(--c-bg);">
+        <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+            <path d="M0,20 C360,80 1080,0 1440,60 L1440,80 L0,80 Z" fill="var(--c-bg)" />
+        </svg>
+    </div>
 
     <!-- ========== PORTFOLIO SECTION ========== -->
     <section id="portfolio" class="section portfolio">
@@ -875,7 +901,7 @@
                         <textarea id="inline-message" name="message" rows="4"
                             placeholder="Tell us about your project..."></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-submit">
+                    <button type="submit" class="btn btn-primary btn-submit" data-magnetic>
                         <span>Send Enquiry</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2">
@@ -1034,7 +1060,7 @@
                     <textarea id="modal-message" name="message" rows="3"
                         placeholder="Tell us about your project..."></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary btn-submit">
+                <button type="submit" class="btn btn-primary btn-submit" data-magnetic>
                     <span>Send Enquiry</span>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <line x1="5" y1="12" x2="19" y2="12" />
