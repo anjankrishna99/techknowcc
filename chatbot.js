@@ -145,7 +145,7 @@
             keywords: ['experience', 'years', 'how long', 'history', 'track record', 'portfolio', 'projects', 'completed'],
             handler: function () {
                 return {
-                    text: 'Our Track Record\n\nWith ' + KB.experience + ' of expertise, we\'ve delivered ' + KB.projects + ' across Hyderabad and Telangana.\n\nNotable Projects:\n- Classic Convention Center Three, Shamshabad\n- VRC Convention & Banquets\n- Toshniwal Granites, Hyderabad & Ongole\n- Aishwarya Rice Industries, Hyderabad\n- Gangotri Fertilizers, Turkapally\n\nOngoing Projects:\n- BMR Convention Center, Manneguda\n- Five Storey Residence, MLA Colony, Banjara Hills\n- AAC Block Plant, Nellore\n\nWould you like to discuss a similar project?',
+                    text: 'Our Track Record\n\nWith ' + KB.experience + ' of expertise, we\'ve delivered ' + KB.projects + ' across Hyderabad and Telangana.\n\nNotable Projects:\n- Classic Convention Center Three, Shamshabad\n- VRC Convention & Banquets\n- Toshniwal Granites, Hyderabad & Ongole\n- Deccan Grainz (Rice Mill), Hyderabad\n- Gangotri Fertilizers, Turkapally\n\nOngoing Projects:\n- BMR Convention Center, Manneguda\n- Five Storey Residence, MLA Colony, Banjara Hills\n- AAC Block Plant, Nellore\n\nWould you like to discuss a similar project?',
                     tags: ['asked about experience/portfolio']
                 };
             }
