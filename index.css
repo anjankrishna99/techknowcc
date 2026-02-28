@@ -11,7 +11,7 @@
     --c-accent: #A0D6E8;
     --c-accent-glow: rgba(160, 214, 232, 0.35);
     --c-bg: #b0b0b0;
-    --c-bg-alt: #a0a0a0;
+    --c-bg-alt: #b0b0b0;
     --c-bg-dark: #1a1d21;
     --c-text: #1a1d21;
     --c-text-secondary: #3a3e45;
@@ -56,7 +56,7 @@ html {
 body {
     font-family: var(--font-body);
     color: var(--c-text);
-    background: var(--c-bg) url('assets/stone-texture.png') repeat;
+    background: rgba(176, 176, 176, 0.88) url('assets/stone-texture.png') repeat;
     background-size: 600px;
     background-blend-mode: multiply;
     line-height: 1.6;
@@ -534,7 +534,7 @@ h4 {
 }
 
 .section.services {
-    background: rgba(160, 160, 160, 0.9) url('assets/stone-texture.png') repeat;
+    background: rgba(176, 176, 176, 0.88) url('assets/stone-texture.png') repeat;
     background-size: 600px;
     background-blend-mode: multiply;
 }
@@ -546,9 +546,9 @@ h4 {
 }
 
 .section.enquiry-section {
-    background: linear-gradient(135deg, rgba(155, 155, 155, 0.92) 0%, rgba(135, 135, 135, 0.92) 100%), url('assets/stone-texture.png') repeat;
-    background-size: auto, 600px;
-    background-blend-mode: normal, multiply;
+    background: rgba(176, 176, 176, 0.88) url('assets/stone-texture.png') repeat;
+    background-size: 600px;
+    background-blend-mode: multiply;
 }
 
 .section.contact {
@@ -904,7 +904,7 @@ h4 {
 
 /* ---------- TESTIMONIALS ---------- */
 .section.testimonials {
-    background: rgba(160, 160, 160, 0.9) url('assets/stone-texture.png') repeat;
+    background: rgba(176, 176, 176, 0.88) url('assets/stone-texture.png') repeat;
     background-size: 600px;
     background-blend-mode: multiply;
 }
