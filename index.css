@@ -8,8 +8,8 @@
     --c-primary: #2F4F4F;
     --c-primary-light: #3d6868;
     --c-primary-lighter: #5a8a8a;
-    --c-accent: #A0D6E8;
-    --c-accent-glow: rgba(160, 214, 232, 0.35);
+    --c-accent: #3A5A40;
+    --c-accent-glow: rgba(58, 90, 64, 0.35);
     --c-bg: #b0b0b0;
     --c-bg-alt: #b0b0b0;
     --c-bg-dark: #1a1d21;
@@ -189,7 +189,7 @@ h4 {
     }
 
     50% {
-        box-shadow: 0 0 35px var(--c-accent-glow), 0 0 60px rgba(160, 214, 232, 0.15);
+        box-shadow: 0 0 35px var(--c-accent-glow), 0 0 60px rgba(58, 90, 64, 0.15);
     }
 }
 
@@ -378,7 +378,7 @@ h4 {
     inset: 0;
     background:
         radial-gradient(ellipse 80% 60% at 50% 40%, rgba(47, 79, 79, 0.9) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(160, 214, 232, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(58, 90, 64, 0.15) 0%, transparent 60%),
         radial-gradient(ellipse 50% 40% at 20% 70%, rgba(26, 36, 40, 0.6) 0%, transparent 50%),
         linear-gradient(180deg, #0f1518 0%, #1a2a2e 40%, #2F4F4F 100%);
     animation: gradient-shift 12s ease-in-out infinite alternate;
@@ -1693,7 +1693,7 @@ h4 {
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(160, 214, 232, 0.06) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(58, 90, 64, 0.06) 0%, transparent 70%);
     pointer-events: none;
     z-index: 9998;
     transform: translate(-50%, -50%);
