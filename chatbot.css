@@ -14,7 +14,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    background: #f0ebe3;
+    background: #e6e9ec;
     box-shadow: 0 12px 50px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.06);
     z-index: 1001;
     opacity: 0;
@@ -32,7 +32,7 @@
 
 /* ---------- Header ---------- */
 .cw-header {
-    background: #1a3c34;
+    background: #2F4F4F;
     padding: 14px 18px;
     display: flex;
     align-items: center;
@@ -50,7 +50,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #2d6a4f, #40916c);
+    background: linear-gradient(135deg, #3d6868, #5a8a8a);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -117,8 +117,8 @@
     min-height: 280px;
     max-height: 340px;
     background:
-        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231a3c34' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
-        #f0ebe3;
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%232F4F4F' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+        #e6e9ec;
 }
 
 .cw-messages::-webkit-scrollbar {
@@ -170,7 +170,7 @@
 }
 
 .cw-bubble-user {
-    background: #d9fdd3;
+    background: #c8e8f0;
     color: #111b21;
     border-bottom-right-radius: 4px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
@@ -185,7 +185,7 @@
 
 .cw-bubble strong {
     font-weight: 600;
-    color: #1a3c34;
+    color: #2F4F4F;
 }
 
 .cw-time {
@@ -324,9 +324,9 @@
     flex-shrink: 0;
     padding: 7px 14px;
     border-radius: 50px;
-    border: 1.5px solid #1a3c34;
+    border: 1.5px solid #2F4F4F;
     background: transparent;
-    color: #1a3c34;
+    color: #2F4F4F;
     font-family: 'Inter', sans-serif;
     font-size: 0.76rem;
     font-weight: 500;
@@ -336,7 +336,7 @@
 }
 
 .cw-quick:hover {
-    background: #1a3c34;
+    background: #2F4F4F;
     color: #fff;
 }
 
@@ -345,7 +345,7 @@
     display: flex;
     gap: 8px;
     padding: 10px 14px;
-    background: #f0ebe3;
+    background: #e6e9ec;
     border-top: 1px solid rgba(0, 0, 0, 0.06);
     flex-shrink: 0;
 }
@@ -371,7 +371,7 @@
     height: 40px;
     border-radius: 50%;
     border: none;
-    background: #1a3c34;
+    background: #2F4F4F;
     color: #fff;
     display: flex;
     align-items: center;
@@ -382,7 +382,7 @@
 }
 
 .cw-send:hover {
-    background: #2d6a4f;
+    background: #3d6868;
     transform: scale(1.05);
 }
 

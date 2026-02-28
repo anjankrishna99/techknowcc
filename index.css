@@ -1,24 +1,24 @@
 /* ============================================
    TECHKNOW CONSTRUCTIONS — DESIGN SYSTEM
-   Apple-inspired, sustainability-themed
+   Silver & Stone — Monochromatic Precision
    ============================================ */
 
 /* ---------- CSS Custom Properties ---------- */
 :root {
-    --c-primary: #1a3c34;
-    --c-primary-light: #2d6a4f;
-    --c-primary-lighter: #40916c;
-    --c-accent: #c9a84c;
-    --c-accent-glow: rgba(201, 168, 76, 0.4);
-    --c-bg: #ffffff;
-    --c-bg-alt: #f5f0e8;
-    --c-bg-dark: #1c1c1e;
-    --c-text: #1c1c1e;
-    --c-text-secondary: #6e6e73;
-    --c-text-light: #f5f5f7;
-    --c-border: rgba(0, 0, 0, 0.08);
-    --c-glass: rgba(255, 255, 255, 0.72);
-    --c-glass-border: rgba(255, 255, 255, 0.18);
+    --c-primary: #2F4F4F;
+    --c-primary-light: #3d6868;
+    --c-primary-lighter: #5a8a8a;
+    --c-accent: #A0D6E8;
+    --c-accent-glow: rgba(160, 214, 232, 0.35);
+    --c-bg: #f2f2f2;
+    --c-bg-alt: #e8e8e8;
+    --c-bg-dark: #1a1d21;
+    --c-text: #1a1d21;
+    --c-text-secondary: #6b6f76;
+    --c-text-light: #f0f2f5;
+    --c-border: rgba(0, 0, 0, 0.1);
+    --c-glass: rgba(242, 242, 242, 0.78);
+    --c-glass-border: rgba(255, 255, 255, 0.22);
 
     --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -26,10 +26,10 @@
     --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
-    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.08);
-    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
-    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.15);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.14);
+    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.18);
 
     --radius-sm: 8px;
     --radius-md: 12px;
@@ -89,7 +89,7 @@ h4 {
 }
 
 .text-gradient {
-    background: linear-gradient(135deg, var(--c-primary-light), var(--c-accent));
+    background: linear-gradient(135deg, var(--c-accent), #78c6dc);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -142,13 +142,13 @@ h4 {
 .btn-primary {
     background: var(--c-primary);
     color: var(--c-text-light);
-    box-shadow: 0 4px 20px rgba(26, 60, 52, 0.3);
+    box-shadow: 0 4px 20px rgba(47, 79, 79, 0.3);
 }
 
 .btn-primary:hover {
     background: var(--c-primary-light);
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(26, 60, 52, 0.4);
+    box-shadow: 0 8px 30px rgba(47, 79, 79, 0.4);
 }
 
 .btn-outline {
@@ -164,7 +164,7 @@ h4 {
 }
 
 .btn-enquiry-nav {
-    background: linear-gradient(135deg, var(--c-accent), #d4b85c);
+    background: linear-gradient(135deg, var(--c-accent), #78c6dc);
     color: var(--c-bg-dark);
     padding: 10px 24px;
     border-radius: 50px;
@@ -187,7 +187,7 @@ h4 {
     }
 
     50% {
-        box-shadow: 0 0 35px var(--c-accent-glow), 0 0 60px rgba(201, 168, 76, 0.15);
+        box-shadow: 0 0 35px var(--c-accent-glow), 0 0 60px rgba(160, 214, 232, 0.15);
     }
 }
 
@@ -315,7 +315,7 @@ h4 {
 #main-header.scrolled .nav-link:hover,
 #main-header.scrolled .nav-link.active {
     color: var(--c-primary);
-    background: rgba(26, 60, 52, 0.08);
+    background: rgba(47, 79, 79, 0.08);
 }
 
 /* Hamburger */
@@ -375,10 +375,10 @@ h4 {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(45, 106, 79, 0.85) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(201, 168, 76, 0.2) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 20% 70%, rgba(26, 60, 52, 0.5) 0%, transparent 50%),
-        linear-gradient(180deg, #0a1f1a 0%, #1a3c34 40%, #122e28 100%);
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(47, 79, 79, 0.9) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(160, 214, 232, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 20% 70%, rgba(26, 36, 40, 0.6) 0%, transparent 50%),
+        linear-gradient(180deg, #0f1518 0%, #1a2a2e 40%, #2F4F4F 100%);
     animation: gradient-shift 12s ease-in-out infinite alternate;
 }
 
@@ -538,7 +538,7 @@ h4 {
 }
 
 .section.enquiry-section {
-    background: linear-gradient(135deg, var(--c-bg-alt) 0%, #e8e0d0 100%);
+    background: linear-gradient(135deg, var(--c-bg-alt) 0%, #d4d4d4 100%);
 }
 
 .section.contact {
@@ -572,7 +572,7 @@ h4 {
 .about-img-placeholder {
     width: 100%;
     aspect-ratio: 4/3;
-    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    background: linear-gradient(135deg, #dce8ec 0%, #b8cdd4 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1214,7 +1214,7 @@ h4 {
 }
 
 .contact-card a:hover {
-    color: #d4b85c;
+    color: #78c6dc;
 }
 
 .contact-note {
@@ -1677,7 +1677,7 @@ h4 {
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(45, 106, 79, 0.07) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(160, 214, 232, 0.06) 0%, transparent 70%);
     pointer-events: none;
     z-index: 9998;
     transform: translate(-50%, -50%);
