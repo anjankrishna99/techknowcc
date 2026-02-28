@@ -588,9 +588,13 @@ h4 {
 
 .about-values {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 20px;
     margin-top: 48px;
+}
+
+.about-values .value-card:nth-child(6) {
+    grid-column-start: 2;
 }
 
 .value-card {
@@ -1906,7 +1910,11 @@ body.scrolled-past .scroll-indicator {
     }
 
     .about-values {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .about-values .value-card:nth-child(6) {
+        grid-column-start: auto;
     }
 
     .services-grid {
