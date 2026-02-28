@@ -10,14 +10,14 @@
     --c-primary-lighter: #5a8a8a;
     --c-accent: #A0D6E8;
     --c-accent-glow: rgba(160, 214, 232, 0.35);
-    --c-bg: #f2f2f2;
-    --c-bg-alt: #e8e8e8;
+    --c-bg: #c8c8c8;
+    --c-bg-alt: #b8b8b8;
     --c-bg-dark: #1a1d21;
     --c-text: #1a1d21;
-    --c-text-secondary: #6b6f76;
+    --c-text-secondary: #3a3e45;
     --c-text-light: #f0f2f5;
     --c-border: rgba(0, 0, 0, 0.1);
-    --c-glass: rgba(242, 242, 242, 0.78);
+    --c-glass: rgba(200, 200, 200, 0.78);
     --c-glass-border: rgba(255, 255, 255, 0.22);
 
     --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -58,6 +58,7 @@ body {
     color: var(--c-text);
     background: var(--c-bg) url('assets/stone-texture.png') repeat;
     background-size: 600px;
+    background-blend-mode: multiply;
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -107,7 +108,7 @@ h4 {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--c-primary-light);
+    color: var(--c-primary);
     margin-bottom: 12px;
 }
 
@@ -527,33 +528,33 @@ h4 {
 }
 
 .section.about {
-    background: rgba(242, 242, 242, 0.85) url('assets/stone-texture.png') repeat;
+    background: rgba(200, 200, 200, 0.88) url('assets/stone-texture.png') repeat;
     background-size: 600px;
-    background-blend-mode: overlay;
+    background-blend-mode: multiply;
 }
 
 .section.services {
-    background: rgba(220, 220, 220, 0.9) url('assets/stone-texture.png') repeat;
+    background: rgba(180, 180, 180, 0.9) url('assets/stone-texture.png') repeat;
     background-size: 600px;
-    background-blend-mode: overlay;
+    background-blend-mode: multiply;
 }
 
 .section.portfolio {
-    background: rgba(242, 242, 242, 0.85) url('assets/stone-texture.png') repeat;
+    background: rgba(200, 200, 200, 0.88) url('assets/stone-texture.png') repeat;
     background-size: 600px;
-    background-blend-mode: overlay;
+    background-blend-mode: multiply;
 }
 
 .section.enquiry-section {
-    background: linear-gradient(135deg, rgba(210, 210, 210, 0.92) 0%, rgba(190, 190, 190, 0.92) 100%), url('assets/stone-texture.png') repeat;
+    background: linear-gradient(135deg, rgba(175, 175, 175, 0.92) 0%, rgba(155, 155, 155, 0.92) 100%), url('assets/stone-texture.png') repeat;
     background-size: auto, 600px;
-    background-blend-mode: normal, overlay;
+    background-blend-mode: normal, multiply;
 }
 
 .section.contact {
-    background: rgba(26, 29, 33, 0.94) url('assets/stone-texture.png') repeat;
+    background: rgba(22, 25, 28, 0.94) url('assets/stone-texture.png') repeat;
     background-size: 600px;
-    background-blend-mode: overlay;
+    background-blend-mode: multiply;
     color: var(--c-text-light);
 }
 
@@ -903,9 +904,9 @@ h4 {
 
 /* ---------- TESTIMONIALS ---------- */
 .section.testimonials {
-    background: rgba(220, 220, 220, 0.9) url('assets/stone-texture.png') repeat;
+    background: rgba(180, 180, 180, 0.9) url('assets/stone-texture.png') repeat;
     background-size: 600px;
-    background-blend-mode: overlay;
+    background-blend-mode: multiply;
 }
 
 /* Slider Container */
@@ -1147,7 +1148,7 @@ h4 {
 .form-group select:focus,
 .form-group textarea:focus {
     border-color: var(--c-primary-light);
-    box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
+    box-shadow: 0 0 0 3px rgba(47, 79, 79, 0.15);
     background: var(--c-bg);
 }
 
@@ -1300,9 +1301,9 @@ h4 {
 
 /* ---------- FOOTER ---------- */
 .footer {
-    background: rgba(26, 29, 33, 0.95) url('assets/stone-texture.png') repeat;
+    background: rgba(22, 25, 28, 0.95) url('assets/stone-texture.png') repeat;
     background-size: 600px;
-    background-blend-mode: overlay;
+    background-blend-mode: multiply;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
     padding: 80px 0 32px;
     color: var(--c-text-light);
