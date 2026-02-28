@@ -560,4 +560,76 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     }
 
+    // ---------- Gallery Filtering ----------
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            filterBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            galleryItems.forEach(item => {
+                if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 10);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+
+    // Handle initial category from URL (if any)
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialCat = urlParams.get('cat');
+    if (initialCat) {
+        const targetBtn = document.querySelector(`.filter-btn[data-filter="${initialCat}"]`);
+        if (targetBtn) targetBtn.click();
+    }
+
+    // ---------- Mobile Dropdown Toggle ----------
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdown = document.querySelector('.dropdown');
+
+    if (dropdownToggle) {
+        dropdownToggle.addEventListener('click', (e) => {
+            if (window.innerWidth < 992) {
+                e.preventDefault();
+                dropdown.classList.toggle('active');
+            }
+        });
+    }
+
+    // ---------- Intersection Observer for Gallery Items ----------
+    const galleryObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, (index % 3) * 100);
+                galleryObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    galleryItems.forEach(item => {
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(30px)';
+        item.style.transition = 'all 0.6s var(--ease-out)';
+        galleryObserver.observe(item);
+    });
+
 });

@@ -10,14 +10,14 @@
     --c-primary-lighter: #5a8a8a;
     --c-accent: #3A5A40;
     --c-accent-glow: rgba(58, 90, 64, 0.35);
-    --c-bg: #b0b0b0;
-    --c-bg-alt: #b0b0b0;
+    --c-bg: #c0c0c0;
+    --c-bg-alt: #c0c0c0;
     --c-bg-dark: #1a1d21;
     --c-text: #1a1d21;
     --c-text-secondary: #3a3e45;
     --c-text-light: #f0f2f5;
     --c-border: rgba(0, 0, 0, 0.1);
-    --c-glass: rgba(176, 176, 176, 0.78);
+    --c-glass: rgba(192, 192, 192, 0.78);
     --c-glass-border: rgba(255, 255, 255, 0.22);
 
     --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -56,7 +56,7 @@ html {
 body {
     font-family: var(--font-body);
     color: var(--c-text);
-    background: rgba(176, 176, 176, 0.88) url('assets/stone-texture.png') repeat;
+    background: rgba(192, 192, 192, 0.88) url('assets/stone-texture.png') repeat fixed;
     background-size: 600px;
     background-blend-mode: multiply;
     line-height: 1.6;
@@ -528,31 +528,31 @@ h4 {
 }
 
 .section.about {
-    background: rgba(176, 176, 176, 0.88) url('assets/stone-texture.png') repeat;
+    background: rgba(192, 192, 192, 0.88) url('assets/stone-texture.png') repeat fixed;
     background-size: 600px;
     background-blend-mode: multiply;
 }
 
 .section.services {
-    background: rgba(176, 176, 176, 0.88) url('assets/stone-texture.png') repeat;
+    background: rgba(192, 192, 192, 0.88) url('assets/stone-texture.png') repeat fixed;
     background-size: 600px;
     background-blend-mode: multiply;
 }
 
 .section.portfolio {
-    background: rgba(176, 176, 176, 0.88) url('assets/stone-texture.png') repeat;
+    background: rgba(192, 192, 192, 0.88) url('assets/stone-texture.png') repeat fixed;
     background-size: 600px;
     background-blend-mode: multiply;
 }
 
 .section.enquiry-section {
-    background: rgba(176, 176, 176, 0.88) url('assets/stone-texture.png') repeat;
+    background: rgba(192, 192, 192, 0.88) url('assets/stone-texture.png') repeat fixed;
     background-size: 600px;
     background-blend-mode: multiply;
 }
 
 .section.contact {
-    background: rgba(22, 25, 28, 0.94) url('assets/stone-texture.png') repeat;
+    background: rgba(22, 25, 28, 0.94) url('assets/stone-texture.png') repeat fixed;
     background-size: 600px;
     background-blend-mode: multiply;
     color: var(--c-text-light);
@@ -904,7 +904,7 @@ h4 {
 
 /* ---------- TESTIMONIALS ---------- */
 .section.testimonials {
-    background: rgba(176, 176, 176, 0.88) url('assets/stone-texture.png') repeat;
+    background: rgba(192, 192, 192, 0.88) url('assets/stone-texture.png') repeat fixed;
     background-size: 600px;
     background-blend-mode: multiply;
 }
@@ -1368,6 +1368,193 @@ h4 {
     letter-spacing: 0.1em;
     margin-bottom: 20px;
     color: rgba(255, 255, 255, 0.8);
+}
+
+/* ---------- DROPDOWN STYLES ---------- */
+.nav-links .dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: var(--c-glass);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--c-glass-border);
+    border-radius: 12px;
+    padding: 12px 0;
+    min-width: 220px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s var(--ease-out);
+    box-shadow: var(--shadow-md);
+    z-index: 1000;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-menu li {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 24px;
+    color: var(--c-text);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.dropdown-menu li a:hover {
+    background: rgba(58, 90, 64, 0.1);
+    color: var(--c-accent);
+    padding-left: 28px;
+}
+
+/* ---------- GALLERY SECTION ---------- */
+.section.gallery {
+    background: rgba(192, 192, 192, 0.88) url('assets/stone-texture.png') repeat fixed;
+    background-size: 600px;
+    background-blend-mode: multiply;
+}
+
+.gallery-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 48px;
+}
+
+.filter-btn {
+    padding: 10px 24px;
+    border-radius: 50px;
+    border: 1px solid var(--c-border);
+    background: rgba(255, 255, 255, 0.5);
+    color: var(--c-text-secondary);
+    font-family: var(--font-heading);
+    font-size: 0.88rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s var(--ease-out);
+}
+
+.filter-btn:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: var(--c-accent);
+    color: white;
+    border-color: var(--c-accent);
+    box-shadow: 0 4px 15px var(--c-accent-glow);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+    background: var(--c-bg-dark);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-out);
+}
+
+.gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15, 21, 24, 0.9) 0%, transparent 60%);
+    display: flex;
+    align-items: flex-end;
+    padding: 24px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-overlay span {
+    color: white;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    transform: translateY(10px);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-item:hover .gallery-overlay span {
+    transform: translateY(0);
+}
+
+.gallery-cta {
+    text-align: center;
+    margin-top: 64px;
+}
+
+.gallery-cta p {
+    font-size: 1.1rem;
+    color: var(--c-text-secondary);
+    margin-bottom: 24px;
+}
+
+/* Mobile Dropdown Fix */
+@media (max-width: 991px) {
+    .dropdown-menu {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        background: rgba(0, 0, 0, 0.05);
+        border: none;
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        opacity: 1;
+        visibility: visible;
+        width: 100%;
+        min-width: 100%;
+        transition: max-height 0.4s ease;
+    }
+
+    .dropdown.active .dropdown-menu {
+        max-height: 500px;
+        padding: 8px 0;
+        margin-top: 8px;
+    }
+
+    .dropdown-menu li a {
+        padding: 10px 32px;
+        color: rgba(255, 255, 255, 0.7);
+    }
 }
 
 .footer-links ul {

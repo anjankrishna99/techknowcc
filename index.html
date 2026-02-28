@@ -43,7 +43,17 @@
                 <li><a href="#about" class="nav-link">Why Choose Us</a></li>
                 <li><a href="#services-section" class="nav-link">Services</a></li>
                 <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li class="dropdown">
+                    <a href="#gallery" class="nav-link dropdown-toggle">Gallery</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#gallery?cat=residential">Residential Projects</a></li>
+                        <li><a href="#gallery?cat=industrial">Industrial Projects</a></li>
+                        <li><a href="#gallery?cat=commercial">Commercial Projects</a></li>
+                        <li><a href="#gallery?cat=convention">Convention Centers</a></li>
+                        <li><a href="#gallery?cat=farmhouse">Farmhouse Projects</a></li>
+                        <li><a href="#gallery?cat=religious">Religious Projects</a></li>
+                    </ul>
+                </li>
                 <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
                 <li><a href="#contact" class="nav-link">Contact Us</a></li>
                 <li><button class="btn btn-enquiry-nav" id="btn-enquiry-header">Enquiry</button></li>
@@ -58,7 +68,7 @@
             <div class="hero-particles" id="hero-particles"></div>
         </div>
         <div class="hero-content">
-            <p class="hero-tag reveal">Re-defining Your Dreams to Reality Since 1990</p>
+            <p class="hero-tag reveal" style="color: #ffffff;">Re-defining Your Dreams to Reality Since 1990</p>
             <h1 class="hero-title reveal">
                 Making Dreams <span class="text-gradient">Come True</span>
             </h1>
@@ -583,6 +593,81 @@
                         </div>
                     </div>
                 </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== GALLERY SECTION ========== -->
+    <section id="gallery" class="section gallery">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-tag">Visual Showcase</p>
+                <h2 class="section-title">Project <span class="text-gradient">Gallery</span></h2>
+            </div>
+
+            <!-- Gallery Filter -->
+            <div class="gallery-filters reveal-scale">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="residential">Residential Projects</button>
+                <button class="filter-btn" data-filter="industrial">Industrial Projects</button>
+                <button class="filter-btn" data-filter="commercial">Commercial Projects</button>
+                <button class="filter-btn" data-filter="convention">Convention Centers</button>
+                <button class="filter-btn" data-filter="farmhouse">Farmhouse Projects</button>
+                <button class="filter-btn" data-filter="religious">Religious Projects</button>
+            </div>
+
+            <div class="gallery-grid reveal">
+                <!-- Residential -->
+                <div class="gallery-item" data-category="residential">
+                    <img src="assets/residential-building-dilshuknagar.jpg" alt="Residential Project" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span>Residential Projects</span>
+                    </div>
+                </div>
+                <!-- Industrial -->
+                <div class="gallery-item" data-category="industrial">
+                    <img src="assets/deccan-grainz.jpg" alt="Industrial Project" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span>Industrial Projects</span>
+                    </div>
+                </div>
+                <!-- Convention -->
+                <div class="gallery-item" data-category="convention">
+                    <img src="assets/vrc-convention.png" alt="Convention Center" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span>Convention Centers</span>
+                    </div>
+                </div>
+                <!-- Commercial -->
+                <div class="gallery-item" data-category="commercial">
+                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=600&fit=crop&q=80"
+                        alt="Commercial Project" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span>Commercial Projects</span>
+                    </div>
+                </div>
+                <!-- Farmhouse -->
+                <div class="gallery-item" data-category="farmhouse">
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fee74a62?w=600&h=600&fit=crop&q=80"
+                        alt="Farmhouse Project" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span>Farmhouse Projects</span>
+                    </div>
+                </div>
+                <!-- Religious -->
+                <div class="gallery-item" data-category="religious">
+                    <img src="https://images.unsplash.com/photo-1548013146-72479768bbaa?w=600&h=600&fit=crop&q=80"
+                        alt="Religious Project" loading="lazy">
+                    <div class="gallery-overlay">
+                        <span>Religious Projects</span>
+                    </div>
+                </div>
+                <!-- Add more items as needed -->
+            </div>
+
+            <div class="gallery-cta reveal">
+                <p>Explore our complete portfolio across all categories.</p>
+                <a href="#contact" class="btn btn-primary" data-magnetic>Start Your Project</a>
             </div>
         </div>
     </section>
