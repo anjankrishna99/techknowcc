@@ -588,7 +588,7 @@ h4 {
 
 .about-values {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     margin-top: 48px;
 }
@@ -1906,7 +1906,7 @@ body.scrolled-past .scroll-indicator {
     }
 
     .about-values {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .services-grid {
