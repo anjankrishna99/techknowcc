@@ -56,7 +56,8 @@ html {
 body {
     font-family: var(--font-body);
     color: var(--c-text);
-    background: var(--c-bg);
+    background: var(--c-bg) url('assets/stone-texture.png') repeat;
+    background-size: 600px;
     line-height: 1.6;
     overflow-x: hidden;
 }
@@ -526,23 +527,33 @@ h4 {
 }
 
 .section.about {
-    background: var(--c-bg);
+    background: rgba(242, 242, 242, 0.85) url('assets/stone-texture.png') repeat;
+    background-size: 600px;
+    background-blend-mode: overlay;
 }
 
 .section.services {
-    background: var(--c-bg-alt);
+    background: rgba(220, 220, 220, 0.9) url('assets/stone-texture.png') repeat;
+    background-size: 600px;
+    background-blend-mode: overlay;
 }
 
 .section.portfolio {
-    background: var(--c-bg);
+    background: rgba(242, 242, 242, 0.85) url('assets/stone-texture.png') repeat;
+    background-size: 600px;
+    background-blend-mode: overlay;
 }
 
 .section.enquiry-section {
-    background: linear-gradient(135deg, var(--c-bg-alt) 0%, #d4d4d4 100%);
+    background: linear-gradient(135deg, rgba(210, 210, 210, 0.92) 0%, rgba(190, 190, 190, 0.92) 100%), url('assets/stone-texture.png') repeat;
+    background-size: auto, 600px;
+    background-blend-mode: normal, overlay;
 }
 
 .section.contact {
-    background: var(--c-bg-dark);
+    background: rgba(26, 29, 33, 0.94) url('assets/stone-texture.png') repeat;
+    background-size: 600px;
+    background-blend-mode: overlay;
     color: var(--c-text-light);
 }
 
@@ -892,7 +903,9 @@ h4 {
 
 /* ---------- TESTIMONIALS ---------- */
 .section.testimonials {
-    background: var(--c-bg-alt);
+    background: rgba(220, 220, 220, 0.9) url('assets/stone-texture.png') repeat;
+    background-size: 600px;
+    background-blend-mode: overlay;
 }
 
 /* Slider Container */
@@ -1287,7 +1300,9 @@ h4 {
 
 /* ---------- FOOTER ---------- */
 .footer {
-    background: var(--c-bg-dark);
+    background: rgba(26, 29, 33, 0.95) url('assets/stone-texture.png') repeat;
+    background-size: 600px;
+    background-blend-mode: overlay;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
     padding: 80px 0 32px;
     color: var(--c-text-light);
