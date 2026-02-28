@@ -227,22 +227,43 @@ h4 {
 .logo {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     z-index: 1001;
+    text-decoration: none;
 }
 
 .logo-img {
     height: 48px;
     width: 48px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 50%;
-    border: 2px solid rgba(255, 255, 255, 0.1);
+    background: #fff;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 4px;
     transition: all 0.4s var(--ease-out);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 #main-header.scrolled .logo-img {
     height: 40px;
     width: 40px;
+}
+
+.logo-text {
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--c-text-light);
+    letter-spacing: 0.06em;
+    transition: all 0.4s var(--ease-out);
+}
+
+.logo-text-accent {
+    color: var(--c-accent);
+}
+
+#main-header.scrolled .logo-text {
+    font-size: 1.15rem;
 }
 
 .logo-img-footer {
