@@ -249,21 +249,35 @@ h4 {
     width: 40px;
 }
 
-.logo-text {
+.logo-text-wrap {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    transition: all 0.4s var(--ease-out);
+}
+
+.logo-text-main {
     font-family: var(--font-heading);
     font-size: 1.3rem;
     font-weight: 700;
     color: var(--c-text-light);
-    letter-spacing: 0.06em;
-    transition: all 0.4s var(--ease-out);
+    letter-spacing: 0.08em;
 }
 
-.logo-text-accent {
-    color: var(--c-accent);
+.logo-text-sub {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.04em;
 }
 
-#main-header.scrolled .logo-text {
-    font-size: 1.15rem;
+#main-header.scrolled .logo-text-main {
+    font-size: 1.1rem;
+}
+
+#main-header.scrolled .logo-text-sub {
+    font-size: 0.6rem;
 }
 
 .logo-img-footer {
