@@ -708,15 +708,21 @@ h4 {
 .about-img-placeholder {
     width: 100%;
     aspect-ratio: 4/3;
-    background: linear-gradient(135deg, #dce8ec 0%, #b8cdd4 100%);
+    background: #f8fafd;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.about-img-placeholder svg {
-    width: 80%;
-    height: auto;
+.about-img-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s var(--ease-out);
+}
+
+.about-img-container:hover .about-img-placeholder img {
+    transform: scale(1.05);
 }
 
 .about-badge {
