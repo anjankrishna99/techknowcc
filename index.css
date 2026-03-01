@@ -5,11 +5,11 @@
 
 /* ---------- CSS Custom Properties ---------- */
 :root {
-    --c-primary: #2F4F4F;
-    --c-primary-light: #3d6868;
-    --c-primary-lighter: #5a8a8a;
-    --c-accent: #3A5A40;
-    --c-accent-glow: rgba(58, 90, 64, 0.35);
+    --c-primary: #8C7B62;
+    --c-primary-light: #A08F74;
+    --c-primary-lighter: #B2A28A;
+    --c-accent: #8C7B62;
+    --c-accent-glow: rgba(140, 123, 98, 0.35);
     --c-bg: #c0c0c0;
     --c-bg-alt: #c0c0c0;
     --c-bg-dark: #1a1d21;
@@ -91,7 +91,7 @@ h4 {
 }
 
 .text-gradient {
-    background: linear-gradient(135deg, var(--c-accent), #78c6dc);
+    background: linear-gradient(135deg, var(--c-accent), #5C4F3F);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -144,13 +144,13 @@ h4 {
 .btn-primary {
     background: var(--c-primary);
     color: var(--c-text-light);
-    box-shadow: 0 4px 20px rgba(47, 79, 79, 0.3);
+    box-shadow: 0 4px 20px rgba(140, 123, 98, 0.3);
 }
 
 .btn-primary:hover {
     background: var(--c-primary-light);
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(47, 79, 79, 0.4);
+    box-shadow: 0 8px 30px rgba(140, 123, 98, 0.4);
 }
 
 .btn-outline {
@@ -377,10 +377,10 @@ h4 {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(47, 79, 79, 0.9) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(58, 90, 64, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(140, 123, 98, 0.9) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(140, 123, 98, 0.15) 0%, transparent 60%),
         radial-gradient(ellipse 50% 40% at 20% 70%, rgba(26, 36, 40, 0.6) 0%, transparent 50%),
-        linear-gradient(180deg, #0f1518 0%, #1a2a2e 40%, #2F4F4F 100%);
+        linear-gradient(180deg, #0f1518 0%, #1a2a2e 40%, #5C4F3F 100%);
     animation: gradient-shift 12s ease-in-out infinite alternate;
 }
 
@@ -1472,7 +1472,7 @@ h4 {
 }
 
 .dropdown-menu li a:hover {
-    background: rgba(58, 90, 64, 0.1);
+    background: rgba(140, 123, 98, 0.1);
     color: var(--c-accent);
     padding-left: 28px;
 }
@@ -1935,7 +1935,7 @@ h4 {
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(58, 90, 64, 0.06) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(140, 123, 98, 0.06) 0%, transparent 70%);
     pointer-events: none;
     z-index: 9998;
     transform: translate(-50%, -50%);
@@ -1978,7 +1978,7 @@ h4 {
     inset: 0;
     border-radius: inherit;
     background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-            rgba(45, 106, 79, 0.06), transparent 40%);
+            rgba(140, 123, 98, 0.06), transparent 40%);
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.4s;
