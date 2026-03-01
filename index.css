@@ -274,6 +274,7 @@ h4 {
     font-weight: 700;
     color: #ffffff;
     letter-spacing: 0.08em;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 .logo-text-sub {
@@ -316,6 +317,7 @@ h4 {
     border-radius: 50px;
     transition: all 0.3s var(--ease-out);
     white-space: nowrap;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .nav-link:hover,
