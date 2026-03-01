@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
 
                     // 4. Robust scroll calculation - wait for layout to shift
-                    const waitTime = otherSectionWasOpen ? 350 : 150;
+                    const waitTime = otherSectionWasOpen ? 600 : 250;
 
                     setTimeout(() => {
                         const headerElement = document.querySelector('header');
@@ -287,6 +287,17 @@ document.addEventListener('DOMContentLoaded', () => {
                             top: targetPos,
                             behavior: 'smooth'
                         });
+
+                        // Secondary verification scroll after a short moment to handle late layout shifts
+                        setTimeout(() => {
+                            const correctedPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                            if (Math.abs(window.pageYOffset - correctedPos) > 10) {
+                                window.scrollTo({
+                                    top: correctedPos,
+                                    behavior: 'smooth'
+                                });
+                            }
+                        }, 600);
                     }, waitTime);
 
                 } else {

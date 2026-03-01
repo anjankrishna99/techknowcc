@@ -2006,11 +2006,11 @@ h4 {
 }
 
 .hero .hero-tag.reveal {
-    transition-delay: 0.1s;
+    transition-delay: 0.15s;
 }
 
 .hero .hero-title.reveal {
-    transition-delay: 0.35s;
+    transition-delay: 0.15s;
 }
 
 .hero .hero-desc.reveal {
