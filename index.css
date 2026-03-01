@@ -1,7 +1,7 @@
 /* ============================================
    TECHKNOW CONSTRUCTIONS — DESIGN SYSTEM
    Silver & Stone — Monochromatic Precision
-   Updated: 2026-03-01 19:28
+   Updated: 2026-03-01 19:42
    ============================================ */
 
 /* ---------- CSS Custom Properties ---------- */
@@ -382,7 +382,7 @@ h4 {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: url('assets/hero_bg_light.png') no-repeat center center;
+    background: url('assets/hero_bg_light_final.png') no-repeat center center;
     background-size: cover;
 }
 
