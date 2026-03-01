@@ -143,8 +143,9 @@ h4 {
 
 .btn-primary {
     background: var(--c-primary);
-    color: var(--c-text-light);
-    box-shadow: 0 4px 20px rgba(140, 123, 98, 0.3);
+    color: #121417;
+    box-shadow: 0 4px 20px rgba(140, 123, 98, 0.4);
+    font-weight: 700;
 }
 
 .btn-primary:hover {
@@ -155,8 +156,8 @@ h4 {
 
 .btn-outline {
     background: transparent;
-    color: var(--c-text-light);
-    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    border: 1.5px solid rgba(255, 255, 255, 0.3);
 }
 
 .btn-outline:hover {
@@ -166,14 +167,21 @@ h4 {
 }
 
 .btn-enquiry-nav {
-    background: linear-gradient(135deg, var(--c-accent), #5C4F3F);
-    color: var(--c-bg-dark);
+    border: 1.2px solid rgba(255, 255, 255, 0.25);
+    background: transparent;
+    color: #ffffff;
     padding: 10px 24px;
     border-radius: 50px;
     font-weight: 600;
     font-size: 0.85rem;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    transition: all 0.3s;
+}
+
+.btn-enquiry-nav:hover {
+    border-color: var(--c-accent);
     box-shadow: 0 0 20px var(--c-accent-glow);
-    animation: glow-pulse 2s ease-in-out infinite;
+    transform: translateY(-2px);
 }
 
 .btn-enquiry-nav:hover {
@@ -373,17 +381,23 @@ h4 {
     position: absolute;
     inset: 0;
     z-index: 0;
+    background: url('assets/hero_bg.png') no-repeat center center;
+    background-size: cover;
+}
+
+.hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%);
+    z-index: 1;
 }
 
 .hero-gradient {
     position: absolute;
     inset: 0;
-    background:
-        radial-gradient(ellipse 80% 60% at 50% 40%, rgba(140, 123, 98, 0.9) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(140, 123, 98, 0.15) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 20% 70%, rgba(26, 36, 40, 0.6) 0%, transparent 50%),
-        linear-gradient(180deg, #0f1518 0%, #1a2a2e 40%, #5C4F3F 100%);
-    animation: gradient-shift 12s ease-in-out infinite alternate;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.8) 100%);
+    z-index: 2;
 }
 
 .hero-particles {
@@ -400,20 +414,26 @@ h4 {
 }
 
 .hero-tag {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: white;
-    margin-bottom: 20px;
+    letter-spacing: 0.3em;
+    color: #ffffff;
+    margin-bottom: 24px;
+    opacity: 0.9;
 }
 
 .hero-title {
-    font-size: clamp(2.5rem, 7vw, 5rem);
-    font-weight: 700;
-    color: var(--c-text-light);
+    font-size: clamp(3rem, 9vw, 6rem);
+    font-weight: 800;
+    color: #ffffff;
     margin-bottom: 24px;
-    line-height: 1.08;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.hero-title .bronze {
+    color: var(--c-accent);
 }
 
 .hero-desc {
@@ -432,11 +452,57 @@ h4 {
     margin-bottom: 60px;
 }
 
-.hero-stats {
+.hero-stats-new {
+    display: inline-flex;
+    align-items: center;
+    gap: 0;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 0;
+    margin: 40px auto 0;
+    position: relative;
+}
+
+.hero-stats-new::before {
+    content: '';
+    position: absolute;
+    inset: -20px;
+    background: radial-gradient(circle at center, rgba(140, 123, 98, 0.25) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.stat-group {
+    padding: 30px 60px;
+    text-align: center;
     display: flex;
-    justify-content: center;
-    gap: 48px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    min-width: 250px;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.hero-stats-new .stat-number {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+
+.hero-stats-new .stat-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .stat {
@@ -2019,7 +2085,7 @@ h4 {
     transition-delay: 0.85s;
 }
 
-.hero .hero-stats.reveal {
+.hero .hero-stats-new.reveal {
     transition-delay: 1.1s;
 }
 

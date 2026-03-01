@@ -164,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }, { threshold: 0.5 });
 
-    const statsContainer = document.querySelector('.hero-stats');
+    const statsContainer = document.querySelector('.hero-stats-new');
     if (statsContainer) {
         counterObserver.observe(statsContainer);
     }
