@@ -251,19 +251,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 const isDynamic = target.classList.contains('hidden-section');
 
                 if (isDynamic) {
-                    // 1. Determine if other sections were open to adjust timing
-                    let otherSectionWasOpen = false;
+                    // 1. Instantly close other sections without transition to stabilize DOM
                     document.querySelectorAll('.hidden-section').forEach(sec => {
-                        if (sec !== target && sec.classList.contains('section-visible')) {
+                        if (sec !== target) {
                             sec.classList.remove('section-visible');
-                            otherSectionWasOpen = true;
                         }
                     });
 
-                    // 2. Reveal target section
+                    // 2. FLASH CALCULATION: Measure the "future" position
+                    target.classList.add('preparing');
+                    const headerElement = document.querySelector('header');
+                    const headerHeight = headerElement ? headerElement.offsetHeight : 80;
+
+                    // The future position is where it will be when fully expanded
+                    // Since others are closed, it's just below Hero
+                    const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    target.classList.remove('preparing');
+
+                    // 3. Reveal target (starts CSS animation)
                     target.classList.add('section-visible');
 
-                    // 3. Handle specific gallery filtering
+                    // 4. Handle specific gallery filtering
                     if (queryString) {
                         const params = new URLSearchParams(queryString);
                         const cat = params.get('cat');
@@ -275,33 +283,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }
 
-                    // 4. Robust scroll calculation - wait for layout to shift
-                    const waitTime = otherSectionWasOpen ? 600 : 250;
-
+                    // 5. Single, perfect smooth scroll
+                    // Short delay to let the browser register the display change
                     setTimeout(() => {
-                        const headerElement = document.querySelector('header');
-                        const headerHeight = headerElement ? headerElement.offsetHeight : 80;
-                        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-
                         window.scrollTo({
                             top: targetPos,
                             behavior: 'smooth'
                         });
-
-                        // Secondary verification scroll after a short moment to handle late layout shifts
-                        setTimeout(() => {
-                            const correctedPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                            if (Math.abs(window.pageYOffset - correctedPos) > 10) {
-                                window.scrollTo({
-                                    top: correctedPos,
-                                    behavior: 'smooth'
-                                });
-                            }
-                        }, 600);
-                    }, waitTime);
+                    }, 50);
 
                 } else {
-                    // Standard section scroll
+                    // Standard static section scroll
                     const headerElement = document.querySelector('header');
                     const headerHeight = headerElement ? headerElement.offsetHeight : 80;
                     const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
@@ -312,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                 }
 
-                // Update navigation active state immediately
+                // Update navigation active state
                 navItems.forEach(link => link.classList.remove('active'));
                 anchor.classList.add('active');
             }
