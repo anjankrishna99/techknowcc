@@ -166,7 +166,7 @@ h4 {
 }
 
 .btn-enquiry-nav {
-    background: linear-gradient(135deg, var(--c-accent), #78c6dc);
+    background: linear-gradient(135deg, var(--c-accent), #5C4F3F);
     color: var(--c-bg-dark);
     padding: 10px 24px;
     border-radius: 50px;
@@ -189,7 +189,7 @@ h4 {
     }
 
     50% {
-        box-shadow: 0 0 35px var(--c-accent-glow), 0 0 60px rgba(58, 90, 64, 0.15);
+        box-shadow: 0 0 35px var(--c-accent-glow), 0 0 60px rgba(140, 123, 98, 0.15);
     }
 }
 
@@ -1203,7 +1203,7 @@ h4 {
 .form-group select:focus,
 .form-group textarea:focus {
     border-color: var(--c-primary-light);
-    box-shadow: 0 0 0 3px rgba(47, 79, 79, 0.15);
+    box-shadow: 0 0 0 3px rgba(140, 123, 98, 0.15);
     background: var(--c-bg);
 }
 
@@ -1283,7 +1283,7 @@ h4 {
 }
 
 .contact-card a:hover {
-    color: #78c6dc;
+    color: var(--c-primary-light);
 }
 
 .contact-note {
