@@ -223,6 +223,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
             const href = anchor.getAttribute('href');
+
+            // Handle Home link
             if (href === '#' || href === '#home') {
                 if (href === '#home') {
                     e.preventDefault();
@@ -231,56 +233,77 @@ document.addEventListener('DOMContentLoaded', () => {
                         sec.classList.remove('section-visible');
                     });
                     window.scrollTo({ top: 0, behavior: 'smooth' });
+                    // Reset active state
+                    navItems.forEach(link => link.classList.remove('active'));
+                    anchor.classList.add('active');
                 }
                 return;
             }
 
             e.preventDefault();
 
-            // Handle gallery category links like #gallery?cat=residential
+            // Handle section and gallery category links
             const [sectionId, queryString] = href.split('?');
             const target = document.querySelector(sectionId);
 
             if (target) {
-                // If it's a dynamic section, handle exclusive visibility
-                if (target.classList.contains('hidden-section')) {
+                // Determine if we're opening a "hidden" section
+                const isDynamic = target.classList.contains('hidden-section');
 
-                    // Optional: Hide other dynamic sections to feel like "different pages"
+                if (isDynamic) {
+                    // 1. Determine if other sections were open to adjust timing
+                    let otherSectionWasOpen = false;
                     document.querySelectorAll('.hidden-section').forEach(sec => {
-                        if (sec !== target) {
+                        if (sec !== target && sec.classList.contains('section-visible')) {
                             sec.classList.remove('section-visible');
+                            otherSectionWasOpen = true;
                         }
                     });
 
+                    // 2. Reveal target section
                     target.classList.add('section-visible');
 
-                    // If a gallery category filter was specified, activate it
+                    // 3. Handle specific gallery filtering
                     if (queryString) {
                         const params = new URLSearchParams(queryString);
                         const cat = params.get('cat');
                         if (cat) {
                             const filterBtn = document.querySelector(`.filter-btn[data-filter="${cat}"]`);
                             if (filterBtn) {
-                                setTimeout(() => filterBtn.click(), 400);
+                                setTimeout(() => filterBtn.click(), 500);
                             }
                         }
                     }
 
-                    // Wait for layout to settle, then scroll
+                    // 4. Robust scroll calculation - wait for layout to shift
+                    const waitTime = otherSectionWasOpen ? 350 : 150;
+
                     setTimeout(() => {
-                        const offsetTop = target.offsetTop - 80;
+                        const headerElement = document.querySelector('header');
+                        const headerHeight = headerElement ? headerElement.offsetHeight : 80;
+                        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
                         window.scrollTo({
-                            top: offsetTop,
+                            top: targetPos,
                             behavior: 'smooth'
                         });
-                    }, 50);
+                    }, waitTime);
+
                 } else {
-                    const offsetTop = target.offsetTop - 80;
+                    // Standard section scroll
+                    const headerElement = document.querySelector('header');
+                    const headerHeight = headerElement ? headerElement.offsetHeight : 80;
+                    const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
                     window.scrollTo({
-                        top: offsetTop,
+                        top: targetPos,
                         behavior: 'smooth'
                     });
                 }
+
+                // Update navigation active state immediately
+                navItems.forEach(link => link.classList.remove('active'));
+                anchor.classList.add('active');
             }
         });
     });
