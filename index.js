@@ -223,16 +223,35 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
             const href = anchor.getAttribute('href');
-            if (href === '#') return;
+            if (href === '#' || href === '#home') {
+                if (href === '#home') {
+                    e.preventDefault();
+                    // Hide all dynamic sections when going home
+                    document.querySelectorAll('.hidden-section').forEach(sec => {
+                        sec.classList.remove('section-visible');
+                    });
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+                return;
+            }
 
             e.preventDefault();
 
             // Handle gallery category links like #gallery?cat=residential
             const [sectionId, queryString] = href.split('?');
             const target = document.querySelector(sectionId);
+
             if (target) {
-                // If it's a hidden section, reveal it first
+                // If it's a dynamic section, handle exclusive visibility
                 if (target.classList.contains('hidden-section')) {
+
+                    // Optional: Hide other dynamic sections to feel like "different pages"
+                    document.querySelectorAll('.hidden-section').forEach(sec => {
+                        if (sec !== target) {
+                            sec.classList.remove('section-visible');
+                        }
+                    });
+
                     target.classList.add('section-visible');
 
                     // If a gallery category filter was specified, activate it
@@ -247,14 +266,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }
 
-                    // Wait for transition to start, then scroll
+                    // Wait for layout to settle, then scroll
                     setTimeout(() => {
                         const offsetTop = target.offsetTop - 80;
                         window.scrollTo({
                             top: offsetTop,
                             behavior: 'smooth'
                         });
-                    }, 100);
+                    }, 50);
                 } else {
                     const offsetTop = target.offsetTop - 80;
                     window.scrollTo({
