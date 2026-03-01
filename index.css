@@ -375,7 +375,7 @@ h4 {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding: 120px 24px 80px;
+    padding: 100px 24px 60px;
 }
 
 .hero-bg {
@@ -441,7 +441,7 @@ h4 {
     font-size: clamp(1rem, 2vw, 1.2rem);
     color: #121417;
     max-width: 650px;
-    margin: 0 auto 40px;
+    margin: 0 auto 30px;
     line-height: 1.8;
     font-weight: 500;
 }
@@ -451,7 +451,7 @@ h4 {
     gap: 16px;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 .hero-stats-new {
@@ -464,7 +464,7 @@ h4 {
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     padding: 0;
-    margin: 40px auto 0;
+    margin: 20px auto 0;
     position: relative;
 }
 
@@ -491,13 +491,28 @@ h4 {
     background: rgba(0, 0, 0, 0.1);
 }
 
+.stat-num-wrap {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 2px;
+    margin-bottom: 8px;
+}
+
 .hero-stats-new .stat-number {
     font-family: var(--font-heading);
     font-size: 3.5rem;
     font-weight: 700;
     color: var(--c-text);
     line-height: 1;
-    margin-bottom: 8px;
+}
+
+.stat-suffix {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--c-text);
+    line-height: 1;
 }
 
 .hero-stats-new .stat-label {
