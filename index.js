@@ -226,13 +226,42 @@ document.addEventListener('DOMContentLoaded', () => {
             if (href === '#') return;
 
             e.preventDefault();
-            const target = document.querySelector(href);
+
+            // Handle gallery category links like #gallery?cat=residential
+            const [sectionId, queryString] = href.split('?');
+            const target = document.querySelector(sectionId);
             if (target) {
-                const offsetTop = target.offsetTop - 80;
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
+                // If it's a hidden section, reveal it first
+                if (target.classList.contains('hidden-section')) {
+                    target.classList.add('section-visible');
+
+                    // If a gallery category filter was specified, activate it
+                    if (queryString) {
+                        const params = new URLSearchParams(queryString);
+                        const cat = params.get('cat');
+                        if (cat) {
+                            const filterBtn = document.querySelector(`.filter-btn[data-filter="${cat}"]`);
+                            if (filterBtn) {
+                                setTimeout(() => filterBtn.click(), 400);
+                            }
+                        }
+                    }
+
+                    // Wait for transition to start, then scroll
+                    setTimeout(() => {
+                        const offsetTop = target.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }, 100);
+                } else {
+                    const offsetTop = target.offsetTop - 80;
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
             }
         });
     });
