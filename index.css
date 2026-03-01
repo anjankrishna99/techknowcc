@@ -161,20 +161,20 @@ h4 {
 }
 
 .btn-outline:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.7);
+    background: rgba(0, 0, 0, 0.05);
+    border-color: #1a1d21;
     transform: translateY(-2px);
 }
 
 .btn-enquiry-nav {
-    border: 1.2px solid rgba(255, 255, 255, 0.25);
+    border: 1.2px solid rgba(0, 0, 0, 0.2);
     background: transparent;
-    color: #ffffff;
+    color: var(--c-text);
     padding: 10px 24px;
     border-radius: 50px;
     font-weight: 600;
     font-size: 0.85rem;
-    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
     transition: all 0.3s;
 }
 
@@ -249,10 +249,10 @@ h4 {
     object-fit: contain;
     border-radius: 50%;
     background: #fff;
-    border: 2px solid rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(0, 0, 0, 0.1);
     padding: 4px;
     transition: all 0.4s var(--ease-out);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 #main-header.scrolled .logo-img {
@@ -272,16 +272,15 @@ h4 {
     font-family: var(--font-heading);
     font-size: 1.25rem;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--c-text);
     letter-spacing: 0.08em;
-    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
 }
 
 .logo-text-sub {
     font-family: var(--font-body);
     font-size: 0.68rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--c-text-secondary);
     letter-spacing: 0.04em;
 }
 
@@ -312,18 +311,17 @@ h4 {
 .nav-link {
     font-size: 0.82rem;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.85);
+    color: var(--c-text-secondary);
     padding: 8px 12px;
     border-radius: 50px;
     transition: all 0.3s var(--ease-out);
     white-space: nowrap;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .nav-link:hover,
 .nav-link.active {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.12);
+    color: var(--c-primary);
+    background: rgba(0, 0, 0, 0.05);
 }
 
 #main-header.scrolled .nav-link:hover,
@@ -383,7 +381,7 @@ h4 {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: url('assets/hero_bg_v2.png') no-repeat center center;
+    background: url('assets/hero_bg_light.png') no-repeat center center;
     background-size: cover;
 }
 
@@ -391,14 +389,14 @@ h4 {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.3) 100%);
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.2) 100%);
     z-index: 1;
 }
 
 .hero-gradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, rgba(0, 0, 0, 0.4) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 0) 80%, rgba(217, 217, 217, 0.8) 100%);
     z-index: 2;
 }
 
@@ -428,7 +426,7 @@ h4 {
 .hero-title {
     font-size: clamp(3rem, 9vw, 6.2rem);
     font-weight: 800;
-    color: #121417;
+    color: var(--c-text);
     margin-bottom: 24px;
     line-height: 1.1;
     text-align: center;
@@ -459,10 +457,10 @@ h4 {
     display: inline-flex;
     align-items: center;
     gap: 0;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     padding: 0;
     margin: 40px auto 0;
@@ -473,7 +471,7 @@ h4 {
     content: '';
     position: absolute;
     inset: -20px;
-    background: radial-gradient(circle at center, rgba(140, 123, 98, 0.25) 0%, transparent 60%);
+    background: radial-gradient(circle at center, rgba(140, 123, 98, 0.1) 0%, transparent 60%);
     pointer-events: none;
     z-index: -1;
 }
@@ -489,14 +487,14 @@ h4 {
 .stat-divider {
     width: 1px;
     height: 80px;
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(0, 0, 0, 0.1);
 }
 
 .hero-stats-new .stat-number {
     font-family: var(--font-heading);
     font-size: 3.5rem;
     font-weight: 700;
-    color: #ffffff;
+    color: var(--c-text);
     line-height: 1;
     margin-bottom: 8px;
 }
@@ -505,7 +503,7 @@ h4 {
     font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.15em;
-    color: rgba(255, 255, 255, 0.6);
+    color: var(--c-text-secondary);
 }
 
 .stat {
