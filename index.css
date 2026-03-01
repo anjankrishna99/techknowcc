@@ -156,8 +156,8 @@ h4 {
 
 .btn-outline {
     background: transparent;
-    color: #ffffff;
-    border: 1.5px solid rgba(255, 255, 255, 0.3);
+    color: #1a1d21;
+    border: 1.5px solid rgba(26, 29, 33, 0.3);
 }
 
 .btn-outline:hover {
@@ -381,7 +381,7 @@ h4 {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: url('assets/hero_bg.png') no-repeat center center;
+    background: url('assets/hero_bg_v2.png') no-repeat center center;
     background-size: cover;
 }
 
@@ -389,14 +389,14 @@ h4 {
     content: '';
     position: absolute;
     inset: 0;
-    background: radial-gradient(circle at center, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 100%);
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.3) 100%);
     z-index: 1;
 }
 
 .hero-gradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.8) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, rgba(0, 0, 0, 0.4) 100%);
     z-index: 2;
 }
 
@@ -418,15 +418,15 @@ h4 {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.3em;
-    color: #ffffff;
+    color: #121417;
     margin-bottom: 24px;
     opacity: 0.9;
 }
 
 .hero-title {
-    font-size: clamp(3rem, 9vw, 6rem);
+    font-size: clamp(3rem, 9vw, 6.2rem);
     font-weight: 800;
-    color: #ffffff;
+    color: #121417;
     margin-bottom: 24px;
     line-height: 1.1;
     text-align: center;
@@ -438,10 +438,11 @@ h4 {
 
 .hero-desc {
     font-size: clamp(1rem, 2vw, 1.2rem);
-    color: rgba(255, 255, 255, 0.75);
+    color: #121417;
     max-width: 650px;
     margin: 0 auto 40px;
     line-height: 1.8;
+    font-weight: 500;
 }
 
 .hero-actions {
