@@ -706,4 +706,85 @@ document.addEventListener('DOMContentLoaded', () => {
         galleryObserver.observe(item);
     });
 
+    // ---------- Lightbox Navigation Variables ----------
+    let lightboxIndex = 0;
+    let lightboxImages = [];
+    const lightboxModal = document.getElementById('lightbox-modal');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxNext = document.getElementById('lightbox-next');
+    const lightboxPrev = document.getElementById('lightbox-prev');
+
+    // Make openLightbox globally accessible
+    window.openLightbox = function (images, caption) {
+        if (!images || images.length === 0) return;
+        lightboxImages = images;
+        lightboxIndex = 0;
+        lightboxCaption.textContent = caption;
+        updateLightboxImage();
+
+        // Show next/prev buttons only if there are multiple images
+        if (lightboxImages.length > 1) {
+            lightboxNext.style.display = 'flex';
+            lightboxPrev.style.display = 'flex';
+        } else {
+            lightboxNext.style.display = 'none';
+            lightboxPrev.style.display = 'none';
+        }
+
+        lightboxModal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent scrolling
+    };
+
+    function updateLightboxImage() {
+        lightboxImg.style.opacity = '0'; // smooth transition effect
+        setTimeout(() => {
+            lightboxImg.src = lightboxImages[lightboxIndex];
+            lightboxImg.style.opacity = '1';
+        }, 150);
+    }
+
+    function closeLightbox() {
+        lightboxModal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Close logic
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxModal.addEventListener('click', (e) => {
+        // Close if clicking outside the image or navigation
+        if (e.target === lightboxModal || e.target.classList.contains('lightbox-content') || e.target.classList.contains('lightbox-img-container')) {
+            closeLightbox();
+        }
+    });
+
+    // Nav logic
+    lightboxNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        lightboxIndex = (lightboxIndex + 1) % lightboxImages.length;
+        updateLightboxImage();
+    });
+
+    lightboxPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+        updateLightboxImage();
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (lightboxModal.classList.contains('active')) {
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight' && lightboxImages.length > 1) {
+                lightboxIndex = (lightboxIndex + 1) % lightboxImages.length;
+                updateLightboxImage();
+            }
+            if (e.key === 'ArrowLeft' && lightboxImages.length > 1) {
+                lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
+                updateLightboxImage();
+            }
+        }
+    });
+
 });

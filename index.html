@@ -642,7 +642,8 @@
                         <span>Classic Convention Three</span>
                     </div>
                 </div>
-                <div class="gallery-item" data-category="convention">
+                <div class="gallery-item" data-category="convention"
+                    onclick="openLightbox(['assets/bmr-1.jpg', 'assets/bmr-2.jpg', 'assets/bmr-3.jpg'], 'BMR Convention')">
                     <img src="https://images.unsplash.com/photo-1416339134316-0e91dc9ded92?w=600&h=600&fit=crop&q=80"
                         alt="BMR Convention" loading="lazy">
                     <div class="gallery-overlay">
@@ -1207,6 +1208,19 @@
                 </button>
             </form>
         </div>
+    </div>
+
+    <!-- ========== IMAGE LIGHTBOX MODAL ========== -->
+    <div class="lightbox-overlay" id="lightbox-modal">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close Lightbox">&times;</button>
+        <div class="lightbox-content">
+            <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous image">&#10094;</button>
+            <div class="lightbox-img-container">
+                <img src="" alt="Gallery Image" class="lightbox-img" id="lightbox-img">
+            </div>
+            <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next image">&#10095;</button>
+        </div>
+        <div class="lightbox-caption" id="lightbox-caption">BMR Convention</div>
     </div>
 
     <!-- ========== WHATSAPP FLOATING BUTTON ========== -->
