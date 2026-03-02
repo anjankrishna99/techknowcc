@@ -1616,12 +1616,12 @@ h4 {
 .gallery-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(15, 21, 24, 0.9) 0%, transparent 60%);
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 50%);
     display: flex;
     align-items: flex-end;
     padding: 24px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    opacity: 1;
+    transition: all 0.3s ease;
 }
 
 .gallery-overlay span {
@@ -1629,8 +1629,8 @@ h4 {
     font-family: var(--font-heading);
     font-size: 1rem;
     font-weight: 600;
-    transform: translateY(10px);
-    transition: transform 0.3s ease;
+    transform: translateY(0);
+    transition: all 0.3s ease;
 }
 
 .gallery-item:hover img {
@@ -1638,11 +1638,11 @@ h4 {
 }
 
 .gallery-item:hover .gallery-overlay {
-    opacity: 1;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%);
 }
 
 .gallery-item:hover .gallery-overlay span {
-    transform: translateY(0);
+    color: var(--c-accent-light, #fff);
 }
 
 .gallery-badge {
