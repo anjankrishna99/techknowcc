@@ -220,6 +220,52 @@ document.addEventListener('DOMContentLoaded', () => {
     createParticles();
 
     // ---------- Smooth Scroll for anchor links ----------
+    function scrollToSection(target, queryString = null) {
+        if (!target) return;
+
+        const isDynamic = target.classList.contains('hidden-section');
+        const headerElement = document.querySelector('header');
+        const headerHeight = headerElement ? headerElement.offsetHeight : 80;
+
+        if (isDynamic) {
+            // 1. INSTANT STABILIZATION: Close other sections without transition
+            document.querySelectorAll('.hidden-section').forEach(sec => {
+                if (sec !== target) {
+                    sec.style.transition = 'none';
+                    sec.classList.remove('section-visible');
+                    void sec.offsetHeight; // Force reflow
+                    sec.style.transition = ''; // Restore for next time
+                }
+            });
+
+            // 2. Reveal target
+            target.classList.add('section-visible');
+            void target.offsetHeight; // Force reflow for height calculation
+        }
+
+        // 3. Calculate position after DOM stabilization
+        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+
+        // 4. Handle specific gallery filtering
+        if (queryString) {
+            const params = new URLSearchParams(queryString);
+            const cat = params.get('cat');
+            if (cat) {
+                const filterBtn = document.querySelector(`.filter-btn[data-filter="${cat}"]`);
+                if (filterBtn) {
+                    // Slight delay to allow section to be "at least partially" there
+                    setTimeout(() => filterBtn.click(), 100);
+                }
+            }
+        }
+
+        // 5. Perfect smooth scroll
+        window.scrollTo({
+            top: targetPos,
+            behavior: 'smooth'
+        });
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
             const href = anchor.getAttribute('href');
@@ -230,7 +276,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     e.preventDefault();
                     // Hide all dynamic sections when going home
                     document.querySelectorAll('.hidden-section').forEach(sec => {
+                        sec.style.transition = 'none';
                         sec.classList.remove('section-visible');
+                        void sec.offsetHeight;
+                        sec.style.transition = '';
                     });
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                     // Reset active state
@@ -241,68 +290,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             e.preventDefault();
-
-            // Handle section and gallery category links
             const [sectionId, queryString] = href.split('?');
             const target = document.querySelector(sectionId);
 
             if (target) {
-                // Determine if we're opening a "hidden" section
-                const isDynamic = target.classList.contains('hidden-section');
-
-                if (isDynamic) {
-                    // 1. Instantly close other sections without transition to stabilize DOM
-                    document.querySelectorAll('.hidden-section').forEach(sec => {
-                        if (sec !== target) {
-                            sec.classList.remove('section-visible');
-                        }
-                    });
-
-                    // 2. FLASH CALCULATION: Measure the "future" position
-                    target.classList.add('preparing');
-                    const headerElement = document.querySelector('header');
-                    const headerHeight = headerElement ? headerElement.offsetHeight : 80;
-
-                    // The future position is where it will be when fully expanded
-                    // Since others are closed, it's just below Hero
-                    const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                    target.classList.remove('preparing');
-
-                    // 3. Reveal target (starts CSS animation)
-                    target.classList.add('section-visible');
-
-                    // 4. Handle specific gallery filtering
-                    if (queryString) {
-                        const params = new URLSearchParams(queryString);
-                        const cat = params.get('cat');
-                        if (cat) {
-                            const filterBtn = document.querySelector(`.filter-btn[data-filter="${cat}"]`);
-                            if (filterBtn) {
-                                setTimeout(() => filterBtn.click(), 500);
-                            }
-                        }
-                    }
-
-                    // 5. Single, perfect smooth scroll
-                    // Short delay to let the browser register the display change
-                    setTimeout(() => {
-                        window.scrollTo({
-                            top: targetPos,
-                            behavior: 'smooth'
-                        });
-                    }, 50);
-
-                } else {
-                    // Standard static section scroll
-                    const headerElement = document.querySelector('header');
-                    const headerHeight = headerElement ? headerElement.offsetHeight : 80;
-                    const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-
-                    window.scrollTo({
-                        top: targetPos,
-                        behavior: 'smooth'
-                    });
-                }
+                scrollToSection(target, queryString);
 
                 // Update navigation active state
                 navItems.forEach(link => link.classList.remove('active'));
@@ -310,6 +302,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Handle initial hash on load
+    if (window.location.hash) {
+        const hash = window.location.hash;
+        const [sectionId, queryString] = hash.split('?');
+        const target = document.querySelector(sectionId);
+        if (target) {
+            setTimeout(() => {
+                scrollToSection(target, queryString);
+            }, 600); // Wait for hero animations
+        }
+    }
 
     // ---------- Parallax on hero (subtle) ----------
     let ticking = false;
@@ -665,12 +669,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Handle initial category from URL (if any)
-    const urlParams = new URLSearchParams(window.location.search);
-    const initialCat = urlParams.get('cat');
-    if (initialCat) {
-        const targetBtn = document.querySelector(`.filter-btn[data-filter="${initialCat}"]`);
-        if (targetBtn) targetBtn.click();
+    // Handle initial category from URL query (if any and no hash)
+    if (!window.location.hash) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const initialCat = urlParams.get('cat');
+        if (initialCat) {
+            const gallerySection = document.getElementById('gallery');
+            if (gallerySection) {
+                setTimeout(() => {
+                    scrollToSection(gallerySection, `cat=${initialCat}`);
+                }, 600);
+            }
+        }
     }
 
     // ---------- Mobile Dropdown Toggle ----------
