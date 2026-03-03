@@ -797,4 +797,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // ---------- Page Transitions ----------
+    const transitionLinks = document.querySelectorAll('a');
+    transitionLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const target = link.getAttribute('href');
+
+            // Allow default behavior for hash links, empty links, or target="_blank"
+            if (!target || target.startsWith('#') || target.startsWith('tel:') || target.startsWith('mailto:') || link.getAttribute('target') === '_blank') {
+                return;
+            }
+
+            // Animate exit and then navigate
+            e.preventDefault();
+            document.body.classList.add('page-exit');
+
+            setTimeout(() => {
+                window.location.href = target;
+            }, 400); // Duration matching CSS transition
+        });
+    });
+
 });
