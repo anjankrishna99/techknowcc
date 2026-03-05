@@ -1,0 +1,14 @@
+commit adf2ab74aa64b695eecb18239c8bd9d6772dabfa
+Author: anjankrishna99 <anjankrishna99@gmail.com>
+Date:   Mon Mar 2 19:01:29 2026 +0000
+
+    Upload real site photos for Vensa Convention gallery and update cover
+
+A	assets/vensa-cover.jpg
+A	assets/vensa-cover.png
+A	assets/vensa_1.jpg
+A	assets/vensa_2.jpg
+A	assets/vensa_3.jpg
+A	assets/vensa_4.jpg
+A	assets/vensa_5.jpg
+M	index.html
