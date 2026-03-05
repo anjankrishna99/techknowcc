@@ -233,15 +233,21 @@ document.addEventListener('DOMContentLoaded', () => {
     createParticles();
 
     // ---------- Smooth Scroll for anchor links ----------
+    // Reference to hero section
+    const heroSection = document.getElementById('home');
+
     function scrollToSection(target, queryString = null) {
         if (!target) return;
 
         const isDynamic = target.classList.contains('hidden-section');
-        const headerElement = document.querySelector('header');
-        const headerHeight = headerElement ? headerElement.offsetHeight : 80;
 
         if (isDynamic) {
-            // 1. Instantly close other hidden sections (no transition)
+            // 1. Hide the hero section so it doesn't appear above
+            if (heroSection) {
+                heroSection.classList.add('hero-hidden');
+            }
+
+            // 2. Instantly close other hidden sections (no transition)
             document.querySelectorAll('.hidden-section').forEach(sec => {
                 if (sec !== target) {
                     sec.style.transition = 'none';
@@ -251,35 +257,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
 
-            // 2. If not already visible, scroll to top FIRST, then reveal
-            if (!target.classList.contains('section-visible')) {
-                // Instantly jump to top to prevent the "scroll down then back up" issue
-                window.scrollTo({ top: 0, behavior: 'instant' });
+            // 3. Reveal target section
+            target.classList.add('section-visible');
+            void target.offsetHeight;
 
-                // Now reveal the section
-                target.classList.add('section-visible');
-                void target.offsetHeight; // Force reflow
+            // 4. Instantly scroll to top so section starts at the top
+            window.scrollTo({ top: 0, behavior: 'instant' });
 
-                // Wait for layout to stabilize, then smooth scroll to section
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                        window.scrollTo({
-                            top: targetPos,
-                            behavior: 'smooth'
-                        });
-                    });
-                });
-            } else {
-                // Section already visible, just scroll to it
-                const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-                window.scrollTo({
-                    top: targetPos,
-                    behavior: 'smooth'
-                });
-            }
         } else {
-            // Non-dynamic section — just smooth scroll
+            // Non-dynamic section — smooth scroll to it
+            const headerElement = document.querySelector('header');
+            const headerHeight = headerElement ? headerElement.offsetHeight : 80;
             const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
             window.scrollTo({
                 top: targetPos,
@@ -300,25 +288,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function showHome() {
+        // Hide all dynamic sections instantly
+        document.querySelectorAll('.hidden-section').forEach(sec => {
+            sec.style.transition = 'none';
+            sec.classList.remove('section-visible');
+            void sec.offsetHeight;
+            sec.style.transition = '';
+        });
+        // Show the hero section again
+        if (heroSection) {
+            heroSection.classList.remove('hero-hidden');
+        }
+        window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', (e) => {
             const href = anchor.getAttribute('href');
 
             // Handle Home link
             if (href === '#' || href === '#home') {
-                if (href === '#home') {
-                    e.preventDefault();
-                    // Hide all dynamic sections when going home
-                    document.querySelectorAll('.hidden-section').forEach(sec => {
-                        sec.style.transition = 'none';
-                        sec.classList.remove('section-visible');
-                        void sec.offsetHeight;
-                        sec.style.transition = '';
-                    });
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    navItems.forEach(link => link.classList.remove('active'));
-                    anchor.classList.add('active');
-                }
+                e.preventDefault();
+                showHome();
+                navItems.forEach(link => link.classList.remove('active'));
+                anchor.classList.add('active');
+                // Close mobile menu
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('open');
+                document.body.style.overflow = '';
                 return;
             }
 

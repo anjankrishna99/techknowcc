@@ -471,6 +471,10 @@ h4 {
     padding: 80px 24px 40px;
 }
 
+.hero.hero-hidden {
+    display: none;
+}
+
 .hero-bg {
     position: absolute;
     inset: 0;
