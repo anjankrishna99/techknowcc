@@ -241,42 +241,63 @@ document.addEventListener('DOMContentLoaded', () => {
         const headerHeight = headerElement ? headerElement.offsetHeight : 80;
 
         if (isDynamic) {
-            // 1. INSTANT STABILIZATION: Close other sections without transition
+            // 1. Instantly close other hidden sections (no transition)
             document.querySelectorAll('.hidden-section').forEach(sec => {
                 if (sec !== target) {
                     sec.style.transition = 'none';
                     sec.classList.remove('section-visible');
-                    void sec.offsetHeight; // Force reflow
-                    sec.style.transition = ''; // Restore for next time
+                    void sec.offsetHeight;
+                    sec.style.transition = '';
                 }
             });
 
-            // 2. Reveal target
-            target.classList.add('section-visible');
-            void target.offsetHeight; // Force reflow for height calculation
+            // 2. If not already visible, scroll to top FIRST, then reveal
+            if (!target.classList.contains('section-visible')) {
+                // Instantly jump to top to prevent the "scroll down then back up" issue
+                window.scrollTo({ top: 0, behavior: 'instant' });
+
+                // Now reveal the section
+                target.classList.add('section-visible');
+                void target.offsetHeight; // Force reflow
+
+                // Wait for layout to stabilize, then smooth scroll to section
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(() => {
+                        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                        window.scrollTo({
+                            top: targetPos,
+                            behavior: 'smooth'
+                        });
+                    });
+                });
+            } else {
+                // Section already visible, just scroll to it
+                const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                window.scrollTo({
+                    top: targetPos,
+                    behavior: 'smooth'
+                });
+            }
+        } else {
+            // Non-dynamic section — just smooth scroll
+            const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            window.scrollTo({
+                top: targetPos,
+                behavior: 'smooth'
+            });
         }
 
-        // 3. Calculate position after DOM stabilization
-        const targetPos = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-
-        // 4. Handle specific gallery filtering
+        // Handle specific gallery filtering
         if (queryString) {
             const params = new URLSearchParams(queryString);
             const cat = params.get('cat');
             if (cat) {
                 const filterBtn = document.querySelector(`.filter-btn[data-filter="${cat}"]`);
                 if (filterBtn) {
-                    // Slight delay to allow section to be "at least partially" there
-                    setTimeout(() => filterBtn.click(), 100);
+                    setTimeout(() => filterBtn.click(), 300);
                 }
             }
         }
-
-        // 5. Perfect smooth scroll
-        window.scrollTo({
-            top: targetPos,
-            behavior: 'smooth'
-        });
     }
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -295,7 +316,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         sec.style.transition = '';
                     });
                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                    // Reset active state
                     navItems.forEach(link => link.classList.remove('active'));
                     anchor.classList.add('active');
                 }
@@ -308,8 +328,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (target) {
                 scrollToSection(target, queryString);
-
-                // Update navigation active state
                 navItems.forEach(link => link.classList.remove('active'));
                 anchor.classList.add('active');
             }
