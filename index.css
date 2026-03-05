@@ -1375,6 +1375,29 @@ h4 {
     background: var(--c-bg);
 }
 
+.form-group input[type="file"] {
+    padding: 10px;
+    background: var(--c-bg-alt);
+}
+
+.form-group input[type="file"]::file-selector-button {
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 8px 16px;
+    margin-right: 12px;
+    background: var(--c-bg-dark);
+    color: var(--c-text-light);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.3s var(--ease-out);
+}
+
+.form-group input[type="file"]::file-selector-button:hover {
+    background: var(--c-primary);
+}
+
 .form-group textarea {
     resize: vertical;
     min-height: 100px;

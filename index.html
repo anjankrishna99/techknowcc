@@ -1008,7 +1008,7 @@
                     </div>
                 </div>
                 <form class="enquiry-form reveal" id="enquiry-form-inline"
-                    action="https://formsubmit.co/info@techknowcc.in" method="POST">
+                    action="https://formsubmit.co/info@techknowcc.in" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_subject" value="New Enquiry from TECHKNOW Website">
                     <input type="hidden" name="_captcha" value="false">
                     <input type="hidden" name="_template" value="table">
@@ -1049,6 +1049,10 @@
                         <label for="inline-message">Your Message</label>
                         <textarea id="inline-message" name="message" rows="4"
                             placeholder="Tell us about your project..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="inline-attachment">Attachment (.pdf, .jpeg, .png)</label>
+                        <input type="file" id="inline-attachment" name="attachment" accept=".pdf, .jpg, .jpeg, .png">
                     </div>
                     <button type="submit" class="btn btn-primary btn-submit" data-magnetic>
                         <span>Send Enquiry</span>
@@ -1165,7 +1169,7 @@
                 <p>Fill in your details and we'll reach out within 24-48 hours.</p>
             </div>
             <form class="modal-form" id="enquiry-form-modal" action="https://formsubmit.co/info@techknowcc.in"
-                method="POST">
+                method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="_subject" value="New Enquiry from TECHKNOW Website">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
@@ -1202,6 +1206,10 @@
                     <label for="modal-message">Your Message</label>
                     <textarea id="modal-message" name="message" rows="3"
                         placeholder="Tell us about your project..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="modal-attachment">Attachment (.pdf, .jpeg, .png)</label>
+                    <input type="file" id="modal-attachment" name="attachment" accept=".pdf, .jpg, .jpeg, .png">
                 </div>
                 <button type="submit" class="btn btn-primary btn-submit" data-magnetic>
                     <span>Send Enquiry</span>
