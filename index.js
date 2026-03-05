@@ -2,6 +2,19 @@
    TECHKNOW CONSTRUCTIONS — Immersive Interactive JS
    ============================================ */
 
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        setTimeout(() => {
+            preloader.classList.add('hidden');
+            setTimeout(() => {
+                preloader.remove();
+                // trigger entrance animations if needed, though they are intersection observer based
+            }, 500);
+        }, 300); // Small enforced delay so the spinner is visible briefly
+    }
+});
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // ---------- DOM References ----------
