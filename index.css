@@ -2287,7 +2287,8 @@ h4 {
 }
 
 .hero .hero-title.reveal {
-    transition-delay: 0.15s;
+    transition-delay: 0.3s;
+    transition-duration: 1.5s;
 }
 
 .hero .hero-desc.reveal {

@@ -364,11 +364,6 @@ document.addEventListener('DOMContentLoaded', () => {
             heroBg.style.transform = `translateY(${scrollY * 0.15}px)`;
         }
 
-        // Parallax particles
-        if (heroParticles && scrollY < window.innerHeight) {
-            heroParticles.style.transform = `translateY(${scrollY * 0.4}px)`;
-        }
-
         ticking = false;
     }
 
@@ -505,55 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(typeWriter, 600);
     }
 
-    // ---------- Text Scramble on Hero Title ----------
-    const heroTitle = document.querySelector('.hero-title');
-    if (heroTitle) {
-        const textNodes = [];
-        const walker = document.createTreeWalker(heroTitle, NodeFilter.SHOW_TEXT);
-        let node;
-        while (node = walker.nextNode()) {
-            if (node.textContent.trim().length > 0) {
-                textNodes.push({ node, original: node.textContent });
-            }
-        }
-
-        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        let scrambleFrame = 0;
-        const totalFrames = 20;
-
-        function scrambleText() {
-            textNodes.forEach(({ node, original }) => {
-                const progress = scrambleFrame / totalFrames;
-                const revealed = Math.floor(progress * original.length);
-
-                let result = '';
-                for (let i = 0; i < original.length; i++) {
-                    if (original[i] === ' ' || original[i] === '\n') {
-                        result += original[i];
-                    } else if (i < revealed) {
-                        result += original[i];
-                    } else {
-                        result += chars[Math.floor(Math.random() * chars.length)];
-                    }
-                }
-                node.textContent = result;
-            });
-
-            scrambleFrame++;
-
-            if (scrambleFrame <= totalFrames) {
-                setTimeout(scrambleText, 40);
-            } else {
-                // Ensure original text is restored
-                textNodes.forEach(({ node, original }) => {
-                    node.textContent = original;
-                });
-            }
-        }
-
-        // Start scramble after hero reveal delay
-        setTimeout(scrambleText, 800);
-    }
+    // ---------- Text Scramble on Hero Title Removed ----------
 
     // ---------- Testimonials Carousel ----------
     const track = document.getElementById('testimonials-track');
