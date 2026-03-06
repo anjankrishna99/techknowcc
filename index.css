@@ -2645,22 +2645,44 @@ body.scrolled-past .scroll-indicator {
     justify-content: center;
 }
 
-.lightbox-img-container {
+.lightbox-img-wrapper {
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.lightbox-img-container {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    /* The SVG filter will be applied here via JS during transition */
+    filter: none;
+    transition: filter 0.1s;
 }
 
 .lightbox-img {
     max-width: 100%;
-    max-height: 100%;
+    max-height: 80vh;
     object-fit: contain;
-    border-radius: 8px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    transition: opacity 0.3s ease;
+    transition: opacity 0.4s ease-in-out;
+}
+
+.lightbox-img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .lightbox-close {

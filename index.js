@@ -750,10 +750,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let lightboxImages = [];
     const lightboxModal = document.getElementById('lightbox-modal');
     const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxImgOverlay = document.getElementById('lightbox-img-overlay');
+    const lightboxImgContainer = document.getElementById('lightbox-img-container');
+    const dispFilter = document.getElementById('disp-filter');
     const lightboxCaption = document.getElementById('lightbox-caption');
     const lightboxClose = document.getElementById('lightbox-close');
     const lightboxNext = document.getElementById('lightbox-next');
     const lightboxPrev = document.getElementById('lightbox-prev');
+    let isTransitioning = false;
 
     // Make openLightbox globally accessible
     window.openLightbox = function (images, caption) {
@@ -761,7 +765,13 @@ document.addEventListener('DOMContentLoaded', () => {
         lightboxImages = images;
         lightboxIndex = 0;
         lightboxCaption.textContent = caption;
-        updateLightboxImage();
+
+        // Initial setup
+        lightboxImg.src = lightboxImages[lightboxIndex];
+        lightboxImg.style.opacity = '1';
+        lightboxImgOverlay.style.opacity = '0';
+        dispFilter.setAttribute('scale', '0');
+        lightboxImgContainer.style.filter = 'none';
 
         // Show next/prev buttons only if there are multiple images
         if (lightboxImages.length > 1) {
@@ -776,12 +786,54 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = 'hidden'; // Prevent scrolling
     };
 
-    function updateLightboxImage() {
-        lightboxImg.style.opacity = '0'; // smooth transition effect
-        setTimeout(() => {
-            lightboxImg.src = lightboxImages[lightboxIndex];
-            lightboxImg.style.opacity = '1';
-        }, 150);
+    function updateLightboxImage(direction = 'next') {
+        if (isTransitioning) return;
+        isTransitioning = true;
+
+        const currentSrc = lightboxImages[(lightboxIndex - (direction === 'next' ? 1 : -1) + lightboxImages.length) % lightboxImages.length];
+        const nextSrc = lightboxImages[lightboxIndex];
+
+        // Prepare overlay image to be the NEXT image
+        lightboxImgOverlay.src = nextSrc;
+
+        // Enable filter
+        lightboxImgContainer.style.filter = 'url(#liquid-filter)';
+
+        // Animation variables
+        let startTime = null;
+        const duration = 800; // 800ms transition
+
+        function animateFilter(timestamp) {
+            if (!startTime) startTime = timestamp;
+            const progress = (timestamp - startTime) / duration;
+
+            if (progress < 1) {
+                // Ease in-out bell curve for the displacement scale (0 -> max -> 0)
+                const scale = Math.sin(progress * Math.PI) * 40; // max displacement 40
+                dispFilter.setAttribute('scale', scale.toString());
+
+                // Crossfade around the middle
+                if (progress > 0.3) {
+                    lightboxImgOverlay.style.opacity = '1';
+                    lightboxImg.style.opacity = '0';
+                }
+
+                requestAnimationFrame(animateFilter);
+            } else {
+                // Finish transition
+                dispFilter.setAttribute('scale', '0');
+                lightboxImgContainer.style.filter = 'none';
+
+                // Swap current image array to the new base
+                lightboxImg.src = nextSrc;
+                lightboxImg.style.opacity = '1';
+                lightboxImgOverlay.style.opacity = '0';
+
+                isTransitioning = false;
+            }
+        }
+
+        requestAnimationFrame(animateFilter);
     }
 
     function closeLightbox() {
@@ -793,7 +845,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lightboxClose.addEventListener('click', closeLightbox);
     lightboxModal.addEventListener('click', (e) => {
         // Close if clicking outside the image or navigation
-        if (e.target === lightboxModal || e.target.classList.contains('lightbox-content') || e.target.classList.contains('lightbox-img-container')) {
+        if (e.target === lightboxModal || e.target.classList.contains('lightbox-content') || e.target.classList.contains('lightbox-img-wrapper')) {
             closeLightbox();
         }
     });
@@ -801,27 +853,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Nav logic
     lightboxNext.addEventListener('click', (e) => {
         e.stopPropagation();
+        if (isTransitioning) return;
         lightboxIndex = (lightboxIndex + 1) % lightboxImages.length;
-        updateLightboxImage();
+        updateLightboxImage('next');
     });
 
     lightboxPrev.addEventListener('click', (e) => {
         e.stopPropagation();
+        if (isTransitioning) return;
         lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
-        updateLightboxImage();
+        updateLightboxImage('prev');
     });
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (lightboxModal.classList.contains('active')) {
             if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowRight' && lightboxImages.length > 1) {
+            if (e.key === 'ArrowRight' && lightboxImages.length > 1 && !isTransitioning) {
                 lightboxIndex = (lightboxIndex + 1) % lightboxImages.length;
-                updateLightboxImage();
+                updateLightboxImage('next');
             }
-            if (e.key === 'ArrowLeft' && lightboxImages.length > 1) {
+            if (e.key === 'ArrowLeft' && lightboxImages.length > 1 && !isTransitioning) {
                 lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
-                updateLightboxImage();
+                updateLightboxImage('prev');
             }
         }
     });
