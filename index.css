@@ -2669,7 +2669,7 @@ body.scrolled-past .scroll-indicator {
     max-width: 100%;
     max-height: 80vh;
     object-fit: contain;
-    transition: opacity 0.4s ease-in-out;
+    transition: opacity 0.6s ease-in-out;
 }
 
 .lightbox-img-overlay {

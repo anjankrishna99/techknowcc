@@ -798,7 +798,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Animation variables
         let startTime = null;
-        const duration = 800; // 800ms transition
+        const duration = 1200; // 1200ms transition
 
         function animateFilter(timestamp) {
             if (!startTime) startTime = timestamp;
