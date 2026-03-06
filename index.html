@@ -15,7 +15,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="index.css?v=2026.03.05.2118">
+    <link rel="stylesheet" href="index.css?v=2026.03.06.2242">
     <link rel="stylesheet" href="chatbot.css">
 </head>
 
@@ -54,17 +54,7 @@
                 <li><a href="#home" class="nav-link active">Home</a></li>
                 <li><a href="#about" class="nav-link">Why Choose Us</a></li>
                 <li><a href="#services-section" class="nav-link">Services</a></li>
-                <li class="dropdown">
-                    <a href="#portfolio" class="nav-link dropdown-toggle">Portfolio</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#portfolio?cat=residential">Residential Projects</a></li>
-                        <li><a href="#portfolio?cat=industrial">Industrial Projects</a></li>
-                        <li><a href="#portfolio?cat=commercial">Commercial Projects</a></li>
-                        <li><a href="#portfolio?cat=convention">Convention Centers</a></li>
-                        <li><a href="#portfolio?cat=farmhouse">Farmhouse Projects</a></li>
-                        <li><a href="#portfolio?cat=religious">Religious Projects</a></li>
-                    </ul>
-                </li>
+                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
                 <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
                 <li><a href="#contact" class="nav-link">Contact Us</a></li>
                 <li><button class="btn btn-enquiry-nav" id="btn-enquiry-header">Enquiry</button></li>
@@ -462,106 +452,170 @@
     </section>
 
 
-    <!-- ========== PORTFOLIO SECTION (Gallery) ========== -->
+    <!-- ========== PORTFOLIO SECTION ========== -->
     <section id="portfolio" class="section gallery hidden-section">
         <div class="container">
             <div class="section-header reveal">
                 <p class="section-tag">Our Work</p>
                 <h2 class="section-title">Project <span class="text-gradient">Portfolio</span></h2>
+                <p class="section-desc">Explore our diverse portfolio of projects across residential, industrial,
+                    commercial, and more.</p>
             </div>
 
-            <!-- Gallery Filter -->
-            <div class="gallery-filters reveal-scale">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="residential">Residential Projects</button>
-                <button class="filter-btn" data-filter="industrial">Industrial Projects</button>
-                <button class="filter-btn" data-filter="commercial">Commercial Projects</button>
-                <button class="filter-btn" data-filter="convention">Convention Centers</button>
-                <button class="filter-btn" data-filter="farmhouse">Farmhouse Projects</button>
-                <button class="filter-btn" data-filter="religious">Religious Projects</button>
-            </div>
+            <div class="project-cards-grid reveal">
 
-            <div class="gallery-grid reveal">
-                <!-- Residential -->
-                <div class="gallery-item" data-category="residential"
+                <!-- 1. Residential Projects -->
+                <div class="project-card"
                     onclick="openLightbox(['assets/residential-face.jpg', 'assets/residential-1.jpeg', 'assets/residential-2.jpeg', 'assets/residential-3.jpeg', 'assets/residential-4.jpeg', 'assets/residential-5.jpeg', 'assets/residential-6.jpeg', 'assets/residential-7.jpeg', 'assets/residential-8.jpeg', 'assets/residential-9.jpeg', 'assets/residential-10.jpeg', 'assets/residential-11.jpeg', 'assets/residential-12.jpeg', 'assets/residential-13.jpeg'], 'Residential Projects')">
-                    <img src="assets/residential-face.jpg" alt="Residential Projects" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span>Residential Projects</span>
+                    <div class="project-card-header">
+                        <h3>Residential Projects</h3>
+                        <span class="project-card-count">14 Photos</span>
+                    </div>
+                    <div class="project-card-hero">
+                        <img src="assets/residential-face.jpg" alt="Residential Projects" loading="lazy">
+                    </div>
+                    <div class="project-card-thumbs">
+                        <div class="thumb"><img src="assets/residential-1.jpeg" alt="" loading="lazy"></div>
+                        <div class="thumb"><img src="assets/residential-3.jpeg" alt="" loading="lazy"></div>
+                        <div class="thumb"><img src="assets/residential-5.jpeg" alt="" loading="lazy"></div>
+                        <div class="thumb"><img src="assets/residential-7.jpeg" alt="" loading="lazy"></div>
+                        <div class="thumb thumb-more"><span>+10</span></div>
+                    </div>
+                    <div class="project-card-cta">
+                        <span>Click to view all images</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
                     </div>
                 </div>
-                <!-- Industrial -->
-                <div class="gallery-item" data-category="industrial"
-                    onclick="openLightbox(['assets/deccan-grainz.jpg', 'assets/deccan-grainz-1.jpg', 'assets/deccan-grainz-2.jpg', 'assets/deccan-grainz-3.jpg', 'assets/deccan-grainz-4.jpg', 'assets/deccan-grainz-5.jpg', 'assets/deccan-grainz-6.jpg', 'assets/deccan-grainz-7.jpg', 'assets/deccan-grainz-8.jpg', 'assets/deccan-grainz-9.jpg', 'assets/deccan-grainz-10.jpg', 'assets/deccan-grainz-11.jpg', 'assets/deccan-grainz-12.jpg', 'assets/deccan-grainz-13.jpg', 'assets/deccan-grainz-14.jpg', 'assets/deccan-grainz-15.jpg', 'assets/deccan-grainz-16.jpg', 'assets/deccan-grainz-17.jpg'], 'Deccan Grainz - Industrial Projects')">
-                    <img src="assets/deccan-grainz.jpg" alt="Deccan Grainz - Industrial Projects" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span>Industrial Projects</span>
-                    </div>
-                </div>
-                <!-- Conventions -->
-                <div class="gallery-item" data-category="convention"
-                    onclick="openLightbox(['assets/classic-convention-three-new.jpg', 'assets/classic-convention-three-1.jpg', 'assets/classic-convention-three-2.jpg', 'assets/classic-convention-three-3.jpg', 'assets/classic-convention-three-4.jpg', 'assets/classic-convention-three-5.jpg', 'assets/classic-convention-three-6.jpg'], 'Classic Convention Three')">
-                    <img src="assets/classic-convention-three-new.jpg" alt="Classic Convention Three" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span>Classic Convention Three</span>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="convention"
-                    onclick="openLightbox(['assets/bmr-1.jpg', 'assets/bmr-2.jpg', 'assets/bmr-3.jpg'], 'BMR Convention')">
-                    <img src="assets/bmr-cover.png" alt="BMR Convention" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span>BMR Convention</span>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="convention">
-                    <img src="assets/vrc-convention.png" alt="VRC Convention" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span>VRC Convention</span>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="convention"
-                    onclick="openLightbox(['assets/vensa_1.jpg', 'assets/vensa_2.jpg', 'assets/vensa_3.jpg', 'assets/vensa_4.jpg', 'assets/vensa_5.jpg'], 'Vensa Convention')">
-                    <img src="assets/vensa-cover.jpg" alt="Vensa Convention" loading="lazy">
-                    <div class="gallery-badge">Upcoming</div>
-                    <div class="gallery-overlay">
-                        <span>Vensa Convention</span>
-                    </div>
-                </div>
-                <div class="gallery-item" data-category="convention">
-                    <img src="https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=600&h=600&fit=crop&q=80"
-                        alt="Alkananda Convention" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span>Alkananda Convention</span>
-                    </div>
-                </div>
-                <!-- Commercial -->
-                <div class="gallery-item" data-category="commercial">
-                    <img src="assets/commercial-building.jpg" alt="Commercial Project" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span>Commercial Projects</span>
-                    </div>
-                </div>
-                <!-- Farmhouse -->
-                <div class="gallery-item" data-category="farmhouse">
-                    <img src="assets/farmhouse.jpg" alt="Farmhouse Project" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span>Farmhouse Projects</span>
-                    </div>
-                </div>
-                <!-- Religious -->
-                <div class="gallery-item" data-category="religious">
-                    <img src="https://images.unsplash.com/photo-1548013146-72479768bbaa?w=600&h=600&fit=crop&q=80"
-                        alt="Religious Project" loading="lazy">
-                    <div class="gallery-overlay">
-                        <span>Religious Projects</span>
-                    </div>
-                </div>
-                <!-- Add more items as needed -->
-            </div>
 
-            <div class="gallery-cta reveal">
-                <p>Explore our complete portfolio across all categories.</p>
-                <a href="#contact" class="btn btn-primary" data-magnetic>Start Your Project</a>
+                <!-- 2. Convention Projects -->
+                <div class="project-card"
+                    onclick="openLightbox(['assets/classic-convention-three-new.jpg', 'assets/classic-convention-three-1.jpg', 'assets/classic-convention-three-2.jpg', 'assets/classic-convention-three-3.jpg', 'assets/classic-convention-three-4.jpg', 'assets/classic-convention-three-5.jpg', 'assets/classic-convention-three-6.jpg', 'assets/bmr-cover.png', 'assets/bmr-1.jpg', 'assets/bmr-2.jpg', 'assets/bmr-3.jpg', 'assets/vrc-convention.png', 'assets/vensa-cover.jpg', 'assets/vensa_1.jpg', 'assets/vensa_2.jpg', 'assets/vensa_3.jpg', 'assets/vensa_4.jpg', 'assets/vensa_5.jpg'], 'Convention Projects')">
+                    <div class="project-card-header">
+                        <h3>Convention Projects</h3>
+                        <span class="project-card-count">18 Photos</span>
+                    </div>
+                    <div class="project-card-hero">
+                        <img src="assets/classic-convention-three-new.jpg" alt="Convention Projects" loading="lazy">
+                    </div>
+                    <div class="project-card-thumbs">
+                        <div class="thumb"><img src="assets/bmr-cover.png" alt="" loading="lazy"></div>
+                        <div class="thumb"><img src="assets/vrc-convention.png" alt="" loading="lazy"></div>
+                        <div class="thumb"><img src="assets/vensa-cover.jpg" alt="" loading="lazy"></div>
+                        <div class="thumb"><img src="assets/classic-convention-three-1.jpg" alt="" loading="lazy"></div>
+                        <div class="thumb thumb-more"><span>+14</span></div>
+                    </div>
+                    <div class="project-card-cta">
+                        <span>Click to view all images</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- 3. Industrial Projects -->
+                <div class="project-card"
+                    onclick="openLightbox(['assets/deccan-grainz.jpg', 'assets/deccan-grainz-1.jpg', 'assets/deccan-grainz-2.jpg', 'assets/deccan-grainz-3.jpg', 'assets/deccan-grainz-4.jpg', 'assets/deccan-grainz-5.jpg', 'assets/deccan-grainz-6.jpg', 'assets/deccan-grainz-7.jpg', 'assets/deccan-grainz-8.jpg', 'assets/deccan-grainz-9.jpg', 'assets/deccan-grainz-10.jpg', 'assets/deccan-grainz-11.jpg', 'assets/deccan-grainz-12.jpg', 'assets/deccan-grainz-13.jpg', 'assets/deccan-grainz-14.jpg', 'assets/deccan-grainz-15.jpg', 'assets/deccan-grainz-16.jpg', 'assets/deccan-grainz-17.jpg'], 'Industrial Projects')">
+                    <div class="project-card-header">
+                        <h3>Industrial Projects</h3>
+                        <span class="project-card-count">18 Photos</span>
+                    </div>
+                    <div class="project-card-hero">
+                        <img src="assets/deccan-grainz.jpg" alt="Industrial Projects" loading="lazy">
+                    </div>
+                    <div class="project-card-thumbs">
+                        <div class="thumb"><img src="assets/deccan-grainz-1.jpg" alt="" loading="lazy"></div>
+                        <div class="thumb"><img src="assets/deccan-grainz-3.jpg" alt="" loading="lazy"></div>
+                        <div class="thumb"><img src="assets/deccan-grainz-5.jpg" alt="" loading="lazy"></div>
+                        <div class="thumb"><img src="assets/deccan-grainz-8.jpg" alt="" loading="lazy"></div>
+                        <div class="thumb thumb-more"><span>+14</span></div>
+                    </div>
+                    <div class="project-card-cta">
+                        <span>Click to view all images</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- 4. Commercial Projects -->
+                <div class="project-card"
+                    onclick="openLightbox(['assets/commercial-building.jpg'], 'Commercial Projects')">
+                    <div class="project-card-header">
+                        <h3>Commercial Projects</h3>
+                        <span class="project-card-count">1 Photo</span>
+                    </div>
+                    <div class="project-card-hero">
+                        <img src="assets/commercial-building.jpg" alt="Commercial Projects" loading="lazy">
+                    </div>
+                    <div class="project-card-thumbs">
+                        <div class="thumb"><img src="assets/commercial-building.jpg" alt="" loading="lazy"></div>
+                    </div>
+                    <div class="project-card-cta">
+                        <span>Click to view all images</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- 5. Farmhouse Projects -->
+                <div class="project-card" onclick="openLightbox(['assets/farmhouse.jpg'], 'Farmhouse Projects')">
+                    <div class="project-card-header">
+                        <h3>Farmhouse Projects</h3>
+                        <span class="project-card-count">1 Photo</span>
+                    </div>
+                    <div class="project-card-hero">
+                        <img src="assets/farmhouse.jpg" alt="Farmhouse Projects" loading="lazy">
+                    </div>
+                    <div class="project-card-thumbs">
+                        <div class="thumb"><img src="assets/farmhouse.jpg" alt="" loading="lazy"></div>
+                    </div>
+                    <div class="project-card-cta">
+                        <span>Click to view all images</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- 6. Religious Projects -->
+                <div class="project-card"
+                    onclick="openLightbox(['https://images.unsplash.com/photo-1548013146-72479768bbaa?w=1200&h=800&fit=crop&q=80'], 'Religious Projects')">
+                    <div class="project-card-header">
+                        <h3>Religious Projects</h3>
+                        <span class="project-card-count">1 Photo</span>
+                    </div>
+                    <div class="project-card-hero">
+                        <img src="https://images.unsplash.com/photo-1548013146-72479768bbaa?w=600&h=400&fit=crop&q=80"
+                            alt="Religious Projects" loading="lazy">
+                    </div>
+                    <div class="project-card-thumbs">
+                        <div class="thumb"><img
+                                src="https://images.unsplash.com/photo-1548013146-72479768bbaa?w=100&h=100&fit=crop&q=60"
+                                alt="" loading="lazy"></div>
+                    </div>
+                    <div class="project-card-cta">
+                        <span>Click to view all images</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
@@ -1112,7 +1166,7 @@
         <span>Thank you! We'll contact you soon.</span>
     </div>
 
-    <script src="index.js?v=2026.03.05.2118"></script>
+    <script src="index.js?v=2026.03.06.2242"></script>
     <script src="chatbot.js"></script>
 </body>
 
