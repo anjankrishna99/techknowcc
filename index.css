@@ -2663,9 +2663,6 @@ body.scrolled-past .scroll-indicator {
     overflow: hidden;
     border-radius: 8px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    /* The SVG filter will be applied here via JS during transition */
-    filter: none;
-    transition: filter 0.1s;
 }
 
 .lightbox-img {
@@ -2683,6 +2680,12 @@ body.scrolled-past .scroll-indicator {
     height: 100%;
     opacity: 0;
     pointer-events: none;
+    -webkit-mask-image: radial-gradient(circle, black var(--dot-radius, 0px), transparent var(--dot-radius, 0px));
+    mask-image: radial-gradient(circle, black var(--dot-radius, 0px), transparent var(--dot-radius, 0px));
+    -webkit-mask-size: 40px 40px;
+    mask-size: 40px 40px;
+    -webkit-mask-position: center;
+    mask-position: center;
 }
 
 .lightbox-close {

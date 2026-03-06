@@ -752,7 +752,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxImgOverlay = document.getElementById('lightbox-img-overlay');
     const lightboxImgContainer = document.getElementById('lightbox-img-container');
-    const dispFilter = document.getElementById('disp-filter');
     const lightboxCaption = document.getElementById('lightbox-caption');
     const lightboxClose = document.getElementById('lightbox-close');
     const lightboxNext = document.getElementById('lightbox-next');
@@ -770,8 +769,7 @@ document.addEventListener('DOMContentLoaded', () => {
         lightboxImg.src = lightboxImages[lightboxIndex];
         lightboxImg.style.opacity = '1';
         lightboxImgOverlay.style.opacity = '0';
-        dispFilter.setAttribute('scale', '0');
-        lightboxImgContainer.style.filter = 'none';
+        lightboxImgOverlay.style.setProperty('--dot-radius', '0px');
 
         // Show next/prev buttons only if there are multiple images
         if (lightboxImages.length > 1) {
@@ -795,9 +793,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Prepare overlay image to be the NEXT image
         lightboxImgOverlay.src = nextSrc;
-
-        // Enable filter
-        lightboxImgContainer.style.filter = 'url(#liquid-filter)';
+        lightboxImgOverlay.style.setProperty('--dot-radius', '0px');
+        lightboxImgOverlay.style.opacity = '1';
 
         // Animation variables
         let startTime = null;
@@ -808,26 +805,26 @@ document.addEventListener('DOMContentLoaded', () => {
             const progress = (timestamp - startTime) / duration;
 
             if (progress < 1) {
-                // Ease in-out bell curve for the displacement scale (0 -> max -> 0)
-                const scale = Math.sin(progress * Math.PI) * 40; // max displacement 40
-                dispFilter.setAttribute('scale', scale.toString());
+                // Ease out cubic
+                const easeProgress = 1 - Math.pow(1 - progress, 3);
+                // Max radius to cover a 40x40 box completely is ~28.28px. 
+                // We go to 30px to ensure full coverage.
+                const currentRadius = easeProgress * 30;
 
-                // Crossfade around the middle
-                if (progress > 0.3) {
-                    lightboxImgOverlay.style.opacity = '1';
+                lightboxImgOverlay.style.setProperty('--dot-radius', `${currentRadius}px`);
+
+                // Fade out the base image slightly behind the dots
+                if (progress > 0.6) {
                     lightboxImg.style.opacity = '0';
                 }
 
                 requestAnimationFrame(animateFilter);
             } else {
                 // Finish transition
-                dispFilter.setAttribute('scale', '0');
-                lightboxImgContainer.style.filter = 'none';
-
-                // Swap current image array to the new base
                 lightboxImg.src = nextSrc;
                 lightboxImg.style.opacity = '1';
                 lightboxImgOverlay.style.opacity = '0';
+                lightboxImgOverlay.style.setProperty('--dot-radius', '0px');
 
                 isTransitioning = false;
             }
