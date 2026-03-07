@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commercial Projects — TECHKNOW Consultants and Constructions</title>
+    <meta name="description" content="View our portfolio of commercial buildings and corporate spaces.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css?v=2026.03.07.0950">
+    <style>
+        body {
+            padding-top: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="preloader">
+        <div class="spinner">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <header id="main-header" style="background: rgba(18, 20, 23, 0.95); backdrop-filter: blur(10px);">
+        <nav class="nav-container">
+            <a href="index.html#home" class="logo"><img src="assets/logo.png" alt="TECHKNOW" class="logo-img"><span
+                    class="logo-text-wrap"><span class="logo-text-main">TECHKNOW</span><span
+                        class="logo-text-sub">Consultants & Constructions</span></span></a>
+            <button class="hamburger" id="hamburger"
+                aria-label="Toggle menu"><span></span><span></span><span></span></button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">Why Choose Us</a></li>
+                <li><a href="index.html#services-section" class="nav-link">Services</a></li>
+                <li><a href="index.html#portfolio" class="nav-link active">Portfolio</a></li>
+                <li><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact Us</a></li>
+                <li><button class="btn btn-enquiry-nav" id="btn-enquiry-header">Enquiry</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="section gallery" style="min-height: calc(100vh - 80px);">
+        <div class="container">
+            <div class="section-header reveal">
+                <p class="section-tag">Commercial Portfolio</p>
+                <h2 class="section-title">Commercial <span class="text-gradient">Projects</span></h2>
+                <p class="section-desc">Modern office spaces, corporate buildings, and retail environments.</p>
+            </div>
+
+            <div class="project-cards-grid reveal">
+                <!-- Commercial Project 1 -->
+                <div class="project-card"
+                    onclick="openLightbox(['assets/commercial-building.jpg'], 'Commercial Plaza')">
+                    <div class="project-card-header">
+                        <h3>Commercial Plaza</h3><span class="project-card-count">1 Photo</span>
+                    </div>
+                    <div class="project-card-hero">
+                        <img src="assets/commercial-building.jpg" alt="Commercial Plaza" loading="lazy">
+                    </div>
+                    <div class="project-card-thumbs">
+                        <div class="thumb"><img src="assets/commercial-building.jpg" alt="" loading="lazy"></div>
+                    </div>
+                    <div class="project-card-cta">
+                        <span>View Project Gallery</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;"><a href="index.html#portfolio"
+                    class="btn btn-outline">Back to Categories</a></div>
+        </div>
+    </section>
+
+    <!-- ========== IMAGE LIGHTBOX MODAL ========== -->
+    <div class="lightbox-overlay" id="lightbox-modal">
+        <button class="lightbox-close" id="lightbox-close">&times;</button>
+        <div class="lightbox-content">
+            <button class="lightbox-nav lightbox-prev" id="lightbox-prev">&#10094;</button>
+            <div class="lightbox-img-wrapper" id="lightbox-img-wrapper">
+                <div class="lightbox-img-container" id="lightbox-img-container"><img src="" class="lightbox-img"
+                        id="lightbox-img"><img src="" class="lightbox-img lightbox-img-overlay"
+                        id="lightbox-img-overlay"></div>
+            </div>
+            <button class="lightbox-nav lightbox-next" id="lightbox-next">&#10095;</button>
+        </div>
+        <div class="lightbox-caption" id="lightbox-caption">Title</div>
+    </div>
+
+    <!-- ========== ENQUIRY MODAL (From Index) ========== -->
+    <div class="modal-overlay" id="enquiry-modal">
+        <div class="modal">
+            <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+            <div class="modal-header">
+                <h2>Quick <span class="text-gradient">Enquiry</span></h2>
+                <p>Fill in your details and we'll reach out within 24-48 hours.</p>
+            </div>
+            <form class="modal-form" id="enquiry-form-modal" action="https://formsubmit.co/info@techknowcc.in"
+                method="POST">
+                <input type="hidden" name="_next" value="https://techknowcc.in">
+                <div class="form-group"><label>Name</label><input type="text" name="name" required></div>
+                <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
+                <div class="form-group"><label>Mobile No.</label><input type="tel" name="phone"></div>
+                <button type="submit" class="btn btn-primary btn-submit">Send Enquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><a href="index.html#home" class="logo-footer"><img src="assets/logo.png"
+                            alt="TECHKNOW" class="logo-img logo-img-footer">
+                        <div class="logo-text-footer"><span class="logo-main-footer">TECHKNOW</span><span
+                                class="logo-sub-footer">CONSULTANTS & CONSTRUCTIONS</span></div>
+                    </a></div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#portfolio">Portfolio</a></li>
+                        <li><a href="index.html#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><a href="mailto:info@techknowcc.in">info@techknowcc.in</a></p>
+                    <p><a href="tel:+914046043493">040-46043493</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 TECHKNOW Consultants and Constructions.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="index.js?v=2026.03.07.0950"></script>
+</body>
+
+</html>

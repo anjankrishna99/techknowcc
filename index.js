@@ -62,25 +62,27 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.remove('scrolled-past');
         }
 
-        // Update active nav link based on scroll position
+        // Update active nav link based on scroll position only if sections exist
         const sections = document.querySelectorAll('section[id]');
-        let currentSection = 'home'; // Default to home
+        if (sections.length > 0) {
+            let currentSection = 'home'; // Default to home
 
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 120;
-            // Only update currentSection if the section has an actual height/offset mapped.
-            // When page loads, some sections might initially have offsetTop 0 before layout completes.
-            if (scrollY >= sectionTop && (section.offsetTop > 0 || section.getAttribute('id') === 'home')) {
-                currentSection = section.getAttribute('id');
-            }
-        });
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                // Only update currentSection if the section has an actual height/offset mapped.
+                // When page loads, some sections might initially have offsetTop 0 before layout completes.
+                if (scrollY >= sectionTop && (section.offsetTop > 0 || section.getAttribute('id') === 'home')) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
 
-        navItems.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSection}`) {
-                link.classList.add('active');
-            }
-        });
+            navItems.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
 
         // Update scroll progress
         updateScrollProgress();
