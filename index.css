@@ -1793,34 +1793,32 @@ h4 {
 }
 
 .project-card-cta {
-    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.85);
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 14px 18px 18px;
-    margin: 0 18px 18px;
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    color: var(--c-text);
+    padding: 12px 28px;
+    background: var(--c-primary);
+    color: #121417;
+    border: none;
     font-family: var(--font-heading);
-    font-size: 0.92rem;
-    font-weight: 600;
-    border-radius: 12px;
-    transition: all 0.3s ease;
-}
-
-.project-card-cta svg {
-    transition: transform 0.3s ease;
+    font-size: 0.95rem;
+    font-weight: 700;
+    border-radius: 50px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s var(--ease-out);
+    z-index: 10;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
 }
 
 .project-card:hover .project-card-cta {
-    background: var(--c-primary);
-    color: #121417;
-    border-color: var(--c-primary);
-}
-
-.project-card:hover .project-card-cta svg {
-    transform: translateX(4px);
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
 }
 
 /* Responsive: 2 columns on tablets */
