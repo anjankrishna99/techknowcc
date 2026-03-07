@@ -2824,11 +2824,19 @@ body.scrolled-past .scroll-indicator {
 
 .project-card-hero {
     height: 100%;
+    width: 100%;
     border-radius: 16px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
 }
 
 .project-card-hero img {
     border-radius: 16px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* Hide Lightbox Caption Text */
@@ -2907,4 +2915,5 @@ but since hero is 100% these shouldn't visibly protrude much */
 .project-card-thumbs {
     display: none !important;
 }
+
 
