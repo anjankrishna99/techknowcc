@@ -261,26 +261,21 @@ h4 {
 }
 
 .btn-enquiry-nav {
-    border: 1.2px solid rgba(0, 0, 0, 0.2);
-    background: transparent;
-    color: var(--c-text);
+    background: var(--c-primary);
+    color: #121417;
+    border: none;
     padding: 10px 24px;
     border-radius: 50px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 0.85rem;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 20px rgba(140, 123, 98, 0.4);
     transition: all 0.3s;
 }
 
 .btn-enquiry-nav:hover {
-    border-color: var(--c-accent);
-    box-shadow: 0 0 20px var(--c-accent-glow);
+    background: var(--c-primary-light);
     transform: translateY(-2px);
-}
-
-.btn-enquiry-nav:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 0 30px var(--c-accent-glow);
+    box-shadow: 0 8px 30px rgba(140, 123, 98, 0.4);
 }
 
 @keyframes glow-pulse {
@@ -1348,7 +1343,7 @@ h4 {
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
 }
 
 .form-group label {
@@ -1365,7 +1360,7 @@ h4 {
 .form-group select,
 .form-group textarea {
     width: 100%;
-    padding: 14px 18px;
+    padding: 10px 14px;
     font-family: var(--font-body);
     font-size: 0.92rem;
     color: var(--c-text);
@@ -1409,7 +1404,7 @@ h4 {
 
 .form-group textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 80px;
 }
 
 .form-group select {
@@ -1940,7 +1935,7 @@ h4 {
 .modal {
     background: var(--c-bg);
     border-radius: var(--radius-xl);
-    padding: 48px;
+    padding: 32px 40px;
     max-width: 520px;
     width: 100%;
     max-height: 90vh;
