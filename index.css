@@ -1687,19 +1687,21 @@ h4 {
 }
 
 .project-card {
-    background: #fff;
+    background: var(--c-bg-alt);
+    border: 1px solid var(--c-border);
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.07), 0 0 0 1px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+    transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), border-color 0.35s var(--ease-out);
     display: flex;
     flex-direction: column;
 }
 
 .project-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+    border-color: var(--c-primary-light);
 }
 
 .project-card-header {
@@ -1721,7 +1723,7 @@ h4 {
     font-size: 0.82rem;
     color: var(--c-text-secondary);
     font-weight: 500;
-    background: rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.05);
     padding: 4px 12px;
     border-radius: 20px;
     white-space: nowrap;
@@ -1776,7 +1778,7 @@ h4 {
 }
 
 .project-card-thumbs .thumb-more {
-    background: linear-gradient(135deg, var(--c-accent), var(--c-accent-dark, #1a6b3c));
+    background: linear-gradient(135deg, var(--c-primary), var(--c-primary-light));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1797,13 +1799,14 @@ h4 {
     gap: 8px;
     padding: 14px 18px 18px;
     margin: 0 18px 18px;
-    background: var(--c-accent);
-    color: #fff;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: var(--c-text);
     font-family: var(--font-heading);
     font-size: 0.92rem;
     font-weight: 600;
     border-radius: 12px;
-    transition: background 0.3s ease, transform 0.2s ease;
+    transition: all 0.3s ease;
 }
 
 .project-card-cta svg {
@@ -1811,7 +1814,9 @@ h4 {
 }
 
 .project-card:hover .project-card-cta {
-    background: var(--c-accent-dark, #1a6b3c);
+    background: var(--c-primary);
+    color: #121417;
+    border-color: var(--c-primary);
 }
 
 .project-card:hover .project-card-cta svg {
