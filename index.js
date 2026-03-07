@@ -64,11 +64,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Update active nav link based on scroll position
         const sections = document.querySelectorAll('section[id]');
-        let currentSection = '';
+        let currentSection = 'home'; // Default to home
 
         sections.forEach(section => {
             const sectionTop = section.offsetTop - 120;
-            if (scrollY >= sectionTop) {
+            // Only update currentSection if the section has an actual height/offset mapped.
+            // When page loads, some sections might initially have offsetTop 0 before layout completes.
+            if (scrollY >= sectionTop && (section.offsetTop > 0 || section.getAttribute('id') === 'home')) {
                 currentSection = section.getAttribute('id');
             }
         });
