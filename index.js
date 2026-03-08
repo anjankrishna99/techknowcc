@@ -665,13 +665,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ---------- Mobile Dropdown Toggle ----------
     const dropdownToggle = document.querySelector('.dropdown-toggle');
-    const dropdown = document.querySelector('.dropdown');
+    const dropdown = document.querySelector('.nav-item-dropdown');
 
     if (dropdownToggle) {
         dropdownToggle.addEventListener('click', (e) => {
             if (window.innerWidth < 992) {
-                e.preventDefault();
-                dropdown.classList.toggle('active');
+                const href = dropdownToggle.getAttribute('href');
+                // Only prevent default and toggle if it's mobile and has a dropdown
+                if (href.includes('#portfolio') || window.innerWidth < 992) {
+                    e.preventDefault();
+                    dropdown.classList.toggle('active');
+                }
             }
         });
     }

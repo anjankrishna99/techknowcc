@@ -431,6 +431,103 @@ h4 {
     z-index: 1001;
 }
 
+/* Nav Dropdown */
+.nav-item-dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.dropdown-icon {
+    font-size: 0.7rem;
+    transition: transform 0.3s var(--ease-out);
+}
+
+.nav-item-dropdown:hover .dropdown-icon {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+    background: var(--c-glass);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-md);
+    min-width: 220px;
+    padding: 12px 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s var(--ease-out);
+    box-shadow: var(--shadow-md);
+    list-style: none;
+    z-index: 1000;
+}
+
+.nav-item-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.dropdown-item {
+    padding: 0;
+}
+
+.dropdown-link {
+    display: block;
+    padding: 10px 24px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--c-text-secondary);
+    transition: all 0.3s var(--ease-out);
+}
+
+.dropdown-link:hover {
+    background: rgba(47, 79, 79, 0.08);
+    color: var(--c-primary);
+    padding-left: 28px;
+}
+
+@media (max-width: 991px) {
+    .dropdown-menu {
+        position: static;
+        transform: none;
+        background: transparent;
+        backdrop-filter: none;
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 1;
+        visibility: visible;
+        transition: max-height 0.4s var(--ease-out);
+        margin-left: 20px;
+    }
+
+    .dropdown.active .dropdown-menu {
+        max-height: 500px;
+    }
+
+    .dropdown-link {
+        padding: 8px 16px;
+        color: var(--c-text-light);
+    }
+
+    .dropdown-icon {
+        color: inherit;
+    }
+}
+
 .hamburger span {
     width: 24px;
     height: 2px;
