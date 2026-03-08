@@ -333,20 +333,20 @@ h4 {
 }
 
 .logo-img {
-    height: 48px;
-    width: 48px;
+    height: 64px;
+    width: 64px;
     object-fit: contain;
     border-radius: 50%;
     background: #fff;
     border: 2px solid rgba(0, 0, 0, 0.1);
-    padding: 4px;
+    padding: 2px;
     transition: all 0.4s var(--ease-out);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 #main-header.scrolled .logo-img {
-    height: 40px;
-    width: 40px;
+    height: 48px;
+    width: 48px;
 }
 
 .logo-text-wrap {
@@ -359,7 +359,7 @@ h4 {
 
 .logo-text-main {
     font-family: var(--font-heading);
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: var(--c-text);
     letter-spacing: 0.08em;
@@ -367,19 +367,19 @@ h4 {
 
 .logo-text-sub {
     font-family: var(--font-body);
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     font-weight: 500;
     color: var(--c-text-secondary);
     letter-spacing: 0.04em;
 }
 
 #main-header.scrolled .logo-text-main {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: var(--c-text);
 }
 
 #main-header.scrolled .logo-text-sub {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     color: var(--c-text-secondary);
 }
 
