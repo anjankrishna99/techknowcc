@@ -773,8 +773,12 @@ h4 {
 }
 
 #portfolio.hidden-section.section-visible {
-    padding-top: 40px !important;
+    padding-top: 100px !important;
     padding-bottom: 40px !important;
+}
+
+#portfolio .section-header {
+    margin-bottom: 20px;
 }
 
 .section.contact {
