@@ -31,7 +31,7 @@
         },
         location: 'SMR Vinay Sky City, Opp. The Hyderabad Public School, Ramanthapur, Hyderabad-500013, India',
         email: 'info@techknowcc.in',
-        phone: '040-46043493 (Landline) | +91 9849050333 | +91 9346597177',
+        phone: '040-46043493 (Landline) | +91-984905033 | +91 9346597177',
         hours: 'Mon-Fri: 9 AM - 5 PM | Sat: 9 AM - 3 PM | Sun: Closed',
         experience: '35+ years',
         projects: '750+ completed projects'
