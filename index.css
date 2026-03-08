@@ -772,6 +772,11 @@ h4 {
     background: transparent !important;
 }
 
+#portfolio.hidden-section.section-visible {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+}
+
 .section.contact {
     background: rgba(22, 25, 28, 0.94) url('assets/stone-texture.png') repeat fixed;
     background-size: 600px;
