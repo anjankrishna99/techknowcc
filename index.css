@@ -1688,6 +1688,11 @@ h4 {
     background: transparent !important;
 }
 
+.portfolio-page {
+    padding-top: 100px !important;
+    padding-bottom: 60px !important;
+}
+
 .project-cards-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
