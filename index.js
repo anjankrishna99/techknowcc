@@ -860,11 +860,15 @@ document.addEventListener('DOMContentLoaded', () => {
 if (history.scrollRestoration) {
     history.scrollRestoration = 'manual';
 }
-window.addEventListener('beforeunload', function() {
-    window.scrollTo(0, 0);
-});
-window.addEventListener('load', function() {
-    if (!window.location.hash) {
-        window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+
+window.addEventListener('DOMContentLoaded', function() {
+    if (window.location.hash) {
+        // Strip the hash from the URL so the browser doesn't scroll to it
+        history.replaceState(null, null, window.location.pathname + window.location.search);
     }
+    window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+});
+
+window.addEventListener('load', function() {
+    window.scrollTo({top: 0, left: 0, behavior: 'instant'});
 });
