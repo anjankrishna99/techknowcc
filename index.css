@@ -10,32 +10,32 @@
     --c-primary-light: #A08F74;
     --c-primary-lighter: #B2A28A;
     --c-accent: #8C7B62;
-    --c-accent-glow: rgba(140, 123, 98, 0.35);
-    --c-bg: #D9D9D9;
-    --c-bg-alt: #E2E2E2;
+    --c-accent-glow: rgba(140, 123, 98, 0.4);
+    --c-bg: #FFFFFF;
+    --c-bg-alt: #F2F4F8;
     --c-bg-dark: #121417;
-    --c-text: #1a1d21;
-    --c-text-secondary: #3a3e45;
-    --c-text-light: #f0f2f5;
-    --c-border: rgba(0, 0, 0, 0.1);
-    --c-glass: rgba(192, 192, 192, 0.78);
-    --c-glass-border: rgba(255, 255, 255, 0.22);
+    --c-text: #1C1E21;
+    --c-text-secondary: #4A4D53;
+    --c-text-light: #F4F6F8;
+    --c-border: rgba(255, 255, 255, 0.5);
+    --c-glass: rgba(255, 255, 255, 0.65);
+    --c-glass-border: rgba(255, 255, 255, 0.4);
 
     --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
-    --ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
-    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
-    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.14);
-    --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.18);
+    --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 12px 24px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 24px 48px rgba(0, 0, 0, 0.12);
+    --shadow-xl: 0 32px 64px rgba(0, 0, 0, 0.16);
 
     --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 20px;
-    --radius-xl: 28px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
 }
 
 /* ---------- Reset & Base ---------- */
@@ -57,12 +57,12 @@ html {
 body {
     font-family: var(--font-body);
     color: var(--c-text);
-    background: rgba(230, 230, 230, 0.78) url('assets/stone-texture.png') repeat fixed;
+    background: rgba(248, 250, 252, 0.90) url('assets/stone-texture.png') repeat fixed;
     background-size: 600px;
-    background-blend-mode: multiply;
+    background-blend-mode: luminosity;
     line-height: 1.6;
     overflow-x: hidden;
-    animation: fadeIn 0.8s var(--ease-out);
+    animation: fadeIn 1.2s var(--ease-out);
     transition: opacity 0.4s var(--ease-out);
 }
 
@@ -150,10 +150,13 @@ body.page-exit {
 @keyframes fadeIn {
     from {
         opacity: 0;
+        filter: blur(12px);
+        transform: translateY(20px);
     }
-
     to {
         opacity: 1;
+        filter: blur(0);
+        transform: translateY(0);
     }
 }
 
@@ -236,16 +239,18 @@ h4 {
 }
 
 .btn-primary {
-    background: var(--c-primary);
-    color: #121417;
-    box-shadow: 0 4px 20px rgba(140, 123, 98, 0.4);
-    font-weight: 700;
+    background: linear-gradient(135deg, var(--c-primary), var(--c-primary-light));
+    color: #FFFFFF;
+    font-weight: 600;
+    box-shadow: 0 8px 24px var(--c-accent-glow);
+    border: 1px solid rgba(255,255,255,0.2);
 }
 
 .btn-primary:hover {
-    background: var(--c-primary-light);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(140, 123, 98, 0.4);
+    background: linear-gradient(135deg, var(--c-primary-light), var(--c-primary-lighter));
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 16px 32px var(--c-accent-glow);
+    color: #FFFFFF;
 }
 
 .btn-outline {
@@ -262,20 +267,20 @@ h4 {
 
 .btn-enquiry-nav {
     background: var(--c-primary);
-    color: #121417;
+    color: #1A1A1A;
     border: none;
     padding: 10px 24px;
     border-radius: 50px;
-    font-weight: 700;
+    font-weight: 600;
     font-size: 0.85rem;
-    box-shadow: 0 4px 20px rgba(140, 123, 98, 0.4);
+    box-shadow: 0 2px 8px rgba(140, 123, 98, 0.2);
     transition: all 0.3s;
 }
 
 .btn-enquiry-nav:hover {
     background: var(--c-primary-light);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(140, 123, 98, 0.4);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(140, 123, 98, 0.25);
 }
 
 @keyframes glow-pulse {
@@ -304,9 +309,9 @@ h4 {
 #main-header.scrolled {
     padding: 10px 0;
     background: var(--c-glass);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    border-bottom: 1px solid var(--c-border);
+    backdrop-filter: blur(32px) saturate(200%);
+    -webkit-backdrop-filter: blur(32px) saturate(200%);
+    border-bottom: 1px solid var(--c-glass-border);
     box-shadow: var(--shadow-sm);
 }
 
@@ -586,7 +591,7 @@ h4 {
 .hero-gradient {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0) 15%, rgba(255, 255, 255, 0) 80%, rgba(217, 217, 217, 0.8) 100%);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 70%, var(--c-bg) 100%);
     z-index: 2;
 }
 
@@ -879,9 +884,7 @@ h4 {
 }
 
 .section.contact {
-    background: rgba(22, 25, 28, 0.94) url('assets/stone-texture.png') repeat fixed;
-    background-size: 600px;
-    background-blend-mode: multiply;
+    background: var(--c-bg-dark);
     color: var(--c-text-light);
 }
 
@@ -983,10 +986,19 @@ h4 {
 
 .value-card {
     padding: 24px 20px;
-    background: var(--c-bg-alt);
+    background: var(--c-glass);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
     border-radius: var(--radius-md);
-    border: 1px solid var(--c-border);
-    transition: all 0.4s var(--ease-out);
+    border: 1px solid var(--c-glass-border);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.03);
+    transition: all 0.5s var(--ease-spring);
+}
+
+.value-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(255,255,255,0.8);
 }
 
 .value-card:hover {
@@ -1044,13 +1056,23 @@ h4 {
 
 .service-card {
     position: relative;
-    background: var(--c-bg);
+    background: var(--c-glass);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
     border-radius: var(--radius-lg);
     padding: 40px 32px;
-    border: 1px solid var(--c-border);
-    transition: all 0.5s var(--ease-out);
+    border: 1px solid var(--c-glass-border);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.03);
+    transition: all 0.6s var(--ease-spring);
     cursor: default;
     overflow: hidden;
+    transform: translateZ(0);
+}
+
+.service-card:hover {
+    transform: translateY(-12px) scale(1.02) translateZ(0);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(255,255,255,0.8);
 }
 
 .service-card::before {
@@ -1124,12 +1146,21 @@ h4 {
     border-radius: var(--radius-lg);
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.5s var(--ease-out), box-shadow 0.5s var(--ease-out);
-    background: var(--c-bg-alt);
-    border: 1px solid var(--c-border);
+    transition: all 0.6s var(--ease-spring);
+    background: var(--c-glass);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    border: 1px solid var(--c-glass-border);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.03);
     display: flex;
     flex-direction: column;
     height: 100%;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(255,255,255,0.8);
 }
 
 .portfolio-card:hover {
@@ -1237,9 +1268,7 @@ h4 {
 
 /* ---------- TESTIMONIALS ---------- */
 .section.testimonials {
-    background: rgba(192, 192, 192, 0.88) url('assets/stone-texture.png') repeat fixed;
-    background-size: 600px;
-    background-blend-mode: multiply;
+    background: var(--c-bg-alt);
 }
 
 /* Slider Container */
@@ -1270,19 +1299,27 @@ h4 {
 
 /* Card */
 .testimonial-card {
-    background: var(--c-bg);
+    background: var(--c-glass);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
     border-radius: var(--radius-lg);
     padding: 32px;
-    border: 1px solid var(--c-border);
-    transition: all 0.4s var(--ease-out);
+    border: 1px solid var(--c-glass-border);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.03);
+    transition: all 0.5s var(--ease-spring);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
-    /* Carousel Props */
     flex: 0 0 calc(33.333% - 16px);
     scroll-snap-align: start;
     min-width: 300px;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(255,255,255,0.8);
 }
 
 /* Navigation Buttons */
