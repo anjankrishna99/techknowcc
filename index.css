@@ -57,9 +57,9 @@ html {
 body {
     font-family: var(--font-body);
     color: var(--c-text);
-    background: rgba(248, 250, 252, 0.90) url('assets/stone-texture.png') repeat fixed;
+    background: rgba(245, 245, 245, 0.50) url('assets/stone-texture.png') repeat fixed;
     background-size: 600px;
-    background-blend-mode: luminosity;
+    background-blend-mode: multiply;
     line-height: 1.6;
     overflow-x: hidden;
     animation: fadeIn 1.2s var(--ease-out);
