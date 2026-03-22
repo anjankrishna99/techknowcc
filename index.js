@@ -704,130 +704,137 @@ document.addEventListener('DOMContentLoaded', () => {
     let lightboxIndex = 0;
     let lightboxImages = [];
     const lightboxModal = document.getElementById('lightbox-modal');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxImgOverlay = document.getElementById('lightbox-img-overlay');
-    const lightboxImgContainer = document.getElementById('lightbox-img-container');
+    const lightboxTrack = document.getElementById('lightbox-track');
     const lightboxCaption = document.getElementById('lightbox-caption');
     const lightboxClose = document.getElementById('lightbox-close');
     const lightboxNext = document.getElementById('lightbox-next');
     const lightboxPrev = document.getElementById('lightbox-prev');
-    let isTransitioning = false;
 
-    // Make openLightbox globally accessible
     window.openLightbox = function (images, caption) {
         if (!images || images.length === 0) return;
         lightboxImages = images;
-        lightboxIndex = 0;
-        lightboxCaption.textContent = caption;
-
-        // Initial setup
-        lightboxImg.src = lightboxImages[lightboxIndex];
-        lightboxImg.style.opacity = '1';
-        lightboxImgOverlay.style.opacity = '0';
-        lightboxImgOverlay.style.setProperty('--dot-radius', '0px');
-
-        // Show next/prev buttons only if there are multiple images
-        if (lightboxImages.length > 1) {
-            lightboxNext.style.display = 'flex';
-            lightboxPrev.style.display = 'flex';
-        } else {
-            lightboxNext.style.display = 'none';
-            lightboxPrev.style.display = 'none';
+        
+        if (lightboxCaption) {
+            lightboxCaption.textContent = caption;
         }
 
-        lightboxModal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Prevent scrolling
+        if (lightboxTrack) {
+            lightboxTrack.innerHTML = ''; 
+            // Create 3 identical sets of images for a seamless infinite scroll runway
+            const tripleImages = [...lightboxImages, ...lightboxImages, ...lightboxImages];
+            
+            tripleImages.forEach((src, idx) => {
+                const img = document.createElement('img');
+                img.src = src;
+                img.alt = 'Gallery ' + (idx + 1);
+                lightboxTrack.appendChild(img);
+            });
+            
+            // Start the index right in the middle set
+            lightboxIndex = lightboxImages.length;
+            
+            // Allow DOM to paint, then instantly scroll to middle set
+            setTimeout(() => {
+                updateLightboxTrack(false);
+            }, 10);
+        }
+
+        if (lightboxImages.length > 1) {
+            if(lightboxNext) lightboxNext.style.display = 'flex';
+            if(lightboxPrev) lightboxPrev.style.display = 'flex';
+        } else {
+            if(lightboxNext) lightboxNext.style.display = 'none';
+            if(lightboxPrev) lightboxPrev.style.display = 'none';
+        }
+
+        if(lightboxModal) {
+            lightboxModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
     };
 
-    function updateLightboxImage(direction = 'next') {
-        if (isTransitioning) return;
-        isTransitioning = true;
-
-        const currentSrc = lightboxImages[(lightboxIndex - (direction === 'next' ? 1 : -1) + lightboxImages.length) % lightboxImages.length];
-        const nextSrc = lightboxImages[lightboxIndex];
-
-        // Prepare overlay image to be the NEXT image
-        lightboxImgOverlay.src = nextSrc;
-        lightboxImgOverlay.style.setProperty('--dot-radius', '0px');
-        lightboxImgOverlay.style.opacity = '1';
-
-        // Animation variables
-        let startTime = null;
-        const duration = 1200; // 1200ms transition
-
-        function animateFilter(timestamp) {
-            if (!startTime) startTime = timestamp;
-            const progress = (timestamp - startTime) / duration;
-
-            if (progress < 1) {
-                // Ease out cubic
-                const easeProgress = 1 - Math.pow(1 - progress, 3);
-                // Max radius to cover a 40x40 box completely is ~28.28px. 
-                // We go to 30px to ensure full coverage.
-                const currentRadius = easeProgress * 30;
-
-                lightboxImgOverlay.style.setProperty('--dot-radius', `${currentRadius}px`);
-
-                // Fade out the base image slightly behind the dots
-                if (progress > 0.6) {
-                    lightboxImg.style.opacity = '0';
-                }
-
-                requestAnimationFrame(animateFilter);
-            } else {
-                // Finish transition
-                lightboxImg.src = nextSrc;
-                lightboxImg.style.opacity = '1';
-                lightboxImgOverlay.style.opacity = '0';
-                lightboxImgOverlay.style.setProperty('--dot-radius', '0px');
-
-                isTransitioning = false;
-            }
-        }
-
-        requestAnimationFrame(animateFilter);
+    function updateLightboxTrack(smooth = true) {
+        if (!lightboxTrack) return;
+        const width = lightboxTrack.clientWidth;
+        lightboxTrack.scrollTo({
+            left: lightboxIndex * width,
+            behavior: smooth ? 'smooth' : 'instant'
+        });
     }
 
+    if(lightboxNext) lightboxNext.addEventListener('click', (e) => {
+        e.stopPropagation();
+        lightboxIndex++;
+        updateLightboxTrack(true);
+    });
+
+    if(lightboxPrev) lightboxPrev.addEventListener('click', (e) => {
+        e.stopPropagation();
+        lightboxIndex--;
+        updateLightboxTrack(true);
+    });
+
     function closeLightbox() {
-        lightboxModal.classList.remove('active');
+        if(lightboxModal) lightboxModal.classList.remove('active');
         document.body.style.overflow = '';
     }
 
-    // Close logic
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightboxModal.addEventListener('click', (e) => {
-        // Close if clicking outside the image or navigation
+    if(lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    
+    if(lightboxModal) lightboxModal.addEventListener('click', (e) => {
         if (e.target === lightboxModal || e.target.classList.contains('lightbox-content') || e.target.classList.contains('lightbox-img-wrapper')) {
             closeLightbox();
         }
     });
 
-    // Nav logic
-    lightboxNext.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (isTransitioning) return;
-        lightboxIndex = (lightboxIndex + 1) % lightboxImages.length;
-        updateLightboxImage('next');
-    });
+    // Handle touchpad gestures (horizontal scroll update index)
+    if(lightboxTrack) {
+        let scrollTimeout;
+        lightboxTrack.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            
+            // After scrolling finishes, check if we need to instantly warp to keep the runway infinite
+            scrollTimeout = setTimeout(() => {
+                const width = lightboxTrack.clientWidth;
+                lightboxIndex = Math.round(lightboxTrack.scrollLeft / width);
+                
+                const setLength = lightboxImages.length;
+                if (!setLength) return;
 
-    lightboxPrev.addEventListener('click', (e) => {
-        e.stopPropagation();
-        if (isTransitioning) return;
-        lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
-        updateLightboxImage('prev');
-    });
+                // If scrolled past the last item of the middle set into the 3rd set runway
+                if (lightboxIndex >= setLength * 2 - 1) {
+                    lightboxIndex -= setLength;
+                    updateLightboxTrack(false); // Instant warp back
+                }
+                // If scrolled back past the first item of the middle set into the 1st set runway
+                else if (lightboxIndex <= 0) {
+                    lightboxIndex += setLength;
+                    updateLightboxTrack(false); // Instant warp forward
+                }
+
+            }, 250); // Wait until scroll physics totally settle
+        }, { passive: true });
+        
+        // vertical to horizontal map
+        lightboxTrack.addEventListener('wheel', (e) => {
+            if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+                e.preventDefault();
+                lightboxTrack.scrollBy({ left: e.deltaY, behavior: 'auto' });
+            }
+        }, { passive: false });
+    }
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
-        if (lightboxModal.classList.contains('active')) {
+        if (lightboxModal && lightboxModal.classList.contains('active')) {
             if (e.key === 'Escape') closeLightbox();
-            if (e.key === 'ArrowRight' && lightboxImages.length > 1 && !isTransitioning) {
-                lightboxIndex = (lightboxIndex + 1) % lightboxImages.length;
-                updateLightboxImage('next');
+            if (e.key === 'ArrowRight' && lightboxImages.length > 1) {
+                lightboxIndex++;
+                updateLightboxTrack(true);
             }
-            if (e.key === 'ArrowLeft' && lightboxImages.length > 1 && !isTransitioning) {
-                lightboxIndex = (lightboxIndex - 1 + lightboxImages.length) % lightboxImages.length;
-                updateLightboxImage('prev');
+            if (e.key === 'ArrowLeft' && lightboxImages.length > 1) {
+                lightboxIndex--;
+                updateLightboxTrack(true);
             }
         }
     });
