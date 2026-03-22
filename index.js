@@ -854,3 +854,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
+
+// Force scroll to top on page refresh
+if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+}
+window.addEventListener('beforeunload', function() {
+    window.scrollTo(0, 0);
+});
+window.addEventListener('load', function() {
+    if (!window.location.hash) {
+        window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+    }
+});
