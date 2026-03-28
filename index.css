@@ -576,7 +576,7 @@ h4 {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: url('assets/hero-minimal.png') no-repeat center center;
+    background: url('assets/hero-minimal-blue.png') no-repeat center center;
     background-size: cover;
 }
 
@@ -584,7 +584,7 @@ h4 {
     content: '';
     position: absolute;
     inset: 0;
-    background: rgba(255, 255, 255, 0.15); /* Light breathable overlay */
+    background: transparent; /* Remove white wash */
     z-index: 1;
 }
 
