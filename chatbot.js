@@ -549,9 +549,7 @@
                 'Email: ' + customerInfo.email + '\n' +
                 'Type: ' + customerInfo.type + '\n' +
                 'Phone: ' + customerInfo.phone + '\n\n' +
-                context +
-                'Chat Summary:\n' + summary + '\n\n' +
-                'I\'d like to get a pricing estimate/details.'
+                summary
             );
             var waUrl = 'https://wa.me/919346597177?text=' + waText;
             var smsUrl1 = 'sms:+919346597177?body=' + waText;
@@ -616,17 +614,20 @@
     }
 
     function generateSummary() {
-        var userMsgs = chatHistory
-            .filter(function (m) { return m.role === 'user'; })
-            .map(function (m) { return m.text; });
-
         var tags = Array.from(customerTags);
-        var summary = '';
-
-        if (tags.length > 0) {
-            var lookingFor = tags.map(function(t) { 
-                return t.replace('interested in ', '').replace('asked: "undefined"', ''); 
-            }).filter(Boolean).join(', ');
+        var services = [];
+        
+        for (var i = 0; i < tags.length; i++) {
+            var t = tags[i];
+            if (t.indexOf('interested in ') === 0 && t !== 'interested in services overview') {
+                services.push(t.replace('interested in ', ''));
+            }
+        }
+        
+        var lookingFor = services.length > 0 ? services.join(', ') : 'your services';
+        
+        return 'I am looking for "' + lookingFor + '". Would like to discuss more about this.';
+    }).filter(Boolean).join(', ');
             summary += 'Customer is looking for: ' + lookingFor + '\n';
         }
 
