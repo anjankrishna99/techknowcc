@@ -334,17 +334,26 @@
         onboardingStep = 0;
     }
 
-    function handleOnboarding(text) {
+        function handleOnboarding(text) {
+        var input = text.trim();
         switch (onboardingStep) {
             case 0: // Name
-                customerInfo.name = text.trim();
+                if (input.length < 2 || !/^[A-Za-z\s\.\-]+$/.test(input)) {
+                    showTypingThen(function () { addBotMessage("Sorry, please enter a valid name using only letters."); });
+                    return;
+                }
+                customerInfo.name = input;
                 onboardingStep = 1;
                 showTypingThen(function () {
                     addBotMessage('Nice to meet you, ' + customerInfo.name + '! What is your email address?');
                 });
                 break;
             case 1: // Email
-                customerInfo.email = text.trim();
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input)) {
+                    showTypingThen(function () { addBotMessage("Please provide a valid email address (e.g., name@example.com)."); });
+                    return;
+                }
+                customerInfo.email = input;
                 onboardingStep = 2;
                 showTypingThen(function () {
                     addBotMessage('Got it. Are you enquiring as a company or as an individual?');
@@ -355,7 +364,11 @@
                 });
                 break;
             case 2: // Company / Individual
-                customerInfo.type = text.trim();
+                if (input.length < 2) {
+                    showTypingThen(function () { addBotMessage("Please tell us if you are enquiring as a Company or Individual."); });
+                    return;
+                }
+                customerInfo.type = input;
                 onboardingStep = 3;
                 hideQuickReplies();
                 showTypingThen(function () {
@@ -363,7 +376,12 @@
                 });
                 break;
             case 3: // Phone
-                customerInfo.phone = text.trim();
+                var phoneDigits = input.replace(/[^0-9\+]/g, '');
+                if (phoneDigits.length < 7 || phoneDigits.length > 20) {
+                    showTypingThen(function () { addBotMessage("Please enter a valid phone number."); });
+                    return;
+                }
+                customerInfo.phone = input;
                 customerInfo.timestamp = new Date().toLocaleString('en-IN', {
                     dateStyle: 'medium',
                     timeStyle: 'short'
