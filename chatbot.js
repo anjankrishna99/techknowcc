@@ -334,7 +334,7 @@
         onboardingStep = 0;
     }
 
-        function handleOnboarding(text) {
+            function handleOnboarding(text) {
         var input = text.trim();
         switch (onboardingStep) {
             case 0: // Name
@@ -368,17 +368,37 @@
                     showTypingThen(function () { addBotMessage("Please tell us if you are enquiring as a Company or Individual."); });
                     return;
                 }
-                customerInfo.type = input;
-                onboardingStep = 3;
                 hideQuickReplies();
+                
+                if (input.toLowerCase() === 'company') {
+                    customerInfo.type = 'Company';
+                    onboardingStep = 2.5;
+                    showTypingThen(function () {
+                        addBotMessage('Understood. What is the name of your company?');
+                    });
+                } else {
+                    customerInfo.type = input;
+                    onboardingStep = 3;
+                    showTypingThen(function () {
+                        addBotMessage('Thank you. Lastly, what is your contact number? (Please include your country code, e.g., +91)');
+                    });
+                }
+                break;
+            case 2.5: // Company Name
+                if (input.length < 2 || !/^[A-Za-z0-9\s\.\-\&]+$/.test(input)) {
+                    showTypingThen(function () { addBotMessage("Please enter a valid company name."); });
+                    return;
+                }
+                customerInfo.type = 'Company (' + input + ')';
+                onboardingStep = 3;
                 showTypingThen(function () {
-                    addBotMessage('Thank you. Lastly, what is your contact number?');
+                    addBotMessage('Thank you. Lastly, what is your contact number? (Please include your country code, e.g., +91)');
                 });
                 break;
             case 3: // Phone
                 var phoneDigits = input.replace(/[^0-9\+]/g, '');
                 if (phoneDigits.length < 7 || phoneDigits.length > 20) {
-                    showTypingThen(function () { addBotMessage("Please enter a valid phone number."); });
+                    showTypingThen(function () { addBotMessage("Please enter a valid phone number including the country code (e.g., +91)."); });
                     return;
                 }
                 customerInfo.phone = input;
