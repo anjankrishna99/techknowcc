@@ -578,7 +578,7 @@ h4 {
     z-index: 0;
     background: url('assets/Hero_new.jpg') no-repeat center center;
     background-size: cover;
-    transform: scaleX(-1); /* Mirror to move structure to the right */
+    /* Removed transform: scaleX(-1) to move structure back to the left */
 }
 
 .hero-bg::after {
@@ -605,8 +605,10 @@ h4 {
 .hero-content {
     position: relative;
     z-index: 1;
-    text-align: center;
+    text-align: right; /* Align text to the right */
     max-width: 900px;
+    margin-left: auto; /* Push to the right */
+    margin-right: 0;
 }
 
 .hero-tag {
@@ -635,9 +637,10 @@ h4 {
 
 .hero-desc {
     font-size: clamp(1rem, 2vw, 1.2rem);
-    color: #ffffff; /* White description */
+    color: #ffffff;
     max-width: 650px;
-    margin: 0 auto 20px;
+    margin-left: auto; /* Keep right aligned */
+    margin-right: 0;
     line-height: 1.8;
     font-weight: 500;
     opacity: 0.95;
@@ -647,7 +650,7 @@ h4 {
 .hero-actions {
     display: flex;
     gap: 16px;
-    justify-content: center;
+    justify-content: flex-end; /* Align buttons to the right */
     flex-wrap: wrap;
     margin-bottom: 20px;
 }
