@@ -59,7 +59,7 @@
             keywords: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening', 'namaste'],
             handler: function () {
                 return {
-                    text: 'Hello ' + customerInfo.name + '! Welcome to ' + COMPANY + '. I\'m here to help you with any queries about our sustainable construction and consultation services.\n\nHow can I assist you today? You can ask about:\n- Our services\n- Pricing & estimates\n- Location & contact\n- Our experience & projects\n\nOr type "talk to a person" to connect with our team directly.',
+                    text: 'Hello ' + customerInfo.name + '! Welcome to ' + COMPANY + '. I\'m here to help you with any queries about our sustainable construction and consultation services.\n\nHow can I assist you today? You can ask about:\n- Our services\n- Pricing & estimates\n- Location & contact\n\nOr type "talk to a person" to connect with our team directly.',
                     tags: []
                 };
             }
@@ -130,7 +130,7 @@
         },
         {
             keywords: ['price', 'cost', 'estimate', 'quote', 'budget', 'rate', 'charge', 'fee', 'how much', 'pricing', 'expensive'],
-            handler: 'PRICING_HANDOFF'
+            handler: 'HANDOFF'
         },
         {
             keywords: ['location', 'address', 'where', 'office', 'visit', 'directions', 'map'],
@@ -420,7 +420,7 @@
                 });
 
                 showTypingThen(function () {
-                    addBotMessage('Thank you, ' + customerInfo.name + '! Your details have been saved.\n\nHow can I assist you today? You can ask about:\n- Our services\n- Pricing & estimates\n- Location & contact info\n- Our experience & projects\n\nOr type "talk to a person" to connect with our team directly.');
+                    addBotMessage('Thank you, ' + customerInfo.name + '! Your details have been saved.\n\nHow can I assist you today? You can ask about:\n- Our services\n- Pricing & estimates\n- Location & contact info\n\nOr type "talk to a person" to connect with our team directly.');
                     showMainQuickReplies();
                 });
                 break;
@@ -432,7 +432,7 @@
             { label: 'Services', msg: 'What services do you offer?' },
             { label: 'Pricing', msg: 'What are your prices?' },
             { label: 'Location', msg: 'Where are you located?' },
-            { label: 'Experience', msg: 'Tell me about your experience' },
+            
             { label: 'Talk to a Person', msg: 'I want to talk to a person' }
         ]);
     }
@@ -518,7 +518,7 @@
 
         // Fallback
         return {
-            text: 'I appreciate your question! While I may not have the specific answer right now, our team would love to help.\n\nYou can:\n- Ask about our services, pricing, location, or experience\n- Type "talk to a person" to connect with our team on WhatsApp\n\nHow can I help you?',
+            text: 'I appreciate your question! While I may not have the specific answer right now, our team would love to help.\n\nYou can:\n- Ask about our services, pricing, or location\n- Type "talk to a person" to connect with our team on WhatsApp\n\nHow can I help you?',
             tags: ['asked: "' + input + '"']
         };
     }
