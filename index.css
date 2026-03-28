@@ -3142,3 +3142,10 @@ but since hero is 100% these shouldn't visibly protrude much */
     /* Merge the translateY from previous hovers with our skew requirement */
     transform: translateY(-8px) skewX(-6deg) scale(1.02) !important;
 }
+
+
+/* SAFE ZONE FOR SKEWED CORNERS */
+.testimonials-track {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+}
