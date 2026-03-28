@@ -627,24 +627,6 @@
         var lookingFor = services.length > 0 ? services.join(', ') : 'your services';
         
         return 'I am looking for "' + lookingFor + '". Would like to discuss more about this.';
-    }).filter(Boolean).join(', ');
-            summary += 'Customer is looking for: ' + lookingFor + '\n';
-        }
-
-        if (userMsgs.length > 0) {
-            // Include last few user messages as context (skip onboarding answers)
-            var relevantMsgs = userMsgs.slice(4, -1); // skip first 4 (onboarding) and last (handoff trigger)
-            if (relevantMsgs.length > 0) {
-                var lastFew = relevantMsgs.slice(-4);
-                summary += 'Key messages: ' + lastFew.map(function (m) { return '"' + m + '"'; }).join(', ');
-            }
-        }
-
-        if (!summary) {
-            summary = 'General enquiry about construction/consultation services';
-        }
-
-        return summary;
     }
 
     // ---- DOM Helpers ----
