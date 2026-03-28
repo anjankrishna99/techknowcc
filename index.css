@@ -1857,6 +1857,7 @@ h4 {
     justify-content: space-between;
     align-items: center;
     padding: 20px 22px 14px;
+    min-height: 72px; /* Ensure consistent vertical alignment */
 }
 
 .project-card-header h3 {
@@ -1865,6 +1866,12 @@ h4 {
     font-weight: 700;
     color: var(--c-text);
     margin: 0;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    overflow: hidden;
 }
 
 .project-card-count {
@@ -1881,11 +1888,17 @@ h4 {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 10;
+    height: 0;
+    padding-bottom: 62.5%; /* 10/16 fallback */
     overflow: hidden;
-    margin: 0 0 0 0;
+    margin: 0;
+    background: var(--c-bg-dark);
 }
 
 .project-card-hero img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
