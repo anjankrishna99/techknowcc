@@ -3124,3 +3124,21 @@ but since hero is 100% these shouldn't visibly protrude much */
 .logo-main-footer {
     color: #df1b1b !important;
 }
+
+
+/* PARALLELOGRAM TESTIMONIAL CARDS */
+.testimonial-card {
+    transform: skewX(-6deg);
+    /* Increase side padding slightly to prevent text clipping into the angled corners */
+    padding-left: 32px !important;
+    padding-right: 32px !important;
+}
+
+.testimonial-card > * {
+    transform: skewX(6deg);
+}
+
+.testimonial-card:hover {
+    /* Merge the translateY from previous hovers with our skew requirement */
+    transform: translateY(-8px) skewX(-6deg) scale(1.02) !important;
+}
