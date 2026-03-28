@@ -519,7 +519,7 @@
         // Fallback
         return {
             text: 'I appreciate your question! While I may not have the specific answer right now, our team would love to help.\n\nYou can:\n- Ask about our services, pricing, location, or experience\n- Type "talk to a person" to connect with our team on WhatsApp\n\nHow can I help you?',
-            tags: ['asked: "' + text + '"']
+            tags: ['asked: "' + input + '"']
         };
     }
 
@@ -544,7 +544,7 @@
         setTimeout(function () {
             var context = window._chatHandoffContext ? ('Note: ' + window._chatHandoffContext + '\n') : '';
             var waText = encodeURIComponent(
-                'Hi Sreedhar,\n\n' +
+                'Hi Techknow,\n\n' +
                 'My name is ' + customerInfo.name + '.\n' +
                 'Email: ' + customerInfo.email + '\n' +
                 'Type: ' + customerInfo.type + '\n' +
@@ -584,7 +584,7 @@
         // Add WhatsApp CTA button
         setTimeout(function () {
             var waText = encodeURIComponent(
-                'Hi Sreedhar,\n\n' +
+                'Hi Techknow,\n\n' +
                 'My name is ' + customerInfo.name + '.\n' +
                 'Email: ' + customerInfo.email + '\n' +
                 'Type: ' + customerInfo.type + '\n' +
@@ -624,7 +624,10 @@
         var summary = '';
 
         if (tags.length > 0) {
-            summary += 'Interests: ' + tags.join(', ') + '\n';
+            var lookingFor = tags.map(function(t) { 
+                return t.replace('interested in ', '').replace('asked: "undefined"', ''); 
+            }).filter(Boolean).join(', ');
+            summary += 'Customer is looking for: ' + lookingFor + '\n';
         }
 
         if (userMsgs.length > 0) {
