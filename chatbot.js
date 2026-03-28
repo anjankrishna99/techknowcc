@@ -14,12 +14,16 @@
     // ---- Knowledge Base ----
     var KB = {
         services: [
-            'Residential Construction',
-            'Commercial Construction',
-            'Green Building Consultation',
-            'Solar & Renewable Integration',
+            'Residential Planning',
+            'Vastu Consultancy',
+            'Industrial Design',
+            'Structural Engineering',
+            'Institutional Facilities',
+            'Religious Architecture',
+            'Commercial Spaces',
+            'Bespoke Farmhouse Design',
             'Project Management',
-            'Environmental Compliance'
+            'Sustainable Solutions'
         ],
         serviceDetails: {
             residential: 'We build eco-friendly homes using sustainable materials, rainwater harvesting systems, and energy-efficient designs. Our homes achieve up to 40% energy savings compared to conventional builds.',
@@ -29,7 +33,7 @@
             project: 'End-to-end project oversight from planning to completion -- ensuring timelines, budgets, and sustainability goals are met without compromise.',
             compliance: 'We ensure all projects meet environmental regulations, sustainability standards, and green building codes with thorough assessments and documentation.'
         },
-        location: 'SMR Vinay Sky City, Opp. The Hyderabad Public School, Ramanthapur, Hyderabad-500013, India',
+        location: 'SMR Vinay Sky City, Opp. The Hyderabad Public School, Ramanthapur, Hyderabad-500013, Telangana, India',
         email: 'info@techknowcc.in',
         phone: '040-46043493 (Landline) | +91-984905033 | +91 9346597177',
         hours: 'Mon-Fri: 9 AM - 5 PM | Sat: 9 AM - 3 PM | Sun: Closed',
@@ -63,8 +67,9 @@
         {
             keywords: ['service', 'services', 'what do you do', 'what you do', 'offer', 'offerings', 'what can you do'],
             handler: function () {
+                window._expectingServiceNumber = true;
                 return {
-                    text: 'We offer a comprehensive range of sustainable construction and consultation services:\n\n[1] Residential Construction -- Eco-friendly homes\n[2] Commercial Construction -- LEED-certified spaces\n[3] Green Building Consultation -- Sustainability guidance\n[4] Solar & Renewable Integration -- Clean energy systems\n[5] Project Management -- End-to-end oversight\n[6] Environmental Compliance -- Regulatory assurance\n\nWould you like to know more about any specific service?',
+                    text: 'We offer a comprehensive range of construction and consultation services:\n\n[1] Residential Planning\n[2] Vastu Consultancy\n[3] Industrial Design\n[4] Structural Engineering\n[5] Institutional Facilities\n[6] Religious Architecture\n[7] Commercial Spaces\n[8] Bespoke Farmhouse Design\n[9] Project Management\n[10] Sustainable Solutions\n\nPlease reply with the number (1-10) of the service you would like to select.',
                     tags: ['interested in services overview']
                 };
             }
@@ -125,12 +130,7 @@
         },
         {
             keywords: ['price', 'cost', 'estimate', 'quote', 'budget', 'rate', 'charge', 'fee', 'how much', 'pricing', 'expensive'],
-            handler: function () {
-                return {
-                    text: 'Pricing & Estimates\n\nOur pricing depends on the project scope, size, and sustainability features. Here\'s a general idea:\n\n- Residential: Starting from Rs.1,800/sq.ft (varies by specifications)\n- Commercial: Custom quotes based on requirements\n- Consultation: Competitive project-based fees\n- Solar Installation: Based on system capacity\n\nWe offer a free initial consultation to understand your needs and provide a detailed estimate.\n\nWould you like to get a personalized quote? I can connect you with our team!',
-                    tags: ['asked about pricing']
-                };
-            }
+            handler: 'PRICING_HANDOFF'
         },
         {
             keywords: ['location', 'address', 'where', 'office', 'visit', 'directions', 'map'],
@@ -465,6 +465,8 @@
             var response = getResponse(text);
             if (response === 'HANDOFF') {
                 performHandoff();
+            } else if (response === 'PRICING_HANDOFF') {
+                performPricingHandoff();
             } else {
                 addBotMessage(response.text);
                 chatHistory.push({ role: 'bot', text: response.text, time: new Date() });
@@ -488,6 +490,20 @@
 
     function getResponse(input) {
         var lower = input.toLowerCase().replace(/[^a-z0-9\s]/g, '');
+
+        if (window._expectingServiceNumber) {
+            var num = parseInt(lower.trim(), 10);
+            window._expectingServiceNumber = false;
+            if (!isNaN(num) && num >= 1 && num <= 10) {
+                var selectedService = KB.services[num - 1];
+                window._chatHandoffContext = 'Enquiring specifically about ' + selectedService;
+                return {
+                    text: 'Excellent choice. Let\'s get you customized details about ' + selectedService + '.\n\nSince organizing comprehensive service requirements is highly project-specific, we strongly recommend you to connect with our team directly. Would you like to get a personalized quote or speak to our engineers?',
+                    tags: ['interested in ' + selectedService]
+                };
+            }
+        }
+
 
         // Check each intent
         for (var i = 0; i < intents.length; i++) {
@@ -517,7 +533,47 @@
         }
     }
 
-    // ---- Handoff to WhatsApp ----
+        // ---- Handoff to WhatsApp / SMS ----
+    function performPricingHandoff() {
+        var summary = generateSummary();
+        var handoffMsg = 'For precise pricing and estimates, we process consultations securely via WhatsApp or SMS to ensure nothing gets lost in translation. How would you like us to send the pricing details?';
+
+        addBotMessage(handoffMsg);
+        chatHistory.push({ role: 'bot', text: handoffMsg, time: new Date() });
+
+        setTimeout(function () {
+            var context = window._chatHandoffContext ? ('Note: ' + window._chatHandoffContext + '\n') : '';
+            var waText = encodeURIComponent(
+                'Hi Sreedhar,\n\n' +
+                'My name is ' + customerInfo.name + '.\n' +
+                'Email: ' + customerInfo.email + '\n' +
+                'Type: ' + customerInfo.type + '\n' +
+                'Phone: ' + customerInfo.phone + '\n\n' +
+                context +
+                'Chat Summary:\n' + summary + '\n\n' +
+                'I\'d like to get a pricing estimate/details.'
+            );
+            var waUrl = 'https://wa.me/919346597177?text=' + waText;
+            var smsUrl1 = 'sms:+919346597177?body=' + waText;
+            var smsUrl2 = 'sms:+91984905033?body=' + waText;
+
+            var msgContainer = document.getElementById('cw-messages');
+            var ctaDiv = document.createElement('div');
+            ctaDiv.className = 'cw-msg cw-msg-bot';
+            ctaDiv.innerHTML =
+                '<div class="cw-bubble cw-bubble-bot cw-bubble-cta">' +
+                '<div style="display: flex; flex-direction: column; gap: 8px;">' +
+                '<a href="' + waUrl + '" target="_blank" rel="noopener noreferrer" class="cw-wa-btn" style="text-align: center; border-radius: 6px;">Send via WhatsApp</a>' +
+                '<a href="' + smsUrl1 + '" target="_blank" rel="noopener noreferrer" class="cw-wa-btn" style="background: #4a5568; text-align: center; border-radius: 6px;">Send SMS (+91 9346597177)</a>' +
+                '<a href="' + smsUrl2 + '" target="_blank" rel="noopener noreferrer" class="cw-wa-btn" style="background: #4a5568; text-align: center; border-radius: 6px;">Send SMS (+91-984905033)</a>' +
+                '</div>' +
+                '</div>';
+            msgContainer.appendChild(ctaDiv);
+            scrollToBottom();
+        }, 500);
+    }
+
+    // ---- Standard Handoff ----
     function performHandoff() {
         var summary = generateSummary();
         var handoffMsg = 'Great! I\'ll connect you with our team right away.\n\nI\'ve prepared a brief summary of your enquiry for our team so they can assist you better.\n\nClick the button below to continue on WhatsApp:';
