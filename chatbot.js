@@ -84,7 +84,7 @@
             }
         },
         {
-            keywords: ['commercial', 'office', 'retail', 'shop', 'business', 'corporate', 'warehouse'],
+            keywords: ['commercial', 'office space', 'commercial offices', 'retail', 'shop', 'business', 'corporate', 'warehouse'],
             handler: function () {
                 return {
                     text: 'Commercial Construction\n\n' + KB.serviceDetails.commercial + '\n\nWe\'ve delivered:\n- IT parks & tech offices\n- Retail complexes\n- Warehouses & industrial spaces\n- Mixed-use developments\n\nWant to discuss your commercial project requirements?',
@@ -431,7 +431,7 @@
         showQuickReplies([
             { label: 'Services', msg: 'What services do you offer?' },
             { label: 'Pricing', msg: 'What are your prices?' },
-            { label: 'Location', msg: 'Where is your office?' },
+            { label: 'Location', msg: 'Where are you located?' },
             { label: 'Experience', msg: 'Tell me about your experience' },
             { label: 'Talk to a Person', msg: 'I want to talk to a person' }
         ]);
