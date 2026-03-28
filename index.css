@@ -578,6 +578,7 @@ h4 {
     z-index: 0;
     background: url('assets/Hero_new.jpg') no-repeat center center;
     background-size: cover;
+    transform: scaleX(-1); /* Mirror to move structure to the right */
 }
 
 .hero-bg::after {
@@ -613,30 +614,34 @@ h4 {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.3em;
-    color: #121417;
+    color: #ffffff; /* White for better visibility */
     margin-bottom: 24px;
-    opacity: 0.9;
+    opacity: 1;
 }
 
 .hero-title {
     font-size: clamp(3rem, 9vw, 6.2rem);
     font-weight: 800;
-    color: var(--c-text);
+    color: #ffffff; /* White text */
     margin-bottom: 16px;
     line-height: 1.1;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .hero-title .bronze {
-    color: var(--c-accent);
+    color: #ffffff;
+    opacity: 0.9;
 }
 
 .hero-desc {
     font-size: clamp(1rem, 2vw, 1.2rem);
-    color: #121417;
+    color: #ffffff; /* White description */
     max-width: 650px;
     margin: 0 auto 20px;
     line-height: 1.8;
     font-weight: 500;
+    opacity: 0.95;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .hero-actions {
