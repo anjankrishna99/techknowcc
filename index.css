@@ -1841,13 +1841,13 @@ h4 {
 }
 
 .project-card {
-    background: var(--c-bg-alt);
-    border: 1px solid var(--c-border);
+    position: relative;
+    background: transparent !important;
+    border: none !important;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
     cursor: pointer;
-    transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out), border-color 0.35s var(--ease-out);
+    transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
     display: flex;
     flex-direction: column;
 }
@@ -1859,11 +1859,22 @@ h4 {
 }
 
 .project-card-header {
+    position: absolute !important;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, transparent 100%) !important;
+    padding: 40px 22px 20px !important;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    pointer-events: none;
+    box-sizing: border-box;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 22px 14px;
-    min-height: 72px; /* Ensure consistent vertical alignment */
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-end !important;
+    min-height: 100px;
 }
 
 .project-card-header h3 {
@@ -2942,11 +2953,30 @@ body.scrolled-past .scroll-indicator {
 
 /* ---------- PROJECT CARD ENHANCEMENTS (RESIDENTIAL) ---------- */
 .project-year {
-    display: block;
-    font-size: 0.8rem;
-    color: var(--c-text-secondary);
-    margin-top: 4px;
-    font-weight: 500;
+    position: absolute !important;
+    top: 15px !important;
+    right: 15px !important;
+    margin: 0 !important;
+    z-index: 10 !important;
+    display: inline-block !important;
+    background: var(--c-primary) !important;
+    color: #121417 !important;
+    padding: 6px 14px !important;
+    border-radius: 30px !important;
+    font-size: 0.75rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    pointer-events: auto;
+}
+
+.project-location {
+    color: rgba(255, 255, 255, 0.8) !important;
+    font-size: 0.85rem !important;
+    margin-top: 4px !important;
+    font-weight: 400 !important;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -3068,6 +3098,9 @@ body.scrolled-past .scroll-indicator {
 .project-card-hero {
     position: relative;
     border-radius: 16px;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
 }
 
 .project-card-hero img {
@@ -3075,6 +3108,7 @@ body.scrolled-past .scroll-indicator {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s var(--ease-out);
 }
 
 /* Hide extra padding if thumb galleries are still visibly pushed under via CSS, 
