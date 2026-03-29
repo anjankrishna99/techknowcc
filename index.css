@@ -810,7 +810,7 @@ h4 {
 
 /* ---------- SECTIONS COMMON ---------- */
 .section {
-    padding: 120px 0;
+    padding: 160px 0 120px;
 }
 
 /* Hidden sections — only visible when clicked from header */
