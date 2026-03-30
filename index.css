@@ -6,11 +6,11 @@
 
 /* ---------- CSS Custom Properties ---------- */
 :root {
-    --c-primary: #8C7B62;
-    --c-primary-light: #A08F74;
-    --c-primary-lighter: #B2A28A;
-    --c-accent: #8C7B62;
-    --c-accent-glow: rgba(140, 123, 98, 0.4);
+    --c-primary: #333533;
+    --c-primary-light: #4A4D4A;
+    --c-primary-lighter: #5E625E;
+    --c-accent: #00A8E8;
+    --c-accent-glow: rgba(0, 168, 232, 0.4);
     --c-bg: #FFFFFF;
     --c-bg-alt: #F2F4F8;
     --c-bg-dark: #121417;
@@ -188,7 +188,7 @@ h4 {
 }
 
 .text-gradient {
-    background: linear-gradient(135deg, #6F5E48, #8C7B62);
+    background: linear-gradient(135deg, var(--c-primary), var(--c-accent));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -205,7 +205,7 @@ h4 {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: #6F5E48;
+    color: var(--c-accent);
     margin-bottom: 12px;
 }
 
@@ -254,26 +254,26 @@ h4 {
 }
 
 .btn-outline {
-    background: transparent;
-    color: #1a1d21;
-    border: 1.5px solid rgba(26, 29, 33, 0.3);
+    background: #E5E5E5;
+    color: #333533;
+    border: none;
 }
 
 .btn-outline:hover {
-    background: rgba(0, 0, 0, 0.05);
-    border-color: #1a1d21;
+    background: #D5D5D5;
+    color: #333533;
     transform: translateY(-2px);
 }
 
 .btn-enquiry-nav {
     background: var(--c-primary);
-    color: #1A1A1A;
+    color: #FFFFFF;
     border: none;
     padding: 10px 24px;
     border-radius: 50px;
     font-weight: 600;
     font-size: 0.85rem;
-    box-shadow: 0 2px 8px rgba(140, 123, 98, 0.2);
+    box-shadow: 0 2px 8px var(--shadow-sm);
     transition: all 0.3s;
 }
 
@@ -2210,11 +2210,11 @@ h4 {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: #25D366;
+    background: var(--c-accent);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+    box-shadow: 0 4px 20px var(--c-accent-glow);
     transition: all 0.35s var(--ease-spring);
     animation: wa-bounce-in 0.6s var(--ease-spring) 1s both;
 }
