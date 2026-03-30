@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Techknow Leads - Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f5f0e8;
+            color: #1c1c1e;
+            padding: 40px 24px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: #1a3c34;
+        }
+
+        .subtitle {
+            color: #6e6e73;
+            margin-bottom: 32px;
+        }
+
+        .actions {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 50px;
+            border: none;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #1a3c34;
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            background: #2d6a4f;
+        }
+
+        .btn-danger {
+            background: #d32f2f;
+            color: #fff;
+        }
+
+        .btn-danger:hover {
+            background: #b71c1c;
+        }
+
+        .count {
+            background: #fff;
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        th {
+            background: #1a3c34;
+            color: #fff;
+            text-align: left;
+            padding: 14px 16px;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.88rem;
+            color: #333;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background: #f9f7f3;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 60px;
+            color: #999;
+            font-size: 1rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 3px 10px;
+            background: rgba(26, 60, 52, 0.08);
+            color: #1a3c34;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            margin: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Techknow Leads Dashboard</h1>
+        <p class="subtitle">Website chat enquiry leads</p>
+        <div class="count" id="count">Total leads: 0</div>
+        <div class="actions">
+            <button class="btn btn-primary" onclick="downloadCSV()">Download CSV</button>
+            <button class="btn btn-danger" onclick="clearLeads()">Clear All Leads</button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date & Time</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Type</th>
+                    <th>Phone</th>
+                    <th>Interests</th>
+                </tr>
+            </thead>
+            <tbody id="leads-body">
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function getLeads() {
+            try {
+                var stored = localStorage.getItem('techknow_leads');
+                if (stored) return JSON.parse(stored);
+            } catch (e) { }
+            return [];
+        }
+
+        function renderLeads() {
+            var leads = getLeads();
+            var tbody = document.getElementById('leads-body');
+            document.getElementById('count').textContent = 'Total leads: ' + leads.length;
+
+            if (leads.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="6" class="empty">No leads recorded yet. Leads will appear here when visitors chat on the website.</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = leads.map(function (l) {
+                var interests = (l.interests || []).map(function (i) {
+                    return '<span class="tag">' + i + '</span>';
+                }).join(' ');
+                return '<tr>' +
+                    '<td>' + (l.timestamp || '-') + '</td>' +
+                    '<td>' + (l.name || '-') + '</td>' +
+                    '<td>' + (l.email || '-') + '</td>' +
+                    '<td>' + (l.type || '-') + '</td>' +
+                    '<td>' + (l.phone || '-') + '</td>' +
+                    '<td>' + (interests || '-') + '</td>' +
+                    '</tr>';
+            }).join('');
+        }
+
+        function downloadCSV() {
+            var leads = getLeads();
+            if (leads.length === 0) { alert('No leads to download.'); return; }
+            var headers = ['Date & Time', 'Name', 'Email', 'Type', 'Phone', 'Interests'];
+            var rows = leads.map(function (l) {
+                return [l.timestamp || '', l.name || '', l.email || '', l.type || '', l.phone || '', (l.interests || []).join('; ')]
+                    .map(function (v) { return '"' + String(v).replace(/"/g, '""') + '"'; }).join(',');
+            });
+            var csv = headers.join(',') + '\n' + rows.join('\n');
+            var blob = new Blob([csv], { type: 'text/csv' });
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'techknow_leads_' + new Date().toISOString().slice(0, 10) + '.csv';
+            a.click();
+        }
+
+        function clearLeads() {
+            if (confirm('Are you sure you want to delete all leads? This cannot be undone.')) {
+                localStorage.removeItem('techknow_leads');
+                renderLeads();
+            }
+        }
+
+        renderLeads();
+    </script>
+</body>
+
+</html>
