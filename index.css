@@ -1277,7 +1277,8 @@ h4 {
 /* ---------- TESTIMONIALS ---------- */
 .section.testimonials {
     background: var(--c-bg-alt);
- padding-top: 60px; padding-bottom: 60px; }
+    padding-top: 120px; padding-bottom: 60px; 
+}
 
 /* Slider Container */
 .testimonials-slider-container {
