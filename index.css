@@ -57,7 +57,7 @@ html {
 body {
     font-family: var(--font-body);
     color: var(--c-text);
-    background: rgba(245, 245, 245, 0.50) url('assets/stone-texture.png') repeat fixed;
+    background: rgba(250, 250, 250, 0.65) url('assets/stone-texture.png') repeat fixed;
     background-size: 600px;
     background-blend-mode: multiply;
     line-height: 1.6;
@@ -880,8 +880,8 @@ h4 {
 .section.gallery,
 .section.testimonials {
     background: transparent !important;
- padding-top: 60px; padding-bottom: 60px; }
-
+    padding-top: 120px; padding-bottom: 60px; 
+}
 #portfolio.hidden-section.section-visible {
     padding-top: 100px !important;
     padding-bottom: 40px !important;
