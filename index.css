@@ -1983,7 +1983,7 @@ h4 {
     justify-content: center;
     padding: 12px 28px;
     background: var(--c-primary);
-    color: #121417;
+    color: #FFFFFF;
     border: none;
     font-family: var(--font-heading);
     font-size: 0.95rem;
@@ -2963,7 +2963,7 @@ body.scrolled-past .scroll-indicator {
     z-index: 10 !important;
     display: inline-block !important;
     background: var(--c-primary) !important;
-    color: #121417 !important;
+    color: #FFFFFF !important;
     padding: 6px 14px !important;
     border-radius: 30px !important;
     font-size: 0.75rem !important;
@@ -3013,7 +3013,7 @@ body.scrolled-past .scroll-indicator {
 .project-year {
     display: inline-block !important;
     background: var(--c-primary) !important;
-    color: #121417 !important;
+    color: #FFFFFF !important;
     padding: 6px 14px !important;
     border-radius: 30px !important;
     font-size: 0.75rem !important;
@@ -3073,7 +3073,7 @@ body.scrolled-past .scroll-indicator {
 .project-card-count {
     display: inline-block !important;
     background: var(--c-primary) !important;
-    color: #121417 !important;
+    color: #FFFFFF !important;
     padding: 6px 14px !important;
     border-radius: 30px !important;
     font-size: 0.75rem !important;
@@ -3087,7 +3087,7 @@ body.scrolled-past .scroll-indicator {
 .project-year {
     display: inline-block !important;
     background: var(--c-primary) !important;
-    color: #121417 !important;
+    color: #FFFFFF !important;
     padding: 6px 14px !important;
     border-radius: 30px !important;
     font-size: 0.75rem !important;
