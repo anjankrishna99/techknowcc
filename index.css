@@ -2210,11 +2210,11 @@ h4 {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: var(--c-accent);
+    background: #25D366;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 20px var(--c-accent-glow);
+    box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
     transition: all 0.35s var(--ease-spring);
     animation: wa-bounce-in 0.6s var(--ease-spring) 1s both;
 }
