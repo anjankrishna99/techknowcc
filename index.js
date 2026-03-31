@@ -67,14 +67,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (sections.length > 0) {
             let currentSection = 'home'; // Default to home
 
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 120;
-                // Only update currentSection if the section has an actual height/offset mapped.
-                // When page loads, some sections might initially have offsetTop 0 before layout completes.
-                if (scrollY >= sectionTop && (section.offsetTop > 0 || section.getAttribute('id') === 'home')) {
-                    currentSection = section.getAttribute('id');
-                }
-            });
+            const activeDynamicSection = document.querySelector('.hidden-section.section-visible');
+            if (activeDynamicSection) {
+                currentSection = activeDynamicSection.getAttribute('id');
+            } else {
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 120;
+                    if (scrollY >= sectionTop && (section.offsetTop > 0 || section.getAttribute('id') === 'home')) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+            }
 
             navItems.forEach(link => {
                 link.classList.remove('active');
