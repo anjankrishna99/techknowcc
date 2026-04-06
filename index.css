@@ -610,6 +610,8 @@ h4 {
     text-align: left;
     width: 100%;
     padding-top: 15vh;
+    padding-left: 6%;
+    padding-right: 6%;
 }
 
 
@@ -618,6 +620,7 @@ h4 {
     align-items: center;
     gap: 16px;
     margin-bottom: 16px;
+    justify-content: flex-end;
 }
 .hero-tag-line {
     width: 48px;
