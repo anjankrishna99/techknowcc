@@ -625,7 +625,7 @@ h4 {
 .hero-tag-line {
     width: 48px;
     height: 2px;
-    background-color: var(--accent);
+    background-color: #A0A0A0;
 }
 .hero-tag {
     font-size: 0.85rem;
