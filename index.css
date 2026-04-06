@@ -622,7 +622,7 @@ h4 {
 .hero-tag-line {
     width: 48px;
     height: 2px;
-    background-color: #c9a77c;
+    background-color: var(--accent);
 }
 .hero-tag {
     font-size: 0.85rem;
