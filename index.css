@@ -401,29 +401,32 @@ h4 {
     gap: 4px;
     list-style: none;
     flex-wrap: nowrap;
+    background: var(--c-primary);
+    padding: 8px 8px 8px 16px;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .nav-link {
     font-size: 0.82rem;
     font-weight: 500;
-    color: var(--c-text);
+    color: #ffffff;
     padding: 8px 12px;
     border-radius: 50px;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
     transition: all 0.3s var(--ease-out);
     white-space: nowrap;
 }
 
 .nav-link:hover,
 .nav-link.active {
-    color: var(--c-primary);
-    background: rgba(0, 0, 0, 0.05);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
 }
 
 #main-header.scrolled .nav-link:hover,
 #main-header.scrolled .nav-link.active {
-    color: var(--c-primary);
-    background: rgba(47, 79, 79, 0.08);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
 }
 
 /* Hamburger */
