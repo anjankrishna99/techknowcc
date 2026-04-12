@@ -640,20 +640,20 @@ h4 {
 .hero-title {
     font-size: clamp(3rem, 9vw, 6.2rem);
     font-weight: 800;
-    color: #ffffff; /* White text */
+    color: var(--c-primary);
     margin-bottom: 16px;
     line-height: 1.1;
     text-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .hero-title .bronze {
-    color: #ffffff;
+    color: var(--c-primary);
     opacity: 0.9;
 }
 
 .hero-desc {
     font-size: clamp(1rem, 2vw, 1.2rem);
-    color: #ffffff;
+    color: var(--c-text);
     max-width: 650px;
     margin: 0 0 32px 0;
     line-height: 1.8;
@@ -672,7 +672,8 @@ h4 {
 
 .hero-stats-new {
     margin-top: 20px;
-    display: inline-flex;
+    display: flex;
+    width: 100%;
     align-items: center;
     gap: 0;
     background: rgba(255, 255, 255, 0.5);
@@ -700,6 +701,7 @@ h4 {
     display: flex;
     flex-direction: column;
     min-width: 250px;
+    flex: 1;
 }
 
 .stat-divider {
@@ -718,7 +720,7 @@ h4 {
 
 .hero-stats-new .stat-number {
     font-family: var(--font-heading);
-    font-size: 3.5rem;
+    font-size: 2.8rem;
     font-weight: 700;
     color: var(--c-text);
     line-height: 1;
@@ -726,14 +728,14 @@ h4 {
 
 .stat-suffix {
     font-family: var(--font-heading);
-    font-size: 3.5rem;
+    font-size: 2.8rem;
     font-weight: 700;
     color: var(--c-text);
     line-height: 1;
 }
 
 .hero-stats-new .stat-label {
-    font-size: 0.8rem;
+    font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.15em;
     color: var(--c-text-secondary);
