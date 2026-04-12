@@ -1053,12 +1053,21 @@ h4 {
 }
 
 /* ---------- SERVICES ---------- */
+.section.services {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+.section.services .section-header {
+    margin-bottom: 24px;
+}
+
 /* Services Slider */
 .services-slider-container {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 20px 24px 0; /* Added 20px top padding for zoom headroom */
     overflow: hidden;
 }
 
