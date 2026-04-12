@@ -201,7 +201,7 @@ h4 {
 }
 
 .section-tag {
-    font-size: 0.8rem;
+    font-size: 1.0rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.15em;
@@ -899,7 +899,8 @@ h4 {
     background: transparent !important;
     padding-top: 120px; padding-bottom: 60px; 
 }
-#portfolio.hidden-section.section-visible {
+#portfolio.hidden-section.section-visible,
+#services-section.hidden-section.section-visible {
     padding-top: 100px !important;
     padding-bottom: 40px !important;
 }
@@ -1088,7 +1089,7 @@ h4 {
     flex-direction: column;
     justify-content: flex-end;
     padding: 2.5rem 2rem;
-    min-height: 480px;
+    min-height: 420px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.06);
     transition: transform 0.4s var(--ease-spring), box-shadow 0.4s var(--ease-spring);
     border: none;
