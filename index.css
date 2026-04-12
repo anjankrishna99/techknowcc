@@ -374,8 +374,8 @@ h4 {
 .logo-text-sub {
     font-family: var(--font-body);
     font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--c-text);
+    font-weight: 700;
+    color: #ffffff;
     letter-spacing: 0.04em;
 }
 
