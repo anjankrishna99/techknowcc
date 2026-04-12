@@ -627,14 +627,14 @@ h4 {
 .hero-tag-line {
     width: 48px;
     height: 2px;
-    background-color: #ffffff;
+    background-color: var(--c-primary);
 }
 .hero-tag {
     font-size: 0.85rem;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.3em;
-    color: #ffffff;
+    color: var(--c-primary);
     margin-bottom: 0;
     opacity: 1;
 }
