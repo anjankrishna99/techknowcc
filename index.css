@@ -673,7 +673,7 @@ h4 {
 .hero-stats-new {
     margin-top: 20px;
     display: flex;
-    width: 100%;
+    width: fit-content;
     align-items: center;
     gap: 0;
     background: rgba(255, 255, 255, 0.5);
@@ -682,7 +682,7 @@ h4 {
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     padding: 0;
-    margin: 10px auto 0;
+    margin: 30px auto 0;
     position: relative;
 }
 
@@ -696,12 +696,11 @@ h4 {
 }
 
 .stat-group {
-    padding: 30px 60px;
+    padding: 20px 40px;
     text-align: center;
     display: flex;
     flex-direction: column;
-    min-width: 250px;
-    flex: 1;
+    min-width: 200px;
 }
 
 .stat-divider {
