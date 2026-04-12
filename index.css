@@ -578,9 +578,8 @@ h4 {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: url('assets/Hero_new.jpg') no-repeat center center;
+    background: url('assets/hero-bg-residential.png') no-repeat center center;
     background-size: cover;
-    transform: scaleX(-1); /* Mirror to move structure to the right */
 }
 
 .hero-bg::after {
