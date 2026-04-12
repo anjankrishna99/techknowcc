@@ -622,19 +622,19 @@ h4 {
     align-items: center;
     gap: 16px;
     margin-bottom: 16px;
-    justify-content: flex-end;
+    justify-content: flex-start;
 }
 .hero-tag-line {
     width: 48px;
     height: 2px;
-    background-color: var(--c-primary);
+    background-color: #ffffff;
 }
 .hero-tag {
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.3em;
-    color: var(--c-primary);
+    color: #ffffff;
     margin-bottom: 0;
     opacity: 1;
 }
