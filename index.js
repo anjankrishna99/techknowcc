@@ -122,7 +122,13 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = '';
     }
 
-    btnEnquiryHeader.addEventListener('click', openModal);
+    const enquiryButtons = document.querySelectorAll('#btn-enquiry-header, .open-enquiry-modal');
+    enquiryButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            openModal();
+        });
+    });
     modalClose.addEventListener('click', closeModal);
 
     enquiryModal.addEventListener('click', (e) => {
