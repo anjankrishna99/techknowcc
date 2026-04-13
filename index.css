@@ -3291,35 +3291,43 @@ but since hero is 100% these shouldn't visibly protrude much */
 
     /* Hero stats alignment fixes */
     .hero-stats-new {
-        flex-direction: column !important;
-        width: 90% !important;
-        max-width: 300px !important;
+        flex-direction: row !important;
+        width: 95% !important;
+        max-width: 380px !important;
         margin: 20px auto 0 !important;
-        padding: 10px 0 !important;
+        padding: 5px 0 !important;
         background: rgba(255, 255, 255, 0.7) !important;
+        justify-content: center !important;
     }
 
     .stat-group {
-        padding: 12px 20px !important;
+        padding: 10px 5px !important;
         min-width: 0 !important;
-        width: 100% !important;
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
     }
 
     .stat-divider {
-        width: 80% !important;
-        height: 1px !important;
-        margin: 0 auto !important;
-        background: rgba(0, 0, 0, 0.05) !important;
+        width: 1px !important;
+        height: 40px !important;
+        margin: 0 !important;
+        background: rgba(0, 0, 0, 0.1) !important;
+        flex-shrink: 0 !important;
     }
 
     .hero-stats-new .stat-number, 
     .stat-suffix {
-        font-size: 2.2rem !important;
+        font-size: 1.6rem !important;
     }
 
     .hero-stats-new .stat-label {
-        font-size: 0.65rem !important;
-        letter-spacing: 0.1em !important;
+        font-size: 0.55rem !important;
+        letter-spacing: 0.05em !important;
+        line-height: 1.2 !important;
+        max-width: 80px !important;
+        white-space: normal !important;
     }
 }
 
