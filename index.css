@@ -2791,8 +2791,19 @@ body.scrolled-past .scroll-indicator {
     }
 
     .dropdown-toggle {
-        justify-content: center;
-        width: auto;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 12px 24px !important; /* Matches .nav-link padding */
+        text-align: center !important;
+    }
+
+    .dropdown-icon {
+        margin-left: 8px;
+        position: absolute;
+        right: 24px; /* Move icon to the far right so it doesn't affect centering of the text */
     }
 
     .hero-title {
