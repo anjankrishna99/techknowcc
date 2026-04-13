@@ -365,7 +365,7 @@ h4 {
 
 .logo-text-main {
     font-family: var(--font-heading);
-    font-size: 1.5rem;
+    font-size: 2.0rem;
     font-weight: 700;
     color: var(--c-text);
     letter-spacing: 0.08em;
@@ -373,19 +373,19 @@ h4 {
 
 .logo-text-sub {
     font-family: var(--font-body);
-    font-size: 0.75rem;
+    font-size: 1.0rem;
     font-weight: 700;
     color: #ffffff;
     letter-spacing: 0.04em;
 }
 
 #main-header.scrolled .logo-text-main {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     color: var(--c-text);
 }
 
 #main-header.scrolled .logo-text-sub {
-    font-size: 0.65rem;
+    font-size: 0.85rem;
     color: var(--c-text-secondary);
 }
 
