@@ -303,7 +303,7 @@ h4 {
     width: 100%;
     z-index: 1000;
     padding: 16px 0;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.4) 0%, transparent 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.75) 0%, transparent 100%);
     transition: all 0.4s var(--ease-out);
 }
 
