@@ -2731,6 +2731,12 @@ body.scrolled-past .scroll-indicator {
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
+        z-index: 2500 !important; /* Move above the menu card */
+    }
+
+    /* Change hamburger to grey cross when active */
+    .hamburger.active span {
+        background: #888 !important;
     }
 
     .nav-links {
@@ -2775,6 +2781,18 @@ body.scrolled-past .scroll-indicator {
     .nav-links .nav-link.active {
         background: rgba(0, 0, 0, 0.05);
         color: var(--c-primary);
+    }
+
+    /* Fix portfolio alignment */
+    .nav-item-dropdown {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .dropdown-toggle {
+        justify-content: center;
+        width: auto;
     }
 
     .hero-title {
