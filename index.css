@@ -3247,7 +3247,14 @@ but since hero is 100% these shouldn't visibly protrude much */
 
     /* Mobile contact section fixes */
     .contact-cards-row {
-        grid-template-columns: 1fr;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+
+    .contact-card {
+        width: 100% !important;
+        min-width: 0 !important;
     }
     
     .contact-map-full {
