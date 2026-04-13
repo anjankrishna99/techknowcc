@@ -2785,25 +2785,24 @@ body.scrolled-past .scroll-indicator {
 
     /* Fix portfolio alignment */
     .nav-item-dropdown {
-        width: 100%;
-        display: flex;
-        justify-content: center;
+        width: auto !important;
+        display: list-item !important; /* Back to normal li behavior */
+        text-align: center !important;
     }
 
     .dropdown-toggle {
         display: flex !important;
         justify-content: center !important;
         align-items: center !important;
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 12px 24px !important; /* Matches .nav-link padding */
+        width: auto !important;
+        margin: 0 auto !important;
+        padding: 12px 24px !important;
         text-align: center !important;
     }
 
     .dropdown-icon {
-        margin-left: 8px;
-        position: absolute;
-        right: 24px; /* Move icon to the far right so it doesn't affect centering of the text */
+        margin-left: 8px !important;
+        position: static !important; /* Back to normal flow */
     }
 
     .hero-title {
