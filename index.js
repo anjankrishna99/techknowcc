@@ -148,14 +148,48 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ---------- Form Submissions ----------
-    const forms = document.querySelectorAll('#enquiry-form-inline, #enquiry-form-modal');
+    const forms = document.querySelectorAll('form[action^="https://formsubmit.co"]');
 
     forms.forEach(form => {
         form.addEventListener('submit', (e) => {
-            if (form.id === 'enquiry-form-modal') {
-                closeModal();
+            e.preventDefault();
+            
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn ? submitBtn.innerText : '';
+            if (submitBtn) {
+                submitBtn.innerText = 'Sending...';
+                submitBtn.disabled = true;
             }
-            // Let the form submit naturally to FormSubmit.co
+
+            const formData = new FormData(form);
+
+            fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    if (form.classList.contains('modal-form') || form.id === 'enquiry-form-modal') {
+                        closeModal();
+                    }
+                    showToast();
+                    form.reset();
+                } else {
+                    alert('There was a problem submitting your form. Please try again or contact us directly.');
+                }
+            })
+            .catch(error => {
+                 alert('There was a problem submitting your form. Please try again or contact us directly.');
+            })
+            .finally(() => {
+                if (submitBtn) {
+                    submitBtn.innerText = originalText;
+                    submitBtn.disabled = false;
+                }
+            });
         });
     });
 
