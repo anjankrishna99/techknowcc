@@ -3237,4 +3237,50 @@ but since hero is 100% these shouldn't visibly protrude much */
     color: #df1b1b !important;
 }
 
+/* ========== RESPONSIVE HOTFIXES ========== */
+@media (max-width: 768px) {
+    /* Logo scaling */
+    .logo-text-main { font-size: 1.4rem; }
+    .logo-text-sub { font-size: 0.75rem; }
+    #main-header.scrolled .logo-text-main { font-size: 1.2rem; }
+    #main-header.scrolled .logo-text-sub { font-size: 0.65rem; }
+
+    /* Mobile contact section fixes */
+    .contact-cards-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-map-full {
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .contact-map-full iframe {
+        height: 300px;
+    }
+
+    .contact-map-overlay {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        max-width: 100%;
+        margin-top: 16px;
+        padding: 24px;
+        box-shadow: none;
+        background: rgba(255, 255, 255, 0.95);
+        border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* Mobile menu alignment fixes */
+    .nav-links .nav-link::after {
+        display: none; /* Hide the weird blue underline in sidebar */
+    }
+    
+    .nav-links .nav-link {
+        text-align: left;
+    }
+}
+
 
