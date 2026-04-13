@@ -3288,6 +3288,39 @@ but since hero is 100% these shouldn't visibly protrude much */
     .nav-links .nav-link {
         text-align: left;
     }
+
+    /* Hero stats alignment fixes */
+    .hero-stats-new {
+        flex-direction: column !important;
+        width: 90% !important;
+        max-width: 300px !important;
+        margin: 20px auto 0 !important;
+        padding: 10px 0 !important;
+        background: rgba(255, 255, 255, 0.7) !important;
+    }
+
+    .stat-group {
+        padding: 12px 20px !important;
+        min-width: 0 !important;
+        width: 100% !important;
+    }
+
+    .stat-divider {
+        width: 80% !important;
+        height: 1px !important;
+        margin: 0 auto !important;
+        background: rgba(0, 0, 0, 0.05) !important;
+    }
+
+    .hero-stats-new .stat-number, 
+    .stat-suffix {
+        font-size: 2.2rem !important;
+    }
+
+    .hero-stats-new .stat-label {
+        font-size: 0.65rem !important;
+        letter-spacing: 0.1em !important;
+    }
 }
 
 
