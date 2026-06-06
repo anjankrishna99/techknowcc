@@ -165,6 +165,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const formData = new FormData(form);
 
+            // Dynamically update subject to improve deliverability and avoid threading in inbox
+            const name = formData.get('name');
+            if (name) {
+                formData.set('_subject', `New Enquiry from ${name} - TECHKNOW`);
+            }
+
             fetch(form.action, {
                 method: 'POST',
                 body: formData,

@@ -35,7 +35,7 @@
         },
         location: 'SMR Vinay Sky City, Opp. The Hyderabad Public School, Ramanthapur, Hyderabad-500013, Telangana, India',
         email: 'info@techknowcc.in',
-        phone: '040-46043493 (Landline) | +91-984905033 | +91 9346597177',
+        phone: '040-46043493 (Landline) | +91-9849050333 | +91 9346597177',
         hours: 'Mon-Fri: 9 AM - 5 PM | Sat: 9 AM - 3 PM | Sun: Closed',
         experience: '35+ years',
         projects: '750+ completed projects'
@@ -553,7 +553,7 @@
             );
             var waUrl = 'https://wa.me/919346597177?text=' + waText;
             var smsUrl1 = 'sms:+919346597177?body=' + waText;
-            var smsUrl2 = 'sms:+91984905033?body=' + waText;
+            var smsUrl2 = 'sms:+919849050333?body=' + waText;
 
             var msgContainer = document.getElementById('cw-messages');
             var ctaDiv = document.createElement('div');
@@ -563,7 +563,7 @@
                 '<div style="display: flex; flex-direction: column; gap: 8px;">' +
                 '<a href="' + waUrl + '" target="_blank" rel="noopener noreferrer" class="cw-wa-btn" style="text-align: center; border-radius: 6px;">Send via WhatsApp</a>' +
                 '<a href="' + smsUrl1 + '" target="_blank" rel="noopener noreferrer" class="cw-wa-btn" style="background: #4a5568; text-align: center; border-radius: 6px;">Send SMS (+91 9346597177)</a>' +
-                '<a href="' + smsUrl2 + '" target="_blank" rel="noopener noreferrer" class="cw-wa-btn" style="background: #4a5568; text-align: center; border-radius: 6px;">Send SMS (+91-984905033)</a>' +
+                '<a href="' + smsUrl2 + '" target="_blank" rel="noopener noreferrer" class="cw-wa-btn" style="background: #4a5568; text-align: center; border-radius: 6px;">Send SMS (+91-9849050333)</a>' +
                 '</div>' +
                 '</div>';
             msgContainer.appendChild(ctaDiv);
