@@ -1,0 +1,167 @@
+/* ============================================
+   TECHKNOW — 3D walk-through for the portfolio pages
+   ============================================ */
+.g3d-track { position: relative; }
+
+.g3d-stage {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100svh;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse 70% 55% at 60% 35%, rgba(227, 178, 107, 0.10), transparent 70%),
+        linear-gradient(180deg, #0A0C16 0%, #141933 55%, #0D1020 100%);
+}
+
+.g3d-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    touch-action: pan-y;
+}
+
+.g3d-head {
+    position: absolute;
+    top: 118px;
+    left: max(32px, 6vw);
+    pointer-events: none;
+}
+
+.g3d-eyebrow {
+    margin: 0 0 10px;
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--c-accent);
+}
+
+.g3d-title {
+    margin: 0;
+    font-size: clamp(30px, 3.4vw, 50px);
+    line-height: 1.08;
+    color: var(--c-text);
+}
+
+.g3d-info {
+    position: absolute;
+    left: max(32px, 6vw);
+    bottom: max(64px, 11vh);
+    width: min(380px, 30vw);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.g3d-info.is-swapping { opacity: 0; transform: translateY(8px); }
+
+.g3d-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.g3d-count {
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: var(--c-text-secondary);
+}
+
+.g3d-year {
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: var(--c-accent);
+    color: #1B1A22;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.g3d-year:empty { display: none; }
+
+.g3d-name {
+    margin: 0 0 6px;
+    font-size: clamp(28px, 2.8vw, 42px);
+    line-height: 1.1;
+    color: var(--c-text);
+}
+
+.g3d-loc {
+    margin: 0 0 24px;
+    color: var(--c-text-secondary);
+    font-size: 16px;
+}
+
+.g3d-nav {
+    position: absolute;
+    right: max(32px, 6vw);
+    bottom: max(64px, 11vh);
+    display: flex;
+    gap: 12px;
+}
+
+.g3d-nav button {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 1px solid rgba(227, 178, 107, 0.5);
+    background: rgba(10, 12, 22, 0.55);
+    color: var(--c-text);
+    font-size: 18px;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.g3d-nav button:hover { background: rgba(227, 178, 107, 0.2); border-color: var(--c-accent); }
+
+.g3d-hint {
+    position: absolute;
+    left: 50%;
+    bottom: 26px;
+    transform: translateX(-50%);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--c-text-secondary);
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.g3d-progress {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.g3d-progress span { display: block; height: 100%; width: 0; background: var(--c-accent); }
+
+/* The overview grid follows the walk-through */
+body.has-g3d .portfolio-page { min-height: 0 !important; }
+
+@media (max-width: 1100px) and (min-width: 769px) {
+    .g3d-info { width: 34vw; }
+}
+
+@media (max-width: 768px) {
+    .g3d-head { top: 96px; left: 20px; right: 20px; }
+    .g3d-title { font-size: 28px; }
+    .g3d-info { left: 20px; right: 20px; bottom: 96px; width: auto; }
+    .g3d-name { font-size: 26px; }
+    .g3d-loc { margin-bottom: 16px; font-size: 15px; }
+    .g3d-nav { left: 20px; right: auto; bottom: 26px; }
+    .g3d-nav button { width: 46px; height: 46px; }
+    .g3d-hint { display: none; }
+}
+
+@media (max-height: 640px) and (min-width: 769px) {
+    .g3d-head { top: 92px; }
+    .g3d-info { bottom: 40px; }
+    .g3d-nav { bottom: 40px; }
+}
