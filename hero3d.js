@@ -256,7 +256,7 @@ function init() {
         renderer.setSize(w, h, false);
         camera.aspect = w / h;
         // Push the building to the right of the headline on wide screens
-        camera.filmOffset = w > 900 ? -8 : 0;
+        camera.filmOffset = w > 768 ? -8 : 0;
         camera.updateProjectionMatrix();
     }
     window.addEventListener('resize', resize);

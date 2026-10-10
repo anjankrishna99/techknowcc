@@ -2735,7 +2735,8 @@ body.scrolled-past .scroll-indicator {
     }
 }
 
-@media (max-width: 768px) {
+/* Tablets and phones use the slide-out menu: the full bar does not fit below ~990px */
+@media (max-width: 991px) {
     .hamburger {
         display: flex;
         z-index: 2500 !important; /* Move above the menu card */
@@ -2755,6 +2756,7 @@ body.scrolled-past .scroll-indicator {
         height: 100vh;
         background: var(--c-bg-alt);
         border-left: 1px solid var(--c-border);
+        border-radius: 24px 0 0 24px;
         flex-direction: column;
         align-items: center; /* Center-align the links for better mobile look */
         justify-content: center; /* Center them vertically in the card */
@@ -2777,7 +2779,7 @@ body.scrolled-past .scroll-indicator {
     }
 
     .nav-links .nav-link {
-        color: #333;
+        color: var(--c-text);
         font-size: 1.2rem;
         padding: 12px 24px;
         width: auto;
@@ -2787,7 +2789,7 @@ body.scrolled-past .scroll-indicator {
 
     .nav-links .nav-link:hover,
     .nav-links .nav-link.active {
-        background: rgba(0, 0, 0, 0.05);
+        background: rgba(227, 178, 107, 0.12);
         color: var(--c-primary);
     }
 
@@ -2812,7 +2814,9 @@ body.scrolled-past .scroll-indicator {
         margin-left: 8px !important;
         position: static !important; /* Back to normal flow */
     }
+}
 
+@media (max-width: 768px) {
     .hero-title {
         font-size: clamp(2rem, 8vw, 3.2rem);
     }
@@ -3379,3 +3383,10 @@ but since hero is 100% these shouldn't visibly protrude much */
 }
 
 
+
+/* On shorter screens the scroll hint would collide with the hero stats */
+@media (max-height: 920px) {
+    body:not(.has-3d) .hero .scroll-indicator {
+        display: none;
+    }
+}
