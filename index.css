@@ -3435,3 +3435,41 @@ but since hero is 100% these shouldn't visibly protrude much */
     transition: transform 0.15s ease-out !important;
     box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(227, 178, 107, 0.25);
 }
+
+/* ---------- Phone layout ---------- */
+/* Reveal animations slide content in from the side; clip it so the page never scrolls sideways */
+html,
+body {
+    overflow-x: clip;
+}
+
+@media (max-width: 991px) {
+    .nav-container {
+        padding: 0 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 20px;
+    }
+
+    /* Busy backdrops sit further back on small screens */
+    .page3d-canvas.is-on {
+        opacity: 0.55;
+    }
+
+    .page3d-canvas.is-on[data-scene="about"],
+    .page3d-canvas.is-on[data-scene="testimonials"] {
+        opacity: 0.4;
+    }
+
+    .contact-card {
+        background: rgba(27, 32, 54, 0.92);
+    }
+
+    /* Leave room under the last footer line for the WhatsApp button */
+    .footer {
+        padding-bottom: 104px;
+    }
+}
