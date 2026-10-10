@@ -11,18 +11,37 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="index.css?v=2026.56">
+    <link rel="stylesheet" href="index.css?v=2026.57">
 </head>
 
 <body data-scene3d="portfolio">
     <div id="preloader">
-        <div class="spinner">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+        <div class="build-loader" role="img" aria-label="Loading">
+            <svg viewBox="0 0 120 112" aria-hidden="true">
+                <g class="bl-blueprint">
+                    <path class="bl-grid" d="M10 22H110M10 44H110M10 66H110M10 88H110M24 10V104M46 10V104M74 10V104M96 10V104" />
+                    <path class="bl-plan" pathLength="1" d="M24 98V26H96V98ZM24 76H96M24 54H96M46 26V98M74 26V98" />
+                </g>
+                <rect class="bl-found" x="18" y="98" width="84" height="6" rx="1" />
+                <g class="bl-cols">
+                    <rect x="23" y="26" width="4" height="72" />
+                    <rect x="44" y="26" width="4" height="72" />
+                    <rect x="72" y="26" width="4" height="72" />
+                    <rect x="93" y="26" width="4" height="72" />
+                </g>
+                <rect class="bl-slab bl-s1" x="20" y="74" width="80" height="4" />
+                <rect class="bl-slab bl-s2" x="20" y="52" width="80" height="4" />
+                <rect class="bl-slab bl-s3" x="20" y="24" width="80" height="5" />
+                <g class="bl-glass">
+                    <rect x="28" y="79" width="15" height="18" /><rect x="49" y="79" width="22" height="18" /><rect x="77" y="79" width="15" height="18" />
+                    <rect x="28" y="57" width="15" height="16" /><rect x="49" y="57" width="22" height="16" /><rect x="77" y="57" width="15" height="16" />
+                    <rect x="28" y="30" width="15" height="21" /><rect x="49" y="30" width="22" height="21" /><rect x="77" y="30" width="15" height="21" />
+                </g>
+                <line class="bl-ground" x1="4" y1="104.5" x2="116" y2="104.5" />
+            </svg>
+            <div class="bl-stages" aria-hidden="true">
+                <span>Blueprint</span><span>Foundation</span><span>Structure</span><span>Finishing</span><span>Handed over</span>
+            </div>
         </div>
     </div>
     <header id="main-header">
@@ -260,7 +279,7 @@
             </div>
         </div>
     </footer>
-    <script src="index.js?v=2026.39"></script>
+    <script src="index.js?v=2026.40"></script>
 <script type="importmap">
     { "imports": { "three": "./assets/vendor/three.module.min.js" } }
 </script>
