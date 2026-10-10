@@ -94,7 +94,6 @@ function init() {
     const freshConcrete = new THREE.MeshStandardMaterial({ color: '#9c9a96', roughness: 0.95 });
     const steelBar = new THREE.MeshStandardMaterial({ color: '#6b4a36', roughness: 0.6, metalness: 0.5 });
     const ground = new THREE.MeshStandardMaterial({ color: '#23252d', roughness: 1 });
-    const craneMat = new THREE.MeshStandardMaterial({ color: '#e8a93a', roughness: 0.6, metalness: 0.3 });
     const darkMetal = new THREE.MeshStandardMaterial({ color: '#2a2a2c', roughness: 0.4, metalness: 0.8 });
     const blueprint = new THREE.LineBasicMaterial({ color: GOLD, transparent: true, opacity: 0.7 });
 
@@ -183,22 +182,158 @@ function init() {
     foundation.visible = false;
 
     // ---------- Tower crane ----------
+    // A hammerhead tower crane: lattice mast on a ballasted footing, slewing unit
+    // with cab and tower head, triangular lattice jib with a running trolley,
+    // and a counter-jib carrying concrete counterweights. The steelwork is one
+    // instanced mesh of struts so it costs a single draw call.
     const crane = new THREE.Group();
-    const craneH = buildingHeight + 3;
-    crane.add(box(0.8, craneH, 0.8, craneMat, 0, craneH / 2, 0));
+    const craneH = buildingHeight + 4.5;   // tall enough that the load clears the roof
+    const craneYellow = new THREE.MeshStandardMaterial({ color: '#e9b234', roughness: 0.55, metalness: 0.35 });
+    const counterweight = new THREE.MeshStandardMaterial({ color: '#8d8a85', roughness: 0.9 });
+    const cabGlass = new THREE.MeshStandardMaterial({ color: '#203040', roughness: 0.15, metalness: 0.6, emissive: '#3a4a5a', emissiveIntensity: 0.25 });
+    const beacon = new THREE.MeshBasicMaterial({ color: '#ff3b2f' });
+
+    const strutGeo = new THREE.BoxGeometry(1, 1, 1);
+    const struts = [];   // [ax, ay, az, bx, by, bz, thickness, parentKey]
+    const strut = (a, b, r, key) => struts.push([a[0], a[1], a[2], b[0], b[1], b[2], r, key]);
+
+    // Mast: four chords with horizontals and zig-zag bracing on every face
+    const MW = 1.5, half = MW / 2, PANEL = 1.5;
+    const panels = Math.round(craneH / PANEL);
+    const ph = craneH / panels;
+    const corners = [[-half, -half], [half, -half], [half, half], [-half, half]];
+    corners.forEach(([x, z]) => strut([x, 0, z], [x, craneH, z], 0.14, 'mast'));
+    for (let i = 0; i <= panels; i++) {
+        const y = i * ph;
+        for (let c = 0; c < 4; c++) {
+            const [x0, z0] = corners[c], [x1, z1] = corners[(c + 1) % 4];
+            strut([x0, y, z0], [x1, y, z1], 0.07, 'mast');
+            if (i < panels) {
+                const up = i % 2 === 0;
+                strut([x0, up ? y : y + ph, z0], [x1, up ? y + ph : y, z1], 0.05, 'mast');
+            }
+        }
+    }
+
+    // Slewing part, which turns: tower head, jib and counter-jib
     const jibPivot = new THREE.Group();
     jibPivot.position.y = craneH;
-    jibPivot.add(box(20, 0.6, 0.6, craneMat, 5.5, 0.3, 0));
-    const counterweight = new THREE.MeshStandardMaterial({ color: '#8d8a85', roughness: 0.9 });
-    jibPivot.add(box(2, 1.4, 1.4, counterweight, -4, -0.3, 0));
-    jibPivot.add(box(1.3, 1.3, 1.3, darkMetal, 0, 0.9, 0));
-    const cable = box(0.05, 1, 0.05, darkMetal, 12, -0.5, 0, jibPivot);
-    cable.geometry.translate(0, -0.5, 0);   // pivot at the jib so the cable pays out downward
-    cable.position.y = 0;
-    const hook = box(0.7, 0.45, 0.7, darkMetal, 12, -6.2, 0, jibPivot);
+
+    // Tower head (cathead): four legs meeting at an apex above the slewing ring
+    const APEX = 4.2;
+    corners.forEach(([x, z]) => strut([x, 0.4, z], [0, APEX, 0], 0.1, 'jib'));
+
+    // Jib: two bottom chords and one top chord, braced in triangles
+    const JIB = 19, JW = 0.55, JH = 1.1, JP = 1.5;
+    const jibPanels = Math.round(JIB / JP);
+    strut([half, 0.4, -JW], [JIB, 0.4, -JW], 0.1, 'jib');
+    strut([half, 0.4, JW], [JIB, 0.4, JW], 0.1, 'jib');
+    strut([half, 0.4 + JH, 0], [JIB - 0.6, 0.4 + JH * 0.55, 0], 0.09, 'jib');
+    for (let i = 0; i <= jibPanels; i++) {
+        const x = half + i * ((JIB - half) / jibPanels);
+        const topY = 0.4 + JH - (JH * 0.45) * (i / jibPanels);
+        strut([x, 0.4, -JW], [x, 0.4, JW], 0.05, 'jib');
+        if (i < jibPanels) {
+            const xn = half + (i + 1) * ((JIB - half) / jibPanels);
+            const topN = 0.4 + JH - (JH * 0.45) * ((i + 1) / jibPanels);
+            strut([x, 0.4, -JW], [(x + xn) / 2, (topY + topN) / 2, 0], 0.045, 'jib');
+            strut([x, 0.4, JW], [(x + xn) / 2, (topY + topN) / 2, 0], 0.045, 'jib');
+            strut([xn, 0.4, -JW], [(x + xn) / 2, (topY + topN) / 2, 0], 0.045, 'jib');
+            strut([xn, 0.4, JW], [(x + xn) / 2, (topY + topN) / 2, 0], 0.045, 'jib');
+        }
+    }
+
+    // Counter-jib: a flat frame with walkway, winch and counterweights
+    const CJ = 7.5, CW = 0.7;
+    strut([-half, 0.4, -CW], [-CJ, 0.4, -CW], 0.11, 'jib');
+    strut([-half, 0.4, CW], [-CJ, 0.4, CW], 0.11, 'jib');
+    for (let i = 0; i <= 5; i++) {
+        const x = -half - i * ((CJ - half) / 5);
+        strut([x, 0.4, -CW], [x, 0.4, CW], 0.06, 'jib');
+        // guard rails
+        strut([x, 0.4, -CW], [x, 1.2, -CW], 0.03, 'jib');
+        strut([x, 0.4, CW], [x, 1.2, CW], 0.03, 'jib');
+    }
+    strut([-half, 1.2, -CW], [-CJ, 1.2, -CW], 0.03, 'jib');
+    strut([-half, 1.2, CW], [-CJ, 1.2, CW], 0.03, 'jib');
+
+    // Pendant ties from the apex to the jib and counter-jib
+    strut([0, APEX, 0], [JIB * 0.62, 0.4 + JH * 0.72, 0], 0.035, 'jib');
+    strut([0, APEX, 0], [-CJ + 0.3, 0.45, -CW], 0.035, 'jib');
+    strut([0, APEX, 0], [-CJ + 0.3, 0.45, CW], 0.035, 'jib');
+
+    function buildStruts(key, parent) {
+        const list = struts.filter(st => st[7] === key);
+        const mesh = new THREE.InstancedMesh(strutGeo, craneYellow, list.length);
+        const m = new THREE.Matrix4(), q = new THREE.Quaternion(), up = new THREE.Vector3(0, 1, 0);
+        const a = new THREE.Vector3(), b = new THREE.Vector3(), dir = new THREE.Vector3(), sc = new THREE.Vector3();
+        list.forEach((st, i) => {
+            a.set(st[0], st[1], st[2]);
+            b.set(st[3], st[4], st[5]);
+            dir.subVectors(b, a);
+            const len = dir.length();
+            q.setFromUnitVectors(up, dir.normalize());
+            sc.set(st[6], len, st[6]);
+            m.compose(a.clone().add(b).multiplyScalar(0.5), q, sc);
+            mesh.setMatrixAt(i, m);
+        });
+        mesh.castShadow = !isMobile;
+        parent.add(mesh);
+        return mesh;
+    }
+    buildStruts('mast', crane);
+    buildStruts('jib', jibPivot);
+
+    // Footing with ballast blocks
+    box(4.2, 0.9, 4.2, counterweight, 0, 0.45, 0, crane);
+    [[-1.3, -1.3], [1.3, -1.3], [1.3, 1.3], [-1.3, 1.3]].forEach(([x, z]) => box(1.1, 0.6, 1.1, freshConcrete, x, 1.2, z, crane));
+
+    // Slewing ring, cab and machinery
+    box(MW + 0.5, 0.4, MW + 0.5, darkMetal, 0, 0.2, 0, jibPivot);
+    box(1.6, 1.5, 1.4, craneYellow, 0.9, -0.55, MW / 2 + 0.75, jibPivot);
+    box(0.08, 1.0, 1.2, cabGlass, 1.72, -0.45, MW / 2 + 0.75, jibPivot);
+    box(1.4, 0.9, 1.5, darkMetal, -2.2, 0.85, 0, jibPivot);                 // hoist winch
+    box(CJ - 0.6, 0.06, CW * 2, darkMetal, -(CJ + half) / 2, 0.45, 0, jibPivot); // walkway
+    [0, 1, 2].forEach(i => box(0.55, 2.2, 1.9, counterweight, -CJ + 0.4 + i * 0.6, -0.6, 0, jibPivot));
+
+    // Aviation lights on the apex and jib tip
+    [[0, APEX + 0.15, 0], [JIB, 0.75, 0]].forEach(([x, y, z]) => {
+        const l = new THREE.Mesh(new THREE.SphereGeometry(0.14, 10, 8), beacon);
+        l.position.set(x, y, z);
+        jibPivot.add(l);
+    });
+
+    // Trolley runs along the jib; the hook block hangs from it on two falls
+    const trolley = new THREE.Group();
+    box(1.2, 0.35, JW * 2 + 0.2, darkMetal, 0, 0.2, 0, trolley);
+    jibPivot.add(trolley);
+    const falls = [-0.18, 0.18].map(dz => {
+        const c = box(0.035, 1, 0.035, darkMetal, 0, 0, dz, trolley);
+        c.geometry.translate(0, -0.5, 0);   // pivot at the trolley so the falls pay out downward
+        c.castShadow = false;
+        return c;
+    });
+    const hook = new THREE.Group();
+    box(0.7, 0.8, 0.45, craneYellow, 0, 0, 0, hook);
+    const hookCurve = new THREE.Mesh(new THREE.TorusGeometry(0.22, 0.06, 6, 12, Math.PI * 1.4), darkMetal);
+    hookCurve.position.y = -0.62;
+    hookCurve.rotation.z = Math.PI * 0.8;
+    hook.add(hookCurve);
+    // Load: a bundle of steel beams on slings
+    const load = new THREE.Group();
+    [-0.25, 0, 0.25].forEach(dz => box(3.2, 0.22, 0.2, darkMetal, 0, -1.5, dz, load));
+    [[-1.2, 1], [1.2, 1]].forEach(([dx]) => {
+        const sl = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.02, 1.45, 4), darkMetal);
+        sl.position.set(dx / 2, -0.95, 0);
+        sl.rotation.z = Math.atan2(dx, 1.0);
+        load.add(sl);
+    });
+    hook.add(load);
+    trolley.add(hook);
+
     crane.add(jibPivot);
     crane.position.set(-HW - 4, 0, -FRONT - 3);
-    const craneMats = [craneMat, counterweight, darkMetal];
+    const craneMats = [craneYellow, counterweight, darkMetal, cabGlass, beacon];
     craneMats.forEach(m => { m.transparent = true; });
     scene.add(crane);
 
@@ -300,8 +435,10 @@ function init() {
 
         // Crane works while the skeleton goes up, then lowers out of view
         jibPivot.rotation.y = Math.sin(t * 0.35) * 0.6 + sp * 2.2;
-        hook.position.y = -6.2 + Math.sin(t * 0.9) * 1.2;
-        cable.scale.y = -hook.position.y - 0.2;
+        trolley.position.x = 10 + Math.sin(t * 0.25) * 6;
+        hook.position.y = -2.9 + Math.sin(t * 0.5) * 0.8;
+        falls.forEach(f => { f.scale.y = -hook.position.y - 0.3; });
+        hook.rotation.y = Math.sin(t * 0.3) * 0.4;
         // Once topped out the crane fades away rather than sinking through the ground
         const craneFade = 1 - clamp01((sp - B1) / 0.08);
         craneMats.forEach(m => { m.opacity = craneFade; m.depthWrite = craneFade > 0.99; });
