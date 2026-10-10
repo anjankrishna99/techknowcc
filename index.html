@@ -17,6 +17,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="index.css?v=2026.53">
     <link rel="stylesheet" href="chatbot.css?v=2026.2">
+    <link rel="stylesheet" href="hero3d.css?v=2026.2">
 </head>
 
 <body>
@@ -79,9 +80,21 @@
     </header>
 
     <!-- ========== HERO SECTION ========== -->
+    <div class="hero3d-track" id="hero3d-track">
     <section id="home" class="hero">
         <div class="hero-bg">
             <div class="hero-gradient"></div>
+        </div>
+        <div class="hero3d-stage" id="hero3d-stage" aria-hidden="true">
+            <canvas id="hero3d-canvas"></canvas>
+            <div class="hero3d-photo" id="hero3d-photo" role="img" aria-label="Elevation 001 render"></div>
+            <div class="hero3d-shade"></div>
+            <div class="hero3d-progress">
+                <span class="hero3d-progress-label">Now building</span>
+                <span class="hero3d-progress-stage" id="hero3d-stage-label">Blueprint</span>
+                <span class="hero3d-progress-track"><span id="hero3d-stage-bar"></span></span>
+            </div>
+            <div class="hero3d-hint">Drag to rotate</div>
         </div>
         <div class="hero-content">
             <div class="hero-tag-inline reveal">
@@ -120,9 +133,10 @@
             <div class="mouse">
                 <div class="wheel"></div>
             </div>
-            <span>SCROLL TO EXPLORE</span>
+            <span>SCROLL TO BUILD</span>
         </div>
     </section>
+    </div>
 
 
     <!-- ========== ABOUT SECTION ========== -->
@@ -1051,6 +1065,10 @@
 
     <script src="index.js?v=2026.39"></script>
     <script src="chatbot.js?v=2026.39"></script>
+    <script type="importmap">
+        { "imports": { "three": "./assets/vendor/three.module.min.js" } }
+    </script>
+    <script type="module" src="hero3d.js?v=2026.2"></script>
 </body>
 
 </html>
