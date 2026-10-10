@@ -333,7 +333,12 @@ const SECTION_SCENES = { about: 'about', 'services-section': 'services', portfol
 
 function currentPage() {
     const fixed = document.body.dataset.scene3d;
-    if (fixed) return { name: fixed, el: document.querySelector('main, .section') || document.body };
+    if (fixed) {
+        // The portfolio walk-through draws its own scene, so stay off while it's on screen
+        const walk = document.querySelector('.g3d-track');
+        if (walk && walk.getBoundingClientRect().bottom > window.innerHeight * 0.3) return null;
+        return { name: fixed, el: document.querySelector('.portfolio-page, main, .section') || document.body };
+    }
     const contact = document.getElementById('contact-wrapper');
     if (contact) {
         const r = contact.getBoundingClientRect();
