@@ -7,7 +7,7 @@
 
 .has-3d .hero3d-track {
     position: relative;
-    height: 360vh;
+    height: 320vh;
 }
 
 .has-3d .hero3d-track:has(.hero-hidden) {
