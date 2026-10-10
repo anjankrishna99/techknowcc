@@ -920,7 +920,7 @@ h4 {
 }
 
 .section.contact {
-    background: var(--c-bg-dark);
+    background: linear-gradient(180deg, transparent 0%, rgba(10, 12, 22, 0.55) 100%);
     color: var(--c-text-light);
 }
 
@@ -3389,4 +3389,49 @@ but since hero is 100% these shouldn't visibly protrude much */
     body:not(.has-3d) .hero .scroll-indicator {
         display: none;
     }
+}
+
+/* ---------- 3D page backdrops (page3d.js) ---------- */
+.page3d-canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.8s var(--ease-out);
+}
+
+.page3d-canvas.is-on {
+    opacity: 1;
+}
+
+/* Text-heavy pages keep the scene softer so the copy stays easy to read */
+.page3d-canvas.is-on[data-scene="about"],
+.page3d-canvas.is-on[data-scene="testimonials"] {
+    opacity: 0.6;
+}
+
+.has-page3d .section,
+.has-page3d .page-section,
+.has-page3d .footer {
+    position: relative;
+    z-index: 1;
+}
+
+/* Cards lean towards the pointer */
+.value-card,
+.service-card,
+.project-card,
+.testimonial-card,
+.contact-card,
+.enquiry-form {
+    transform-style: preserve-3d;
+}
+
+.tilt-active {
+    transform: perspective(900px) rotateX(var(--tilt-x, 0)) rotateY(var(--tilt-y, 0)) translateZ(0) !important;
+    transition: transform 0.15s ease-out !important;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(227, 178, 107, 0.25);
 }
