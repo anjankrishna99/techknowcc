@@ -465,9 +465,10 @@ function init() {
         // The finished render fades in over the skeleton
         stage.style.setProperty('--hero3d-photo', clamp01((sp - 0.66) / 0.1).toFixed(3));
         // Headline fades while the skeleton goes up and returns with the render.
-        // On phones the text sits over the building, so it stays faded.
+        // On phones the text sits over the building, so it stays fully hidden.
         const fade = clamp01((sp - 0.05) / 0.25) * (isMobile ? 1 : 1 - clamp01((sp - 0.7) / 0.1));
-        document.body.style.setProperty('--hero3d-fade', (fade * (isMobile ? 0.95 : 0.8)).toFixed(3));
+        document.body.style.setProperty('--hero3d-fade', (fade * (isMobile ? 1 : 0.8)).toFixed(3));
+        document.body.classList.toggle('hero3d-faded', fade > 0.6);
 
         renderer.render(scene, camera);
     }
