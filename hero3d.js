@@ -762,7 +762,8 @@ function init() {
         { at: 0.06, label: 'Foundation' },
         { at: 0.2, label: 'Structure' },
         { at: 0.55, label: 'Facade' },
-        { at: 0.86, label: 'Lights on' }
+        { at: 0.78, label: 'Lights on' },
+        { at: 0.9, label: 'Handed over' }
     ];
 
     // ---------- Interaction: drag to rotate, pointer parallax ----------
@@ -849,7 +850,7 @@ function init() {
         });
 
         // Lights come on at handover
-        const lightsOn = clamp01((sp - 0.84) / 0.12);
+        const lightsOn = clamp01((sp - 0.76) / 0.12);
         lit.forEach(([m, full]) => { m.emissiveIntensity = full * lightsOn; });
         shopLight.intensity = lightsOn * 28;
         planterLight.intensity = lightsOn * 8;
@@ -861,7 +862,7 @@ function init() {
         jibPivot.rotation.y = Math.sin(t * 0.35) * 0.6 + sp * 2.2;
         hook.position.y = -6.2 + Math.sin(t * 0.9) * 1.2;
         cable.scale.y = 1 - Math.sin(t * 0.9) * 0.2;
-        crane.position.y = -clamp01((sp - 0.84) / 0.1) * (craneH + 2);
+        crane.position.y = -clamp01((sp - 0.74) / 0.1) * (craneH + 2);
 
         // Camera orbits round to the front view of the render as the building completes
         if (!dragging) {
@@ -870,7 +871,8 @@ function init() {
         }
         const yaw = -0.75 + ease(sp) * 0.78 + dragYaw + (reduceMotion ? 0 : pointerX * 0.06 + Math.sin(t * 0.15) * 0.025);
         const radius = isMobile ? 70 : 58 - sp * 12;
-        const height = 4 + sp * 6 - pointerY * 1.5;
+        // Rises while building, then settles to street eye level to match the render's viewpoint
+        const height = 4 + 6 * clamp01(sp / 0.8) - 7.5 * clamp01((sp - 0.8) / 0.2) - pointerY * 1.5;
         camera.position.set(Math.sin(yaw) * radius, height, Math.cos(yaw) * radius + FRONT * 0.3);
         target.set(0, isMobile ? buildingHeight * 0.95 : buildingHeight * (0.47 + sp * 0.08), 0);
         camera.lookAt(target);
@@ -882,7 +884,8 @@ function init() {
         if (stageBar) stageBar.style.transform = 'scaleX(' + sp.toFixed(3) + ')';
         // Headline fades while the building goes up and returns at handover.
         // On phones the text sits over the building, so it stays faded once the building is up.
-        const fade = clamp01((sp - 0.05) / 0.25) * (isMobile ? 1 : 1 - clamp01((sp - 0.88) / 0.1));
+        const fade = clamp01((sp - 0.05) / 0.25) * (isMobile ? 1 : 1 - clamp01((sp - 0.9) / 0.08));
+        stage.style.setProperty('--hero3d-photo', clamp01((sp - 0.88) / 0.1).toFixed(3));
         document.body.style.setProperty('--hero3d-fade', (fade * (isMobile ? 0.95 : 0.8)).toFixed(3));
 
         if (composer) composer.render();
