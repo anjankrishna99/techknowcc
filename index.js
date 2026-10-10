@@ -5,13 +5,16 @@
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     if (preloader) {
+        // On the first page of a visit, let the loader reach "Handed over"
+        let seen = false;
+        try { seen = sessionStorage.getItem('tcc-loader-seen') === '1'; sessionStorage.setItem('tcc-loader-seen', '1'); } catch (e) {}
+        const wait = seen ? 300 : Math.max(300, 2650 - performance.now());
         setTimeout(() => {
             preloader.classList.add('hidden');
             setTimeout(() => {
                 preloader.remove();
-                // trigger entrance animations if needed, though they are intersection observer based
             }, 500);
-        }, 300); // Small enforced delay so the spinner is visible briefly
+        }, wait);
     }
 });
 
