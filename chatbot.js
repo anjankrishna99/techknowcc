@@ -179,58 +179,51 @@
     var customerTags = new Set();
     var isOpen = false;
 
-    // ---- Lead Storage ----
-    var LEADS_KEY = 'techknow_leads';
+    // ---- Lead Delivery ----
+    // Leads are emailed to the team through FormSubmit, the same service the contact forms use.
+    var LEAD_ENDPOINT = 'https://formsubmit.co/ajax/info@techknowcc.in';
+    var sentInterests = '';
 
-    function saveLeadToStorage(info) {
-        var leads = [];
-        try {
-            var stored = localStorage.getItem(LEADS_KEY);
-            if (stored) leads = JSON.parse(stored);
-        } catch (e) { /* ignore */ }
-        leads.push(info);
-        localStorage.setItem(LEADS_KEY, JSON.stringify(leads));
+    function buildLeadData(subject) {
+        var data = new FormData();
+        data.append('_subject', subject);
+        data.append('_template', 'box');
+        data.append('_captcha', 'false');
+        data.append('Source', 'Website chat');
+        data.append('Name', customerInfo.name);
+        data.append('Email', customerInfo.email);
+        data.append('Type', customerInfo.type);
+        data.append('Phone', customerInfo.phone);
+        data.append('Date & Time', customerInfo.timestamp);
+        data.append('Interests', Array.from(customerTags).join('; ') || '-');
+        data.append('Page', window.location.href);
+        return data;
     }
 
-    function getLeadsFromStorage() {
-        try {
-            var stored = localStorage.getItem(LEADS_KEY);
-            if (stored) return JSON.parse(stored);
-        } catch (e) { /* ignore */ }
-        return [];
+    function sendLead() {
+        fetch(LEAD_ENDPOINT, {
+            method: 'POST',
+            body: buildLeadData('New Chat Lead from ' + customerInfo.name + ' - TECHKNOW'),
+            headers: { 'Accept': 'application/json' }
+        }).catch(function () { /* visitor can still reach us via WhatsApp */ });
     }
 
-    function downloadLeadsAsCSV() {
-        var leads = getLeadsFromStorage();
-        if (leads.length === 0) {
-            alert('No leads recorded yet.');
-            return;
-        }
-        var headers = ['Date & Time', 'Name', 'Email', 'Type', 'Phone', 'Interests'];
-        var rows = leads.map(function (l) {
-            return [
-                l.timestamp || '',
-                l.name || '',
-                l.email || '',
-                l.type || '',
-                l.phone || '',
-                (l.interests || []).join('; ')
-            ].map(function (v) { return '"' + String(v).replace(/"/g, '""') + '"'; }).join(',');
-        });
-        var csv = headers.join(',') + '\n' + rows.join('\n');
-        var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement('a');
-        a.href = url;
-        a.download = 'techknow_leads_' + new Date().toISOString().slice(0, 10) + '.csv';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+    // Sends one follow-up with what the visitor asked about, when they leave or close the chat.
+    function sendLeadInterests() {
+        if (!onboardingComplete || customerTags.size === 0) return;
+        var interests = Array.from(customerTags).join('; ');
+        if (interests === sentInterests) return;
+        sentInterests = interests;
+        var data = buildLeadData('Chat Interests from ' + customerInfo.name + ' - TECHKNOW');
+        if (navigator.sendBeacon && navigator.sendBeacon(LEAD_ENDPOINT, data)) return;
+        fetch(LEAD_ENDPOINT, { method: 'POST', body: data, keepalive: true, headers: { 'Accept': 'application/json' } })
+            .catch(function () { /* ignore */ });
     }
 
-    // Expose globally for admin use
-    window.downloadTechknowLeads = downloadLeadsAsCSV;
+    window.addEventListener('pagehide', sendLeadInterests);
+    document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'hidden') sendLeadInterests();
+    });
 
     // ---- Build Widget DOM ----
     function buildWidget() {
@@ -287,7 +280,7 @@
             });
         }
 
-        cwClose.addEventListener('click', function () { toggleChat(); });
+        cwClose.addEventListener('click', function () { toggleChat(); sendLeadInterests(); });
 
         cwForm.addEventListener('submit', function (e) {
             e.preventDefault();
@@ -409,18 +402,11 @@
                 onboardingComplete = true;
                 onboardingStep = -1;
 
-                // Save lead
-                saveLeadToStorage({
-                    name: customerInfo.name,
-                    email: customerInfo.email,
-                    type: customerInfo.type,
-                    phone: customerInfo.phone,
-                    timestamp: customerInfo.timestamp,
-                    interests: []
-                });
+                // Send lead to the team
+                sendLead();
 
                 showTypingThen(function () {
-                    addBotMessage('Thank you, ' + customerInfo.name + '! Your details have been saved.\n\nHow can I assist you today? You can ask about:\n- Our services\n- Pricing & estimates\n- Location & contact info\n\nOr type "talk to a person" to connect with our team directly.');
+                    addBotMessage('Thank you, ' + customerInfo.name + '! Our team has received your details.\n\nHow can I assist you today? You can ask about:\n- Our services\n- Pricing & estimates\n- Location & contact info\n\nOr type "talk to a person" to connect with our team directly.');
                     showMainQuickReplies();
                 });
                 break;
@@ -472,8 +458,6 @@
                 chatHistory.push({ role: 'bot', text: response.text, time: new Date() });
                 if (response.tags) {
                     response.tags.forEach(function (t) { customerTags.add(t); });
-                    // Update stored lead with interests
-                    updateLeadInterests();
                 }
             }
         });
@@ -521,16 +505,6 @@
             text: 'I appreciate your question! While I may not have the specific answer right now, our team would love to help.\n\nYou can:\n- Ask about our services, pricing, or location\n- Type "talk to a person" to connect with our team on WhatsApp\n\nHow can I help you?',
             tags: ['asked: "' + input + '"']
         };
-    }
-
-    function updateLeadInterests() {
-        var leads = getLeadsFromStorage();
-        if (leads.length === 0) return;
-        var lastLead = leads[leads.length - 1];
-        if (lastLead.email === customerInfo.email) {
-            lastLead.interests = Array.from(customerTags);
-            localStorage.setItem(LEADS_KEY, JSON.stringify(leads));
-        }
     }
 
         // ---- Handoff to WhatsApp / SMS ----
