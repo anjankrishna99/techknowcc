@@ -1,0 +1,170 @@
+/* ============================================
+   TECHKNOW — 3D interactive hero (3d.html)
+   ============================================ */
+.hero3d-stage {
+    display: none;
+}
+
+.has-3d .hero3d-track {
+    position: relative;
+    height: 320vh;
+}
+
+.has-3d .hero3d-track:has(.hero-hidden) {
+    display: none;
+}
+
+.has-3d .hero3d-track > .hero {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    min-height: 100vh;
+}
+
+.has-3d .hero-bg {
+    display: none;
+}
+
+.has-3d .hero3d-stage {
+    display: block;
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: #0d1014;
+}
+
+.hero3d-stage canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+    touch-action: pan-y;
+}
+
+.hero3d-stage.is-dragging canvas {
+    cursor: grabbing;
+}
+
+.hero3d-shade {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(90deg, rgba(8, 10, 13, 0.82) 0%, rgba(8, 10, 13, 0.35) 42%, rgba(8, 10, 13, 0) 65%),
+        linear-gradient(180deg, rgba(8, 10, 13, 0) 75%, rgba(8, 10, 13, 0.6) 100%);
+}
+
+/* The headline steps back as the building goes up */
+.has-3d .hero-content {
+    transform: none !important;
+    opacity: calc(1 - var(--hero3d-fade, 0)) !important;
+    pointer-events: auto;
+    max-width: 720px;
+    margin-right: auto;
+}
+
+.has-3d .hero .scroll-indicator {
+    color: rgba(244, 246, 248, 0.7);
+    z-index: 2;
+}
+
+.hero3d-progress {
+    position: absolute;
+    right: calc(6% + 80px);
+    bottom: 40px;
+    z-index: 2;
+    display: grid;
+    gap: 6px;
+    min-width: 200px;
+    color: #F4F6F8;
+    font-family: var(--font-body);
+    text-align: right;
+}
+
+.hero3d-progress-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(244, 246, 248, 0.6);
+}
+
+.hero3d-progress-stage {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--c-accent);
+}
+
+.hero3d-progress-track {
+    display: block;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.hero3d-progress-track span {
+    display: block;
+    height: 100%;
+    background: var(--c-accent);
+    transform-origin: left;
+    transform: scaleX(0);
+}
+
+.hero3d-hint {
+    position: absolute;
+    right: 6%;
+    top: 110px;
+    z-index: 2;
+    padding: 6px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    color: rgba(244, 246, 248, 0.75);
+    background: rgba(13, 16, 20, 0.4);
+    backdrop-filter: blur(6px);
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .has-3d .hero3d-track {
+        height: 260vh;
+    }
+
+    .has-3d .hero {
+        align-items: flex-start;
+    }
+
+    .hero3d-shade {
+        background:
+            linear-gradient(180deg, rgba(8, 10, 13, 0.85) 0%, rgba(8, 10, 13, 0.4) 45%, rgba(8, 10, 13, 0) 65%),
+            linear-gradient(180deg, rgba(8, 10, 13, 0) 80%, rgba(8, 10, 13, 0.6) 100%);
+    }
+
+    .hero3d-progress {
+        left: 16px;
+        right: 96px;
+        bottom: 24px;
+        min-width: 0;
+        text-align: left;
+    }
+
+    .hero3d-hint {
+        display: none;
+    }
+
+    .has-3d .hero .scroll-indicator {
+        display: none;
+    }
+}
+
+/* Keep the header dark while the 3D scene is behind it */
+body.in-hero3d #main-header.scrolled {
+    background: rgba(10, 12, 15, 0.55);
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+body.in-hero3d #main-header.scrolled .nav-link,
+body.in-hero3d #main-header.scrolled .logo-text-sub {
+    color: #F4F6F8;
+}
