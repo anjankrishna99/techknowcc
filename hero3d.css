@@ -35,7 +35,7 @@
 
 .hero3d-stage canvas {
     display: block;
-    opacity: calc(1 - var(--hero3d-photo, 0) * 0.85);
+    opacity: calc(1 - var(--hero3d-photo, 0));
     width: 100%;
     height: 100%;
     cursor: grab;
